@@ -13,3 +13,5 @@ Test Package: 'Ctrl + Shift + T'
 Document Functions: 'devtools::document()'
 
 -   <https://tinyheero.github.io/jekyll/update/2015/07/26/making-your-first-R-package.html>
+-   <https://web.mit.edu/insong/www/pdf/rpackage_instructions.pdf>
+

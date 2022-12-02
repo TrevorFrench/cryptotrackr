@@ -161,13 +161,31 @@ cryptotrackr contains x number of functions that interact with the Paxos x and x
 ### TEMP ACTION LIST
 
 -   maybe use verb instead of get so that we can dynamically set the request function.
+
 -   determine license
+
 -   fill out description
+
 -   possibly modularize urls and paths
+
 -   Maybe add return data to examples in each functions documentation
+
 -   Implement classes
+
 -   Figure out how to wrap function return descriptions
+
 -   Make sure I have added parameters on all functions
+
 -   maybe make utils for functions that handle things such as time
+
 -   warnings and errors
+
 -   = signs on api calls
+
+-   should this be it's own function? data = jsonlite::fromJSON(rawToChar(res\$content))
+
+-   query parameters should be structured like this:
+
+        query = list('x' = y)
+
+-   set parameter defaults
