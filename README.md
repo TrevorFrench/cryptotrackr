@@ -23,7 +23,9 @@ exchange logos
 cryptotrackr contains x number of functions that interact with the Binance.US public and spot market APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: <https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R>
+
 🏢 Original API Docs: <https://docs.binance.us/>
 
 ## Blockchain.com
@@ -31,7 +33,9 @@ cryptotrackr contains x number of functions that interact with the Binance.US pu
 cryptotrackr contains x number of functions that interact with the Blockchain.com x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: <https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R>
+
 🏢 Original API Docs: <https://api.blockchain.com/v3/#/>
 
 ## CEX.IO
@@ -39,7 +43,9 @@ cryptotrackr contains x number of functions that interact with the Blockchain.co
 cryptotrackr contains x number of functions that interact with the CEX.io x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: <https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R>
+
 🏢 Original API Docs:
 
 ## Coinbase
@@ -47,7 +53,9 @@ cryptotrackr contains x number of functions that interact with the CEX.io x and 
 cryptotrackr contains x number of functions that interact with the Coinbase x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinbase.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs:
 
 ## Coinlist
@@ -55,7 +63,9 @@ cryptotrackr contains x number of functions that interact with the Coinbase x an
 cryptotrackr contains x number of functions that interact with the Coinlist x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinlist.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://trade-docs.coinlist.co/#introduction>
 
 ## Crypto.com
@@ -63,7 +73,9 @@ cryptotrackr contains x number of functions that interact with the Coinlist x an
 cryptotrackr contains x number of functions that interact with the Crypto.com x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/crypto_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://exchange-docs.crypto.com/spot/index.html>
 
 ## Gemini
@@ -71,7 +83,9 @@ cryptotrackr contains x number of functions that interact with the Crypto.com x 
 cryptotrackr contains x number of functions that interact with the Gemini x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/gemini.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs:
 
 ## Helium
@@ -79,7 +93,9 @@ cryptotrackr contains x number of functions that interact with the Gemini x and 
 cryptotrackr contains x number of functions that interact with the Helium x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/helium.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://docs.helium.com/api/>
 
 ## Huobi
@@ -87,7 +103,9 @@ cryptotrackr contains x number of functions that interact with the Helium x and 
 cryptotrackr contains x number of functions that interact with the Huobi x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/huobi.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://huobiapi.github.io/docs/spot/v1/en/>
 
 ## Kraken
@@ -95,7 +113,9 @@ cryptotrackr contains x number of functions that interact with the Huobi x and x
 cryptotrackr contains x number of functions that interact with the Kraken x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/kraken.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://docs.kraken.com/rest/>
 
 ## Magic Eden
@@ -103,7 +123,9 @@ cryptotrackr contains x number of functions that interact with the Kraken x and 
 cryptotrackr contains x number of functions that interact with the Magic Eden x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/magic_eden.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://api.magiceden.dev/>
 
 ## Nifty Gateway
@@ -111,7 +133,9 @@ cryptotrackr contains x number of functions that interact with the Magic Eden x 
 cryptotrackr contains x number of functions that interact with the Nifty Gateway x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/nifty_gateway.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://niftygateway.notion.site/Nifty-Gateway-OAuth-Public-API-12d0a73c3ca24ab096084fa0334ba895>
 
 ## Okcoin
@@ -119,7 +143,9 @@ cryptotrackr contains x number of functions that interact with the Nifty Gateway
 cryptotrackr contains x number of functions that interact with the Okcoin x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/okcoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs:
 
 ## Paxos (itbit)
@@ -127,7 +153,9 @@ cryptotrackr contains x number of functions that interact with the Okcoin x and 
 cryptotrackr contains x number of functions that interact with the Paxos x and x APIs.
 
 📊 cryptotrackr Docs:
+
 💻 Source Code: [https://github.com/TrevorFrench/cryptotrackr/blob/main/R/paxos.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)
+
 🏢 Original API Docs: <https://developer.paxos.com/docs/v2/api>
 
 ### TEMP ACTION LIST
