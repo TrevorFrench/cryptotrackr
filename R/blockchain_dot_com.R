@@ -1,12 +1,14 @@
 #-------------------------------------------------------------------------------
 #------------------------------------ACTION LIST--------------------------------
 #-------------------------------------------------------------------------------
-# -
+# - Maybe combine ticker and ticker symbol functions and also rename
 
 #-------------------------------------------------------------------------------
 #---------------------------BLOCKCHAIN.COM L2 ORDER BOOK------------------------
 #-------------------------------------------------------------------------------
-#' nifty_gateway_user_nifties
+#' blockchain_dot_com_l2_order_book
+#'
+#' @param symbol the symbol for which to retrieve data
 #'
 #' @return returns a list containing a 'bids' and an 'asks' dataframe along with the specified symbol
 #' @export
@@ -20,6 +22,128 @@
 
 blockchain_dot_com_l2_order_book <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l2/', toupper(symbol), sep = ''))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#---------------------------BLOCKCHAIN.COM L3 ORDER BOOK------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_l3_order_book
+#'
+#' @param symbol the symbol for which to retrieve data
+#'
+#' @return returns a list containing a 'bids' and an 'asks' dataframe along with the specified symbol
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' symbol <- 'BTC-USD'
+#' l3_order_book <- blockchain_dot_com_l3_order_book(symbol)
+#' bids <- l3_order_book$bids
+#' asks <- l3_order_book$asks}
+
+blockchain_dot_com_l3_order_book <- function(symbol) {
+  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l3/', toupper(symbol), sep = ''))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#------------------------------BLOCKCHAIN.COM TICKERS---------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_tickers
+#'
+#' @return returns a dataframe with price and volume data for all symbols
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' tickers <- blockchain_dot_com_tickers()}
+
+blockchain_dot_com_tickers <- function() {
+  res = httr::GET('https://api.blockchain.com/v3/exchange/tickers')
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#---------------------------BLOCKCHAIN.COM TICKER SYMBOL------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_ticker_symbol
+#'
+#' @return returns a list with price and volume data for specified symbol
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' symbol <- 'BTC-USD'
+#' ticker_data <- blockchain_dot_com_ticker_symbol(symbol)}
+
+blockchain_dot_com_ticker_symbol <- function(symbol) {
+  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/tickers/', toupper(symbol), sep = ''))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#------------------------------BLOCKCHAIN.COM SYMBOLS---------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_symbols
+#'
+#' @return returns a list with various data for all symbols
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' tickers <- blockchain_dot_com_tickers()}
+
+symbol_data <- blockchain_dot_com_symbols()
+
+blockchain_dot_com_symbols <- function() {
+  res = httr::GET('https://api.blockchain.com/v3/exchange/symbols')
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#-------------------------------BLOCKCHAIN.COM SYMBOL---------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_symbol
+#'
+#' @return returns a list with various data for specified symbol
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' symbol <- 'BTC-USD'
+#' symbol_data <- blockchain_dot_com_symbol(symbol)}
+
+blockchain_dot_com_symbol <- function(symbol) {
+  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/symbols/', toupper(symbol), sep = ''))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#-------------------------------BLOCKCHAIN.COM FEES-----------------------------
+#-------------------------------------------------------------------------------
+#' blockchain_dot_com_fees
+#'
+#' @return returns
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' fees <- blockchain_dot_com_fees(api_key)}
+
+fees <- blockchain_dot_com_fees(api_key)
+
+blockchain_dot_com_fees <- function(api_key) {
+  res = httr::GET('https://api.blockchain.com/v3/exchange/fees',
+                  httr::add_headers('X-API-TOKEN' = api_key
+                  ))
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
