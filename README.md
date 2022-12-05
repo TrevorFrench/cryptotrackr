@@ -46,7 +46,7 @@ cryptotrackr contains x number of functions that interact with the CEX.io x and 
 
 💻 Source Code: <https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R>
 
-🏢 Original API Docs:
+🏢 Original API Docs: <https://docs.cex.io/#cex-io-api-introduction>
 
 ## Coinbase
 

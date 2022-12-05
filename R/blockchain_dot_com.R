@@ -2,6 +2,7 @@
 #------------------------------------ACTION LIST--------------------------------
 #-------------------------------------------------------------------------------
 # - Maybe combine ticker and ticker symbol functions and also rename
+# - 500 errors on authenticated methods (see fees)
 
 #-------------------------------------------------------------------------------
 #---------------------------BLOCKCHAIN.COM L2 ORDER BOOK------------------------
@@ -138,6 +139,7 @@ blockchain_dot_com_symbol <- function(symbol) {
 #' api_key <- "..."
 #' fees <- blockchain_dot_com_fees(api_key)}
 
+# RETURNING 500 INTERNAL SERVER ERROR ON ALL AUTHENTICATED METHODS
 fees <- blockchain_dot_com_fees(api_key)
 
 blockchain_dot_com_fees <- function(api_key) {
