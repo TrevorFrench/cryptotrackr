@@ -14,7 +14,7 @@ add readme links and og api documentation links
 
 contribution guide
 
-## Supported Exchanges
+## Supported Data Sources
 
 exchange logos
 

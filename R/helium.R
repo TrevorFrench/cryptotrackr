@@ -80,7 +80,9 @@ helium_block_stats <- function() {
 #-------------------------------------------------------------------------------
 #' helium_block_descriptions
 #'
-#' @return returns a list containing block production statistics
+#' @param cursor used to retrieve more results. Default value is NULL.
+#'
+#' @return returns a list contaning block descriptions. a cursor field will be returned if there are more results.
 #' @export
 #'
 #' @examples
@@ -97,8 +99,20 @@ helium_block_descriptions <- function(cursor = NULL) {
   return(data)
 }
 
-height <- '213787'
-block <- helium_block_at_height(height)
+#-------------------------------------------------------------------------------
+#-----------------------------HELIUM BLOCK AT HEIGHT----------------------------
+#-------------------------------------------------------------------------------
+#' helium_block_at_height
+#'
+#' @param height the blockchain height
+#'
+#' @return returns a list containing descriptors for the block at specified height
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' height <- '213787'
+#' block <- helium_block_at_height(height)}
 
 helium_block_at_height <- function(height) {
   res = httr::GET(paste('https://api.helium.io/v1/blocks/', height, sep = ''))
@@ -106,3 +120,28 @@ helium_block_at_height <- function(height) {
   return(data$data)
 }
 
+#-------------------------------------------------------------------------------
+#---------------------------HELIUM TRANSACTIONS AT HEIGHT-----------------------
+#-------------------------------------------------------------------------------
+#' helium_transactions_at_height
+#'
+#' @param cursor used to retrieve more results. Default value is NULL.
+#'
+#' @return returns a list containing block production statistics
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' block_descriptions <- helium_block_descriptions()
+#'
+#' cursor <- block_descriptions$cursor
+#' block_descriptions <- helium_block_descriptions(cursor)}
+
+height <- '213787'
+# DOCUMENT THIS FUNCTION AND ADD A CURSOR EXAMPLE
+helium_transactions_at_height <- function(height, cursor = NULL) {
+  res = httr::GET(paste('https://api.helium.io/v1/blocks/', height, '/transactions', sep = '')
+                  , query = list('cursor' = cursor))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data$data)
+}
