@@ -78,24 +78,49 @@ cex_io_last_price <- function(symbol_1, symbol_2) {
 #'
 #' @param symbol_1 the first currency in your pair
 #' @param symbol_2 the second currency in your pair
+#' @param amount the currency amount to convert
 #'
-#' @return returns a list with the last price of your specified currency pair.
+#' @return returns ?
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' last_price <- cex_io_converter(symbol_1, symbol_2)}
+#' amount <- '2.5'
+#' converted <- cex_io_converter(symbol_1, symbol_2, amount)}
 
-amount <- '1'
-
-cex_io_converter <- function(symbol_1, symbol_2) {
+cex_io_converter <- function(symbol_1, symbol_2, amount) {
   res = httr::POST(paste('https://cex.io/api/convert/', toupper(symbol_1), '/', toupper(symbol_2), sep = '')
-                   , body = list('amnt' = amount)
+                   , body = list("amnt" = amount)
                    , httr::add_headers('Content-Type' = 'application/json'
-                                      , 'accept' = '*/*'
+                                      , 'Accept' = '*/*'
                    ))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#------------------------------------CEX.IO OHLCV-------------------------------
+#-------------------------------------------------------------------------------
+#' cex_io_ohlcv
+#'
+#' @param date the date for which to retrieve data
+#' @param symbol_1 the first currency in your pair
+#' @param symbol_2 the second currency in your pair
+#'
+#' @return returns a list containing open, high, low, close, volume data for the past minute, hour, and day
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' date <- '20220927'
+#' symbol_1 <- 'btc'
+#' symbol_2 <- 'usd'
+#' ohlcv <- cex_io_ohlcv(date, symbol_1, symbol_2)}
+
+cex_io_ohlcv <- function(date, symbol_1, symbol_2) {
+  res = httr::GET(paste('https://cex.io/api/ohlcv/hd/', date, '/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
