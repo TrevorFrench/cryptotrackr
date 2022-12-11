@@ -189,3 +189,7 @@ cryptotrackr contains x number of functions that interact with the Paxos x and x
         query = list('x' = y)
 
 -   set parameter defaults
+
+-   use verb rather than get/post
+
+-   make headers variables
