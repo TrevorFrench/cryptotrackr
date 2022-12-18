@@ -40,9 +40,7 @@ cex_io_ticker <- function(symbol_1, symbol_2) {
 #'
 #' @examples
 #' \dontrun{
-#' }
-
-currency_limits <- cex_io_currency_limits()
+#' currency_limits <- cex_io_currency_limits()}
 
 cex_io_currency_limits <- function() {
   res = httr::GET('https://cex.io/api/currency_limits')

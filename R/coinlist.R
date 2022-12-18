@@ -20,3 +20,99 @@ coinlist_symbols <- function() {
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data$symbols)
 }
+
+#-------------------------------------------------------------------------------
+#------------------------------------COINLIST TIME------------------------------
+#-------------------------------------------------------------------------------
+#' coinlist_time
+#'
+#' @return returns a timestamp for use in your Coinlist API calls
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' coinlist_time <- coinlist_time()}
+
+coinlist_time <- function() {
+  op <- options(digits.secs=0)
+  tm <- as.POSIXlt(Sys.time(), "UTC")
+  formatted_time <- round(as.numeric(as.POSIXct(tm)))
+  return(formatted_time)
+}
+
+#-------------------------------------------------------------------------------
+#---------------------------------COINLIST SIGNATURE----------------------------
+#-------------------------------------------------------------------------------
+#' coinlist_signature
+#'
+#' @param api_secret your Coinlist API secret
+#' @param coinlist_time a timestamp in the correct format according to Coinlist
+#' @param method "GET" or "POST"
+#' @param path the path of your API call
+#' @param body the body of your API call
+#'
+#' @return returns a signature for use in your Coinlist API calls
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_secret <- "..."
+#' coinlist_time <- coinlist_time()
+#' method <- "GET"
+#' path <- "/v1/accounts"
+#' body <- ""
+#' coinlist_signature <- coinlist_signature(api_secret, coinlist_time, method, path, body)}
+
+coinlist_signature <- function(api_secret, coinlist_time, method, path, body) {
+  # api_secret <- stringi::stri_enc_toutf8(api_secret)
+  api_secret <- jsonlite::base64_dec(api_secret)
+  message <- paste(coinlist_time, method, path, body, sep = '')
+  sig <- openssl::sha256(message, key = api_secret)
+  #sig <- jsonlite::base64_enc(sig)
+  return(sig)
+}
+
+#-------------------------------------------------------------------------------
+#---------------------------------COINLIST API CALL-----------------------------
+#-------------------------------------------------------------------------------
+#' coinlist_api_call
+#'
+#' @param api_key your Coinlist API key
+#' @param api_secret your Coinlist API secret
+#' @param method "GET" or "POST"
+#' @param path the path of your API call
+#' @param body the body of your API call
+#'
+#' @return returns a the response from your Coinlist API call
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' path <- "/v1/accounts"
+#' method <- "GET"
+#' api_key <- "..."
+#' api_secret <- "..."
+#' body <- ""
+#' data <- coinlist_api_call(api_key, api_secret, method, path, body)}
+
+coinlist_api_call <- function(api_key, api_secret, method, path, body) {
+  coinlist_time <- coinlist_time()
+  sig <- coinlist_signature(api_secret, coinlist_time, method, path, body)
+  url <- paste('https://trade-api.coinlist.co', path, sep = '')
+  res = httr::GET(url
+                  , body = body
+                  , httr::add_headers('CL-ACCESS-KEY' = api_key
+                                      , 'CL-ACCESS-SIG' = sig
+                                      , 'CL-ACCESS-TIMESTAMP' = coinlist_time
+                  ))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
+
+path <- "/v1/accounts"
+method <- "GET"
+api_key <- "21df21c0-ed0b-4109-8fdf-fdc2351c8fc5"
+api_secret <- "zap1cyy+TwzpzoabTqCoeiTQFFk+Fi8lmKWEvTLPxZKbom9RunGQpAX+ZKpPUnAGrdcU0bquG+0COlBFoR1lNw=="
+body <- ""
+
+data <- coinlist_api_call(api_key, api_secret, method, path, body)

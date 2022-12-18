@@ -16,7 +16,11 @@ contribution guide
 
 ## Supported Data Sources
 
-exchange logos
+| Logo                                                                                                               | Name                              | Code       | cryptotrackr Docs                                                                                | Exchange Docs                  | Source Code                                                                              |
+|-----------|---------|---------|----------------|-------------|----------------|
+| ![binance_us](https://user-images.githubusercontent.com/1294454/65177307-217b7c80-da5f-11e9-876e-0b748ba0a358.jpg) | [Binance.US](https://binance.us/) | binance_us | [/docs/binance_us.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/binance_us.md) | [🏢](https://docs.binance.us/) | [/R/binance_us.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R) |
+|                                                                                                                    |                                   |            |                                                                                                  |                                |                                                                                          |
+|                                                                                                                    |                                   |            |                                                                                                  |                                |                                                                                          |
 
 ## Binance.US
 
@@ -193,3 +197,5 @@ cryptotrackr contains x number of functions that interact with the Paxos x and x
 -   use verb rather than get/post
 
 -   make headers variables
+
+-   don't name variables the same as functions (coinlist time)

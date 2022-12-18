@@ -137,7 +137,7 @@ helium_block_at_height <- function(height) {
 #' cursor <- block_descriptions$cursor
 #' block_descriptions <- helium_block_descriptions(cursor)}
 
-height <- '213787'
+# height <- '213787'
 # DOCUMENT THIS FUNCTION AND ADD A CURSOR EXAMPLE
 helium_transactions_at_height <- function(height, cursor = NULL) {
   res = httr::GET(paste('https://api.helium.io/v1/blocks/', height, '/transactions', sep = '')

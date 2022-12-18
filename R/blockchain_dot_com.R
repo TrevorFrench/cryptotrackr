@@ -97,9 +97,7 @@ blockchain_dot_com_ticker_symbol <- function(symbol) {
 #'
 #' @examples
 #' \dontrun{
-#' tickers <- blockchain_dot_com_tickers()}
-
-symbol_data <- blockchain_dot_com_symbols()
+#' symbol_data <- blockchain_dot_com_symbols()}
 
 blockchain_dot_com_symbols <- function() {
   res = httr::GET('https://api.blockchain.com/v3/exchange/symbols')
@@ -140,7 +138,7 @@ blockchain_dot_com_symbol <- function(symbol) {
 #' fees <- blockchain_dot_com_fees(api_key)}
 
 # RETURNING 500 INTERNAL SERVER ERROR ON ALL AUTHENTICATED METHODS
-fees <- blockchain_dot_com_fees(api_key)
+# fees <- blockchain_dot_com_fees(api_key)
 
 blockchain_dot_com_fees <- function(api_key) {
   res = httr::GET('https://api.blockchain.com/v3/exchange/fees',
