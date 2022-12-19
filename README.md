@@ -1,5 +1,7 @@
 # cryptotrackr
 
+![cryptotrackr](/man/figures/cryptotrackr.png)
+
 ## :writing_hand: Author / Maintainer
 
 Trevor French <https://trevorfrench.com>
