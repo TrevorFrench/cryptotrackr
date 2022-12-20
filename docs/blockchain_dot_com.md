@@ -1,8 +1,8 @@
 # Blockchain.com
 
-| Logo                                                                                                                                                   | Name                                             | Code               | cryptotrackr Docs                                                                                                | Exchange Docs                          | Source Code                                                                                              |
+| Logo                                                                                                                         | Name                                             | Code               | cryptotrackr Docs                                                                                                | Exchange Docs                          | Source Code                                                                                              |
 |------------|------------|------------|------------|------------|------------|
-| ![blockchain_dot_com](https://user-images.githubusercontent.com/1294454/147515585-1296e91b-7398-45e5-9d32-f6121538533f.jpeg){alt="blockchain_dot_com"} | [Blockchain.com](https://www.blockchain.com/en/) | blockchain_dot_com | [/docs/blockchain_dot_com.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/blockchain_dot_com.md) | [🏢](https://api.blockchain.com/v3/#/) | [/R/blockchain_dot_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R) |
+| ![blockchain_dot_com](https://user-images.githubusercontent.com/1294454/147515585-1296e91b-7398-45e5-9d32-f6121538533f.jpeg) | [Blockchain.com](https://www.blockchain.com/en/) | blockchain_dot_com | [/docs/blockchain_dot_com.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/blockchain_dot_com.md) | [🏢](https://api.blockchain.com/v3/#/) | [/R/blockchain_dot_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R) |
 
 ## Functions:
 
