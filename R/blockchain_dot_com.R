@@ -2,7 +2,7 @@
 #------------------------------------ACTION LIST--------------------------------
 #-------------------------------------------------------------------------------
 # - Maybe combine ticker and ticker symbol functions and also rename
-# - 500 errors on authenticated methods (see fees)
+# - 500 errors on authenticated methods
 
 #-------------------------------------------------------------------------------
 #---------------------------BLOCKCHAIN.COM L2 ORDER BOOK------------------------
@@ -73,6 +73,8 @@ blockchain_dot_com_tickers <- function() {
 #-------------------------------------------------------------------------------
 #' blockchain_dot_com_ticker_symbol
 #'
+#' @param symbol the symbol for which to retrieve data
+#'
 #' @return returns a list with price and volume data for specified symbol
 #' @export
 #'
@@ -110,6 +112,8 @@ blockchain_dot_com_symbols <- function() {
 #-------------------------------------------------------------------------------
 #' blockchain_dot_com_symbol
 #'
+#' @param symbol the symbol for which to retrieve data
+#'
 #' @return returns a list with various data for specified symbol
 #' @export
 #'
@@ -120,30 +124,6 @@ blockchain_dot_com_symbols <- function() {
 
 blockchain_dot_com_symbol <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/symbols/', toupper(symbol), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
-}
-
-#-------------------------------------------------------------------------------
-#-------------------------------BLOCKCHAIN.COM FEES-----------------------------
-#-------------------------------------------------------------------------------
-#' blockchain_dot_com_fees
-#'
-#' @return returns
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' api_key <- "..."
-#' fees <- blockchain_dot_com_fees(api_key)}
-
-# RETURNING 500 INTERNAL SERVER ERROR ON ALL AUTHENTICATED METHODS
-# fees <- blockchain_dot_com_fees(api_key)
-
-blockchain_dot_com_fees <- function(api_key) {
-  res = httr::GET('https://api.blockchain.com/v3/exchange/fees',
-                  httr::add_headers('X-API-TOKEN' = api_key
-                  ))
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
