@@ -13,7 +13,7 @@
 #' @param size the number of datapoints to return. This should fall between 1 and 2000.
 #' @param symbol the trading symbol to query.
 #'
-#' @return returns a dataframe containing huobi candle data
+#' @return returns a dataframe containing Huobi candle data
 #' @export
 #'
 #' @examples
