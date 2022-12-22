@@ -125,6 +125,7 @@ helium_block_at_height <- function(height) {
 #-------------------------------------------------------------------------------
 #' helium_transactions_at_height
 #'
+#' @param height the blockchain height
 #' @param cursor used to retrieve more results. Default value is NULL.
 #'
 #' @return returns a list containing block production statistics
@@ -132,13 +133,12 @@ helium_block_at_height <- function(height) {
 #'
 #' @examples
 #' \dontrun{
-#' block_descriptions <- helium_block_descriptions()
+#' height <- '213787'
+#' block_stats <- helium_block_descriptions(height)
 #'
-#' cursor <- block_descriptions$cursor
-#' block_descriptions <- helium_block_descriptions(cursor)}
+#' cursor <- block_stats$cursor
+#' block_stats <- helium_block_descriptions(height, cursor)}
 
-# height <- '213787'
-# DOCUMENT THIS FUNCTION AND ADD A CURSOR EXAMPLE
 helium_transactions_at_height <- function(height, cursor = NULL) {
   res = httr::GET(paste('https://api.helium.io/v1/blocks/', height, '/transactions', sep = '')
                   , query = list('cursor' = cursor))
