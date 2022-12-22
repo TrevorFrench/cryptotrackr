@@ -1,4 +1,4 @@
-# Coinbase
+# Coinlist
 
 | Logo                                                                                                                                    | Name                             | Code     | cryptotrackr Docs                                                                            | Exchange Docs                                      | Source Code                                                                          |
 |------------|------------|------------|------------|------------|------------|
