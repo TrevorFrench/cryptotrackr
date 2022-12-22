@@ -1,8 +1,8 @@
 # Huobi
 
-| Logo                                                                                                                       | Name                            | Code  | cryptotrackr Docs                                                                      | Exchange Docs                                     | Source Code                                                                    |
+| Logo                                                                                                          | Name                            | Code  | cryptotrackr Docs                                                                      | Exchange Docs                                     | Source Code                                                                    |
 |------------|------------|------------|------------|------------|------------|
-| ![huobi](https://user-images.githubusercontent.com/1294454/85734211-85755480-b705-11ea-8b35-0b7f1db33a2f.jpg){alt="huobi"} | [Huobi](https://www.huobi.com/) | huobi | [/docs/huobi.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/huobi.md) | [🏢](https://huobiapi.github.io/docs/spot/v1/en/) | [/R/huobi.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/huobi.R) |
+| ![huobi](https://user-images.githubusercontent.com/1294454/85734211-85755480-b705-11ea-8b35-0b7f1db33a2f.jpg) | [Huobi](https://www.huobi.com/) | huobi | [/docs/huobi.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/huobi.md) | [🏢](https://huobiapi.github.io/docs/spot/v1/en/) | [/R/huobi.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/huobi.R) |
 
 ## Functions:
 
