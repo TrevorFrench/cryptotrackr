@@ -108,11 +108,3 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body) {
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
-
-path <- "/v1/accounts"
-method <- "GET"
-api_key <- "21df21c0-ed0b-4109-8fdf-fdc2351c8fc5"
-api_secret <- "zap1cyy+TwzpzoabTqCoeiTQFFk+Fi8lmKWEvTLPxZKbom9RunGQpAX+ZKpPUnAGrdcU0bquG+0COlBFoR1lNw=="
-body <- ""
-
-data <- coinlist_api_call(api_key, api_secret, method, path, body)
