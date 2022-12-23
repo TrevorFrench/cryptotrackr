@@ -9,6 +9,8 @@
 #-------------------------------------------------------------------------------
 #' nifty_gateway_user_nifties
 #'
+#' @param username the username you wish to query
+#'
 #' @return returns a dataframe containing information about the nifties owned by the specified user
 #' @export
 #'
