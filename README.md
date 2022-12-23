@@ -2,15 +2,15 @@
 
 ![cryptotrackr](/man/figures/cryptotrackr.png)
 
-## Description
+## 📖 Description
 
 cryptotrackr allows you to connect to data sources across the crypto ecosystem. This data can enable a range of activity such as portfolio tracking, programmatic trading, or industry analysis.
 
-## :writing_hand: Author / Maintainer
+## ✍️ Author / Maintainer
 
 Trevor French <https://trevorfrench.com>
 
-## :arrow_double_down: Installation
+## ⏬ Installation
 
 Install the cryptotrackr package via CRAN:
 
@@ -25,7 +25,7 @@ install.packages("remotes")
 remotes::install_github("TrevorFrench/cryptotrackr")
 ```
 
-## Dependencies
+## ⚓ Dependencies
 
 cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, openssl
 
@@ -33,6 +33,7 @@ cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, op
 
 | Logo                                                                                                                                    | Name                                             | Code               | cryptotrackr Docs                                                                                                | Exchange Docs                                                                                          | Source Code                                                                                              |
 |------------|------------|------------|------------|------------|------------|
+| ![binance_us](https://www.amberdata.io/hubfs/amberdata_logo_color.svg)                                                                  | [Amberdata](https://www.amberdata.io/)           | amberdata          | [/docs/amberdata.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/amberdata.md)                   | [🏢](https://docs.amberdata.io/)                                                                       | [/R/amberdata.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/amberdata.R)                   |
 | ![binance_us](https://user-images.githubusercontent.com/1294454/65177307-217b7c80-da5f-11e9-876e-0b748ba0a358.jpg)                      | [Binance.US](https://binance.us/)                | binance_us         | [/docs/binance_us.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/binance_us.md)                 | [🏢](https://docs.binance.us/)                                                                         | [/R/binance_us.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R)                 |
 | ![blockchain_dot_com](https://user-images.githubusercontent.com/1294454/147515585-1296e91b-7398-45e5-9d32-f6121538533f.jpeg)            | [Blockchain.com](https://www.blockchain.com/en/) | blockchain_dot_com | [/docs/blockchain_dot_com.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/blockchain_dot_com.md) | [🏢](https://api.blockchain.com/v3/#/)                                                                 | [/R/blockchain_dot_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R) |
 | ![cex_io](https://user-images.githubusercontent.com/1294454/27766442-8ddc33b0-5ed8-11e7-8b98-f786aef0f3c9.jpg)                          | [CEX.IO](https://cex.io/)                        | cex_io             | [/docs/cex_io.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/cex_io.md)                         | [🏢](https://docs.cex.io/#cex-io-api-introduction)                                                     | [/R/cex_io.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)                         |
@@ -48,7 +49,7 @@ cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, op
 | ![okcoin](https://user-images.githubusercontent.com/51840849/87295551-102fbf00-c50e-11ea-90a9-462eebba5829.jpg)                         | [OkCoin](https://www.okcoin.com/)                | okcoin             | [/docs/okcoin.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/okcoin.md)                         | [🏢](https://www.okcoin.com/docs/en/)                                                                  | [/R/okcoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/okcoin.R)                         |
 | ![paxos](https://user-images.githubusercontent.com/1294454/27822159-66153620-60ad-11e7-89e7-005f6d7f3de0.jpg)                           | [Paxos (itBit)](https://paxos.com/itbit/)        | paxos              | [/docs/paxos.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/paxos.md)                           | [🏢](https://developer.paxos.com/docs/v2/api)                                                          | [/R/paxos.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/paxos.R)                           |
 
-## Contributing
+## 🔨 Contributing
 
 Contributions are encouraged!
 
