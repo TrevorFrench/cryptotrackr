@@ -118,7 +118,11 @@ okcoin_time <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' signature <- okcoin_signature()}
+#' path <- "..."
+#' secret <- "..."
+#' formatted_time <- okcoin_time()
+#' method <- "GET"
+#' signature <- okcoin_signature(path, secret, formatted_time, method)}
 
 okcoin_signature <- function(path, secret, formatted_time, method) {
   signature <- paste(formatted_time, method, path, sep = '')
@@ -144,6 +148,14 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
 #'
 #' @examples
 #' \dontrun{
+#' url <- "..."
+#' key <- "..."
+#' path <- "..."
+#' secret <- "..."
+#' formatted_time <- okcoin_time()
+#' method <- "GET"
+#' signature <- okcoin_signature(path, secret, formatted_time, method)
+#' passphrase <- "..."
 #' data <- okcoin_api_call()}
 
 okcoin_api_call <- function(url, key, signature, formatted_time, passphrase) {
