@@ -2,6 +2,10 @@
 
 ![cryptotrackr](/man/figures/cryptotrackr.png)
 
+## Description
+
+cryptotrackr allows you to connect to data sources across the crypto ecosystem. This data can enable a range of activity such as portfolio tracking, programmatic trading, or industry analysis.
+
 ## :writing_hand: Author / Maintainer
 
 Trevor French <https://trevorfrench.com>
@@ -11,27 +15,24 @@ Trevor French <https://trevorfrench.com>
 Install the cryptotrackr package via CRAN:
 
 ``` r
-
 #NOT YET AVAILABLE VIA CRAN
 ```
 
 You can also install the package via the Github repository.
 
 ``` r
-
 install.packages("remotes")
-
 remotes::install_github("TrevorFrench/cryptotrackr")
 ```
 
 ## Dependencies
 
-## Description
+cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, openssl
 
 ## Supported Data Sources
 
 | Logo                                                                                                                                    | Name                                             | Code               | cryptotrackr Docs                                                                                                | Exchange Docs                                                                                          | Source Code                                                                                              |
-|-----------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|--------------------|------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+|------------|------------|------------|------------|------------|------------|
 | ![binance_us](https://user-images.githubusercontent.com/1294454/65177307-217b7c80-da5f-11e9-876e-0b748ba0a358.jpg)                      | [Binance.US](https://binance.us/)                | binance_us         | [/docs/binance_us.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/binance_us.md)                 | [🏢](https://docs.binance.us/)                                                                         | [/R/binance_us.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R)                 |
 | ![blockchain_dot_com](https://user-images.githubusercontent.com/1294454/147515585-1296e91b-7398-45e5-9d32-f6121538533f.jpeg)            | [Blockchain.com](https://www.blockchain.com/en/) | blockchain_dot_com | [/docs/blockchain_dot_com.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/blockchain_dot_com.md) | [🏢](https://api.blockchain.com/v3/#/)                                                                 | [/R/blockchain_dot_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R) |
 | ![cex_io](https://user-images.githubusercontent.com/1294454/27766442-8ddc33b0-5ed8-11e7-8b98-f786aef0f3c9.jpg)                          | [CEX.IO](https://cex.io/)                        | cex_io             | [/docs/cex_io.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/cex_io.md)                         | [🏢](https://docs.cex.io/#cex-io-api-introduction)                                                     | [/R/cex_io.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R)                         |
@@ -47,44 +48,14 @@ remotes::install_github("TrevorFrench/cryptotrackr")
 | ![okcoin](https://user-images.githubusercontent.com/51840849/87295551-102fbf00-c50e-11ea-90a9-462eebba5829.jpg)                         | [OkCoin](https://www.okcoin.com/)                | okcoin             | [/docs/okcoin.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/okcoin.md)                         | [🏢](https://www.okcoin.com/docs/en/)                                                                  | [/R/okcoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/okcoin.R)                         |
 | ![paxos](https://user-images.githubusercontent.com/1294454/27822159-66153620-60ad-11e7-89e7-005f6d7f3de0.jpg)                           | [Paxos (itBit)](https://paxos.com/itbit/)        | paxos              | [/docs/paxos.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/paxos.md)                           | [🏢](https://developer.paxos.com/docs/v2/api)                                                          | [/R/paxos.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/paxos.R)                           |
 
-## Contribution Guide
+## Contributing
 
-### TEMP ACTION LIST
+Contributions are encouraged!
 
--   maybe use verb instead of get so that we can dynamically set the request function.
+Feel free to add your own functionality or pick up an issue here: [Issue Board](https://github.com/TrevorFrench/cryptotrackr/issues)
 
--   determine license
+Be sure to check out our contribution guide here: [Contribution Guide](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/contribution.md)
 
--   fill out description
+## License
 
--   possibly modularize urls and paths
-
--   Maybe add return data to examples in each functions documentation
-
--   Implement classes
-
--   Figure out how to wrap function return descriptions
-
--   Make sure I have added parameters on all functions
-
--   maybe make utils for functions that handle things such as time
-
--   warnings and errors
-
--   = signs on api calls
-
--   should this be it's own function? data = jsonlite::fromJSON(rawToChar(res\$content))
-
--   query parameters should be structured like this:
-
-        query = list('x' = y)
-
--   set parameter defaults
-
--   use verb rather than get/post
-
--   make headers variables
-
--   don't name variables the same as functions (coinlist time)
-
--   Save coinlist/helium logo
+TBD
