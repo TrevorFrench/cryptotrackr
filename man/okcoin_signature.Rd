@@ -23,5 +23,9 @@ okcoin_signature
 }
 \examples{
 \dontrun{
-signature <- okcoin_signature()}
+path <- "..."
+secret <- "..."
+formatted_time <- okcoin_time()
+method <- "GET"
+signature <- okcoin_signature(path, secret, formatted_time, method)}
 }

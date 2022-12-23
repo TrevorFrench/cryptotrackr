@@ -25,5 +25,13 @@ okcoin_api_call
 }
 \examples{
 \dontrun{
+url <- "..."
+key <- "..."
+path <- "..."
+secret <- "..."
+formatted_time <- okcoin_time()
+method <- "GET"
+signature <- okcoin_signature(path, secret, formatted_time, method)
+passphrase <- "..."
 data <- okcoin_api_call()}
 }

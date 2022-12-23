@@ -14,7 +14,7 @@ huobi_candles(period, size, symbol)
 \item{symbol}{the trading symbol to query.}
 }
 \value{
-returns a dataframe containing huobi candle data
+returns a dataframe containing Huobi candle data
 }
 \description{
 huobi_candles

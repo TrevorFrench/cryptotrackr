@@ -6,6 +6,9 @@
 \usage{
 blockchain_dot_com_ticker_symbol(symbol)
 }
+\arguments{
+\item{symbol}{the symbol for which to retrieve data}
+}
 \value{
 returns a list with price and volume data for specified symbol
 }

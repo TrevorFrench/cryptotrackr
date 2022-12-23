@@ -7,6 +7,8 @@
 helium_transactions_at_height(height, cursor = NULL)
 }
 \arguments{
+\item{height}{the blockchain height}
+
 \item{cursor}{used to retrieve more results. Default value is NULL.}
 }
 \value{
@@ -17,8 +19,9 @@ helium_transactions_at_height
 }
 \examples{
 \dontrun{
-block_descriptions <- helium_block_descriptions()
+height <- '213787'
+block_stats <- helium_block_descriptions(height)
 
-cursor <- block_descriptions$cursor
-block_descriptions <- helium_block_descriptions(cursor)}
+cursor <- block_stats$cursor
+block_stats <- helium_block_descriptions(height, cursor)}
 }

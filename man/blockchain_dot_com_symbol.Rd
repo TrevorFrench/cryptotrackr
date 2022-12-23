@@ -6,6 +6,9 @@
 \usage{
 blockchain_dot_com_symbol(symbol)
 }
+\arguments{
+\item{symbol}{the symbol for which to retrieve data}
+}
 \value{
 returns a list with various data for specified symbol
 }
