@@ -1,7 +1,7 @@
 # Helium
 
 | Logo                                                       | Name                              | Code   | cryptotrackr Docs                                                                        | Exchange Docs                      | Source Code                                                                      |
-|------------|------------|------------|------------|------------|------------|
+|------------------------------------------------------------|-----------------------------------|--------|------------------------------------------------------------------------------------------|------------------------------------|----------------------------------------------------------------------------------|
 | ![helium](https://docs.helium.com/img/icons/logoblack.svg) | [Helium](https://www.helium.com/) | helium | [/docs/helium.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/helium.md) | [🏢](https://docs.helium.com/api/) | [/R/helium.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/helium.R) |
 
 ## Functions:
