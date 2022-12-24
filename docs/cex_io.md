@@ -1,7 +1,7 @@
 # CEX.IO
 
 | Logo                                                                                                           | Name                      | Code   | cryptotrackr Docs                                                                        | Exchange Docs                                      | Source Code                                                                      |
-|------------|------------|------------|------------|------------|------------|
+|----------------------------------------------------------------------------------------------------------------|---------------------------|--------|------------------------------------------------------------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------|
 | ![cex_io](https://user-images.githubusercontent.com/1294454/27766442-8ddc33b0-5ed8-11e7-8b98-f786aef0f3c9.jpg) | [CEX.IO](https://cex.io/) | cex_io | [/docs/cex_io.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/cex_io.md) | [🏢](https://docs.cex.io/#cex-io-api-introduction) | [/R/cex_io.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/cex_io.R) |
 
 ## Functions:

@@ -12,7 +12,7 @@ huobi_candles
 
 -   Returns a dataframe containing Huobi candle data.
 
--   period: the period of each candle. The following are acceptable options:	"1min", "5min", "15min", "30min", "60min", "4hour", "1day", "1mon", "1week", "1year"
+-   period: the period of each candle. The following are acceptable options: "1min", "5min", "15min", "30min", "60min", "4hour", "1day", "1mon", "1week", "1year"
 
 -   size: the number of datapoints to return. This should fall between 1 and 2000.
 

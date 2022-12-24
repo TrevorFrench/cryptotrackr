@@ -1,7 +1,7 @@
 # Coinbase
 
 | Logo                                                                                                             | Name                                  | Code     | cryptotrackr Docs                                                                            | Exchange Docs                                                      | Source Code                                                                          |
-|------------|------------|------------|------------|------------|------------|
+|------------------------------------------------------------------------------------------------------------------|---------------------------------------|----------|----------------------------------------------------------------------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------------------------------|
 | ![coinbase](https://user-images.githubusercontent.com/1294454/40811661-b6eceae2-653a-11e8-829e-10bfadb078cf.jpg) | [Coinbase](https://www.coinbase.com/) | coinbase | [/docs/coinbase.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coinbase.md) | [🏢](https://docs.cloud.coinbase.com/advanced-trade-api/reference) | [/R/coinbase.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinbase.R) |
 
 ## Functions:
