@@ -6,7 +6,7 @@
 
 ## Functions:
 
-coinmarketcap_api_call, coinmarketcap_id_map, coinmarketcap_metadata
+coinmarketcap_api_call, coinmarketcap_id_map, coinmarketcap_metadata, coinmarketcap_airdrop, coinmarketcap_categories, coinmarketcap_category
 
 ### coinmarketcap_api_call(url, api_key, method, query)
 
@@ -82,4 +82,67 @@ id_map <- coinmarketcap_id_map(api_key)
 ``` r
 api_key <- "..."
 metadata <- coinmarketcap_metadata(api_key, symbol = "BTC")
+```
+
+### coinmarketcap_airdrop(api_key, id)
+
+-   Returns information about the airdrop for the id you provided.
+
+-   api_key: your CoinMarketCap API key
+
+-   id: the unique airdrop id which can be found through the airdrops api.
+
+-   The following example gets airdrop information for the airdrop with id "10744".
+
+``` r
+api_key <- "..."
+id <- "10744"
+airdrop <- coinmarketcap_airdrop(api_key, url)
+```
+
+### coinmarketcap_categories(api_key, start, limit, id, slug, symbol)
+
+-   Returns a datafrane with information about CoinMarketCap asset categories.
+
+-   api_key: your CoinMarketCap API key
+
+-   start: you can use this parameter to offset your first result. The default value is "1".
+
+-   limit: an optional string value between 1 and 5000 which tells CoinMarketCap how many results to return. The default value is NULL.
+
+-   id: filter categories by one or more asset ids. The default value is NULL. Multiple values must be comma-separated.
+
+-   slug: filter categories by one or more asset slugs. The default value is NULL. Multiple values must be comma-separated.
+
+-   symbol: filter categories by one or more asset symbols. The default value is NULL. Multiple values must be comma-separated.
+
+-   The following example gets asset categories available on CoinMarketCap and stores the data in a dataframe named "categories".
+
+``` r
+api_key <- "..."
+categories <- coinmarketcap_categories(api_key)
+```
+
+### coinmarketcap_category(api_key, id, start, limit, convert, convert_id)
+
+-   Returns a list with information about the specified category.
+
+-   api_key: your CoinMarketCap API key
+
+-   id: the category id you wish to query.
+
+-   start: you can use this parameter to offset your first result. The default value is "1".
+
+-   limit: an optional string value between 1 and 5000 which tells CoinMarketCap how many results to return. The default value is NULL.
+
+-   convert: Optionally calculate market quotes in up to 120 currencies at once by passing a comma-separated list of cryptocurrency or fiat currency symbols.
+
+-   convert_id: Optionally calculate market quotes by CoinMarketCap id instead of symbol.
+
+-   The following example returns information about the CoinMarketCap category with the id "6363a6c9cd197958bb543bf0" and stores the data in a list named "category".
+
+``` r
+api_key <- "..."
+id <- "6363a6c9cd197958bb543bf0"
+category <- coinmarketcap_category(api_key, id)
 ```

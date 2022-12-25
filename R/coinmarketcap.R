@@ -1,7 +1,7 @@
 #-------------------------------------------------------------------------------
 #------------------------------------ACTION LIST--------------------------------
 #-------------------------------------------------------------------------------
-# -
+# - Have not tested the airdrop function (need a hobbyist plan)
 
 #-------------------------------------------------------------------------------
 #------------------------------COINMARKETCAP API CALL---------------------------
@@ -88,12 +88,12 @@ coinmarketcap_id_map <- function(api_key
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
 
   query_string <- list(
-    listing_status = listing_status,
-    start = start,
-    limit = limit,
-    sort = sort,
-    symbol = symbol,
-    aux = aux
+    listing_status = listing_status
+    , start = start
+    , limit = limit
+    , sort = sort
+    , symbol = symbol
+    , aux = aux
   )
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
@@ -139,11 +139,129 @@ coinmarketcap_metadata <- function(api_key
   url <- 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/info'
 
   query_string <- list(
-    id = id,
-    slug = slug,
-    symbol = symbol,
-    address = address,
-    aux = aux
+    id = id
+    , slug = slug
+    , symbol = symbol
+    , address = address
+    , aux = aux
+  )
+
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
+  return(data$data)
+}
+
+#-------------------------------------------------------------------------------
+#------------------------------COINMARKETCAP AIRDROP----------------------------
+#-------------------------------------------------------------------------------
+#' coinmarketcap_airdrop
+#'
+#' @param api_key your CoinMarketCap API key
+#' @param id the unique airdrop id which can be found through the airdrops api.
+#'
+#' @return returns information about the airdrop for the id you provided.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' id <- "10744"
+#' airdrop <- coinmarketcap_airdrop(api_key, url)}
+
+coinmarketcap_airdrop <- function(api_key, id){
+  url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/airdrop'
+  query_string <- list(id = id)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
+  return(data)
+}
+
+#-------------------------------------------------------------------------------
+#-----------------------------COINMARKETCAP CATEGORIES--------------------------
+#-------------------------------------------------------------------------------
+#' coinmarketcap_categories
+#'
+#' @param api_key your CoinMarketCap API key
+#' @param start you can use this parameter to offset your first result. The
+#' default value is "1".
+#' @param limit an optional string value between 1 and 5000 which tells
+#' CoinMarketCap how many results to return. The default value is NULL.
+#' @param id filter categories by one or more asset ids. The default value is
+#' NULL. Multiple values must be comma-separated.
+#' @param slug filter categories by one or more asset slugs. The default value is
+#' NULL. Multiple values must be comma-separated.
+#' @param symbol filter categories by one or more asset symbols. The default
+#' value is NULL. Multiple values must be comma-separated.
+#'
+#' @return returns a datafrane with information about CoinMarketCap asset
+#' categories.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' categories <- coinmarketcap_categories(api_key)}
+
+coinmarketcap_categories <- function(api_key
+                                  , start = "1"
+                                  , limit = NULL
+                                  , id = NULL
+                                  , slug = NULL
+                                  , symbol = NULL){
+
+  url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/categories'
+
+  query_string <- list(
+    start = start
+    , limit = limit
+    , id = id
+    , slug = slug
+    , symbol = symbol
+  )
+
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
+  return(data$data)
+}
+
+#-------------------------------------------------------------------------------
+#------------------------------COINMARKETCAP CATEGORY---------------------------
+#-------------------------------------------------------------------------------
+#' coinmarketcap_category
+#'
+#' @param api_key your CoinMarketCap API key
+#' @param id the category id you wish to query.
+#' @param start you can use this parameter to offset your first result. The
+#' default value is "1".
+#' @param limit an optional string value between 1 and 5000 which tells
+#' CoinMarketCap how many results to return. The default value is NULL.
+#' @param convert Optionally calculate market quotes in up to 120 currencies at
+#' once by passing a comma-separated list of cryptocurrency or fiat currency
+#' symbols.
+#' @param convert_id Optionally calculate market quotes by CoinMarketCap id
+#' instead of symbol.
+#'
+#' @return returns a list with information about the specified category.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' id <- "6363a6c9cd197958bb543bf0"
+#' category <- coinmarketcap_category(api_key, id)}
+
+coinmarketcap_category <- function(api_key
+                                     , id
+                                     , start = "1"
+                                     , limit = NULL
+                                     , convert = NULL
+                                     , convert_id = NULL){
+
+  url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/category'
+
+  query_string <- list(
+    id = id
+    , start = start
+    , limit = limit
+    , convert = convert
+    , convert_id = convert_id
   )
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
