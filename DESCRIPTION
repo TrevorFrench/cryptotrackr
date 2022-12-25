@@ -13,5 +13,6 @@ Imports:
         httr,
         jsonlite,
         stringi,
-        openssl
+        openssl,
+        utils
 RoxygenNote: 7.2.1

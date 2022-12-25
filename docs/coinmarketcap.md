@@ -1,7 +1,7 @@
 # CoinMarketCap
 
 | Logo                                                                                      | Name                                        | Code          | cryptotrackr Docs                                                                                      | Exchange Docs                                         | Source Code                                                                                    |
-|------------|------------|------------|------------|------------|------------|
+|-------------------------------------------------------------------------------------------|---------------------------------------------|---------------|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------|------------------------------------------------------------------------------------------------|
 | ![coinmarketcap](https://jobboardio.s3.amazonaws.com/uploads/tenant/logo/10955/black.png) | [CoinMarketCap](https://coinmarketcap.com/) | coinmarketcap | [/docs/coinmarketcap.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coinmarketcap.md) | [🏢](https://coinmarketcap.com/api/documentation/v1/) | [/R/coinmarketcap.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinmarketcap.R) |
 
 ## Functions:
