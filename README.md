@@ -15,7 +15,7 @@ Trevor French <https://trevorfrench.com>
 Install the cryptotrackr package via CRAN:
 
 ``` r
-#NOT YET AVAILABLE VIA CRAN
+# NOT YET AVAILABLE VIA CRAN
 ```
 
 You can also install the package via the Github repository.
@@ -27,7 +27,7 @@ remotes::install_github("TrevorFrench/cryptotrackr")
 
 ## ⚓ Dependencies
 
-cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, openssl, utils
+cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, openssl, utils, digest
 
 ## Supported Data Sources
 
@@ -47,6 +47,7 @@ cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, op
 | ![helium](https://docs.helium.com/img/icons/logoblack.svg)                                                                              | [Helium](https://www.helium.com/)                | helium             | [/docs/helium.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/helium.md)                         | [🏢](https://docs.helium.com/api/)                                                                     | [/R/helium.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/helium.R)                         |
 | ![huobi](https://user-images.githubusercontent.com/1294454/85734211-85755480-b705-11ea-8b35-0b7f1db33a2f.jpg)                           | [Huobi](https://www.huobi.com/)                  | huobi              | [/docs/huobi.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/huobi.md)                           | [🏢](https://huobiapi.github.io/docs/spot/v1/en/)                                                      | [/R/huobi.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/huobi.R)                           |
 | ![kraken](https://user-images.githubusercontent.com/51840849/76173629-fc67fb00-61b1-11ea-84fe-f2de582f58a3.jpg)                         | [Kraken](https://www.kraken.com/)                | kraken             | [/docs/kraken.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/kraken.md)                         | [🏢](https://docs.kraken.com/rest/)                                                                    | [/R/kraken.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/kraken.R)                         |
+| ![kucoin](https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg)                                         | [Kucoin](https://www.kucoin.com/)                | kucoin             | [/docs/kucoin.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/kucoin.md)                         | [🏢](https://docs.kucoin.com/)                                                                         | [/R/kucoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/kucoin.R)                         |
 | ![magic_eden](https://dka575ofm4ao0.cloudfront.net/pages-transactional_logos/retina/271035/ME_Full_Gradient.png)                        | [Magic Eden](https://magiceden.io/)              | magic_eden         | [/docs/magic_eden.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/magic_eden.md)                 | [🏢](https://api.magiceden.dev/)                                                                       | [/R/magic_eden.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/magic_eden.R)                 |
 | ![nifty_gateway](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrQfBZIOmocIpXpnQxeaKB2X81gSYfJ7X1Ww&usqp=CAU)                   | [Nifty Gateway](https://www.niftygateway.com/)   | nifty_gateway      | [/docs/nifty_gateway.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/nifty_gateway.md)           | [🏢](https://niftygateway.notion.site/Nifty-Gateway-OAuth-Public-API-12d0a73c3ca24ab096084fa0334ba895) | [/R/nifty_gateway.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/nifty_gateway.R)           |
 | ![okcoin](https://user-images.githubusercontent.com/51840849/87295551-102fbf00-c50e-11ea-90a9-462eebba5829.jpg)                         | [OkCoin](https://www.okcoin.com/)                | okcoin             | [/docs/okcoin.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/okcoin.md)                         | [🏢](https://www.okcoin.com/docs/en/)                                                                  | [/R/okcoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/okcoin.R)                         |

@@ -14,5 +14,6 @@ Imports:
         jsonlite,
         stringi,
         openssl,
-        utils
+        utils,
+        digest
 RoxygenNote: 7.2.1

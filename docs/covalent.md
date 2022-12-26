@@ -1,7 +1,7 @@
 # Covalent
 
-| Logo                                                                        | Name                                    | Code     | cryptotrackr Docs                                                                            | Exchange Docs                              | Source Code                                                                          |
-|------------|------------|------------|------------|------------|------------|
+| Logo                                                        | Name                                    | Code     | cryptotrackr Docs                                                                            | Exchange Docs                              | Source Code                                                                          |
+|-------------------------------------------------------------|-----------------------------------------|----------|----------------------------------------------------------------------------------------------|--------------------------------------------|--------------------------------------------------------------------------------------|
 | ![covalent](/man/figures/Covalent_Wordmark_Three_Color.png) | [Covalent](https://www.covalenthq.com/) | Covalent | [/docs/covalent.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/covalent.md) | [🏢](https://www.covalenthq.com/docs/api/) | [/R/covalent.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/covalent.R) |
 
 ## Functions:

@@ -1,7 +1,7 @@
 # Amberdata
 
 | Logo                                                                  | Name                                   | Code      | cryptotrackr Docs                                                                              | Exchange Docs                    | Source Code                                                                            |
-|-----------------------------------------------------------------------|----------------------------------------|-----------|------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------------------------------------------------------------|
+|------------|------------|------------|--------------|------------|------------|
 | ![amberdata](https://www.amberdata.io/hubfs/amberdata_logo_color.svg) | [Amberdata](https://www.amberdata.io/) | amberdata | [/docs/amberdata.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/amberdata.md) | [🏢](https://docs.amberdata.io/) | [/R/amberdata.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/amberdata.R) |
 
 ## Functions:
