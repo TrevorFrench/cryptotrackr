@@ -4,12 +4,12 @@
 \alias{gemini_trades}
 \title{gemini_trades}
 \usage{
-gemini_trades(secret, key)
+gemini_trades(key, secret)
 }
 \arguments{
-\item{secret}{your secret key for Gemini}
-
 \item{key}{your API key for Gemini}
+
+\item{secret}{your secret key for Gemini}
 }
 \value{
 returns a dataframe containing all of your historical trades.
@@ -19,7 +19,7 @@ gemini_trades
 }
 \examples{
 \dontrun{
-secret <- "..."
 key <- "..."
-df <- gemini_trades(secret, key)}
+secret <- "..."
+df <- gemini_trades(key, secret)}
 }

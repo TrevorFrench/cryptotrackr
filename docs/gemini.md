@@ -6,21 +6,43 @@
 
 ## Functions:
 
-gemini_trades, gemini_symbols, gemini_price_feed
+gemini_api_call, gemini_trades, gemini_symbols, gemini_price_feed
 
-### gemini_trades(secret, key)
+### gemini_api_call(key, secret, path, method)
 
--   Returns a dataframe containing all of your historical trades.
+-   Returns data from your Gemini API call
+
+-   key: your API key for Gemini
 
 -   secret: your secret key for Gemini
 
+-   path: your API endpoint
+
+-   method: "GET" or "POST"
+
+-   The following example passes your key, secret, path, and method into the function and returns your historical trades in a dataframe named "data".
+
+``` r
+key <- "..."
+secret <- "..."
+path <- "/v1/mytrades"
+method <- "POST"
+data <- gemini_api_call(key, secret, path, method)
+```
+
+### gemini_trades(key, secret)
+
+-   Returns a dataframe containing all of your historical trades.
+
 -   key: your API key for Gemini
+
+-   secret: your secret key for Gemini
 
 -   The following example passes your secret and your key into the function and returns your historical trades in a dataframe named "df".
 
 ``` r
-secret <- "..."
 key <- "..."
+secret <- "..."
 df <- gemini_trades(secret, key)
 ```
 
