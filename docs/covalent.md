@@ -1,12 +1,12 @@
 # Covalent
 
 | Logo                                                        | Name                                    | Code     | cryptotrackr Docs                                                                            | Exchange Docs                              | Source Code                                                                          |
-|-------------------------------------------------------------|-----------------------------------------|----------|----------------------------------------------------------------------------------------------|--------------------------------------------|--------------------------------------------------------------------------------------|
+|------------|------------|------------|--------------|------------|------------|
 | ![covalent](/man/figures/Covalent_Wordmark_Three_Color.png) | [Covalent](https://www.covalenthq.com/) | Covalent | [/docs/covalent.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/covalent.md) | [🏢](https://www.covalenthq.com/docs/api/) | [/R/covalent.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/covalent.R) |
 
 ## Functions:
 
-covalent_api_call, covalent_balances
+covalent_api_call, covalent_balances, covalent_portfolio
 
 ### covalent_api_call(url, method, query, csv)
 
@@ -47,6 +47,25 @@ balances <- covalent_api_call(url, method, api_key, method, query, csv = FALSE)
 ``` r
 api_key <- "..."
 balances <- covalent_balances(api_key, "1", "trevorfrench.eth", csv = FALSE)
+```
+
+### covalent_portfolio(api_key, chain_id, address, csv)
+
+-   Returns either a list or a dataframe with portfolio history
+
+-   api_key: your Covalent API key
+
+-   chain_id: the string id of the chain for which you wish to check portfolio history
+
+-   address: the address you for which wish to check portfolio history.
+
+-   csv: 'TRUE' will return csv data parsed as a dataframe while 'FALSE' will return json data. The default value is 'FALSE'.
+
+-   The following example queries the portfolio history for "trevorfrench.eth" on chain "1" and stores the resulting data in a list named "portfolio".
+
+``` r
+api_key <- "..."
+portfolio <- covalent_portfolio(api_key, "1", "trevorfrench.eth", csv = FALSE)
 ```
 
 ### 

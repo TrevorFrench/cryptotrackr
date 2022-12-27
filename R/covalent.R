@@ -72,3 +72,37 @@ covalent_balances <- function(api_key, chain_id, address, csv = FALSE){
   data <- covalent_api_call(url, 'GET', query, csv)
   return(data)
 }
+
+#-------------------------------------------------------------------------------
+#--------------------------------COVALENT PORTFOLIO-----------------------------
+#-------------------------------------------------------------------------------
+#' covalent_portfolio
+#'
+#' @param api_key your Covalent API key
+#' @param chain_id the string id of the chain for which you wish to check
+#' portfolio history.
+#' @param address the address you for which wish to get portfolio history.
+#' @param csv 'TRUE' will return csv data parsed as a dataframe while 'FALSE'
+#' will return json data. The default value is 'FALSE'.
+#'
+#' @return returns either a list or a dataframe with portfolio history
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' portfolio <- covalent_portfolio(api_key, "1", "trevorfrench.eth", csv = FALSE)}
+
+covalent_portfolio <- function(api_key, chain_id, address, csv = FALSE){
+  base <- 'https://api.covalenthq.com/v1/'
+  endpoint <- paste(chain_id, '/address/', address, '/portfolio_v2/', sep = '')
+  url <- paste(base, endpoint, sep = '')
+  if (csv == FALSE){
+    format <- 'json'
+  } else {
+    format <- 'csv'
+  }
+  query <- list(key = api_key, format = format)
+  data <- covalent_api_call(url, 'GET', query, csv)
+  return(data)
+}
