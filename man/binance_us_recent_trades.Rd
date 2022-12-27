@@ -12,7 +12,8 @@ binance_us_recent_trades(symbol, limit)
 \item{limit}{the number of results to return. The maximum is 1,000.}
 }
 \value{
-returns a dataframe containing the most recent trades executed for the designated currency pair on Binance US
+returns a dataframe containing the most recent trades executed for
+the designated currency pair on Binance US
 }
 \description{
 binance_us_recent_trades

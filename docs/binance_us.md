@@ -1,12 +1,12 @@
 # Binance.US
 
 | Logo                                                                                                               | Name                              | Code       | cryptotrackr Docs                                                                                | Exchange Docs                  | Source Code                                                                              |
-|--------------------------------------------------------------------------------------------------------------------|-----------------------------------|------------|--------------------------------------------------------------------------------------------------|--------------------------------|------------------------------------------------------------------------------------------|
+|---------------|------------|------------|------------|------------|------------|
 | ![binance_us](https://user-images.githubusercontent.com/1294454/65177307-217b7c80-da5f-11e9-876e-0b748ba0a358.jpg) | [Binance.US](https://binance.us/) | binance_us | [/docs/binance_us.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/binance_us.md) | [🏢](https://docs.binance.us/) | [/R/binance_us.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R) |
 
 ## Functions:
 
-binance_us_time, binance_us_signature, binance_us_api_call, binance_us_account_info, binance_us_recent_trades
+binance_us_time, binance_us_signature, binance_us_api_call, binance_us_account_info, binance_us_recent_trades, binance_us_ping, binance_us_server_time, binance_us_system_status
 
 ### binance_us_time()
 
@@ -88,4 +88,40 @@ account_info <- binance_us_account_info(key, secret)
 symbol <- 'LTCBTC'
 limit <- '1000'
 recent_trades <- binance_us_recent_trades(symbol, limit)
+```
+
+### binance_us_ping()
+
+-   Returns a response from the Binance.US API server
+
+-   The following example pings the Binance.US API server and stores the response in a variable named "ping".
+
+``` r
+ping <- binance_us_ping()
+```
+
+### binance_us_server_time()
+
+-   Returns the Binance.US server time
+
+-   The following example gets the Binance.US server time and stores the response in a variable named "server_time".
+
+``` r
+server_time <- binance_us_server_time()
+```
+
+### binance_us_system_status(key, secret)
+
+-   Returns the status of the Binance.US API. The response will either be a "0" for normal or a "1" for system maintenance.
+
+-   key: your Binance.US API key
+
+-   secret: your Binance.US secret key
+
+-   The following example gets the Binance.US system status and stores the response in a variable named "system_status".
+
+``` r
+key <- "..."
+secret <- "..."
+system_status <- binance_us_system_status(key, secret)
 ```
