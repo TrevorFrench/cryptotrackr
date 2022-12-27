@@ -7,7 +7,8 @@
 crypto_dot_com_instruments()
 }
 \value{
-returns a dataframe with information about instruments available on Crypto.com
+returns a dataframe with information about instruments available on
+Crypto.com
 }
 \description{
 crypto_dot_com_instruments
