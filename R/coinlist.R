@@ -64,12 +64,16 @@ coinlist_time <- function() {
 #' coinlist_signature <- coinlist_signature(api_secret, coinlist_time, method, path, body)}
 
 coinlist_signature <- function(api_secret, coinlist_time, method, path, body) {
-  # api_secret <- stringi::stri_enc_toutf8(api_secret)
   api_secret <- jsonlite::base64_dec(api_secret)
   message <- paste(coinlist_time, method, path, body, sep = '')
-  sig <- openssl::sha256(message, key = api_secret)
-  #sig <- jsonlite::base64_enc(sig)
-  return(sig)
+  sig <- digest::hmac(api_secret
+                      , message
+                      , "sha256"
+                      , serialize = FALSE
+                      , raw = TRUE
+  )
+  encoded_sig <- openssl::base64_encode(sig)
+  return(encoded_sig)
 }
 
 #-------------------------------------------------------------------------------
@@ -83,7 +87,7 @@ coinlist_signature <- function(api_secret, coinlist_time, method, path, body) {
 #' @param path the path of your API call
 #' @param body the body of your API call
 #'
-#' @return returns a the response from your Coinlist API call
+#' @return returns the response from your Coinlist API call
 #' @export
 #'
 #' @examples
@@ -100,6 +104,7 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body) {
   sig <- coinlist_signature(api_secret, coinlist_time, method, path, body)
   url <- paste('https://trade-api.coinlist.co', path, sep = '')
   res = httr::GET(url
+                  , httr::accept("application/json")
                   , body = body
                   , httr::add_headers('CL-ACCESS-KEY' = api_key
                                       , 'CL-ACCESS-SIG' = sig
@@ -107,4 +112,26 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body) {
                   ))
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
+}
+
+#-------------------------------------------------------------------------------
+#-----------------------------------COINLIST FEES-------------------------------
+#-------------------------------------------------------------------------------
+#' coinlist_fees
+#'
+#' @param api_key your Coinlist API key
+#' @param api_secret your Coinlist API secret
+#'
+#' @return returns a list containing Coinlist fees by symbols.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' api_secret <- "..."
+#' fees <- coinlist_fees(api_key, api_secret)}
+
+coinlist_fees <- function(api_key, api_secret) {
+  data <- coinlist_api_call(api_key, api_secret, 'GET', '/v1/fees', '')
+  return(data$fees_by_symbols)
 }

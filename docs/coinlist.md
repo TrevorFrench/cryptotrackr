@@ -1,12 +1,12 @@
 # Coinlist
 
 | Logo                                                                                                                                    | Name                             | Code     | cryptotrackr Docs                                                                            | Exchange Docs                                      | Source Code                                                                          |
-|-----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|----------|----------------------------------------------------------------------------------------------|----------------------------------------------------|--------------------------------------------------------------------------------------|
+|-----------------|-----------|-----------|-----------|-----------|-----------|
 | ![coinlist](https://coinlist.co/assets/shared/coinlist_logo_black-0a6489d220c15f8f95242acb727bacbdd9d8b36ed91027ed7af138992dcbb4ce.svg) | [Coinlist](https://coinlist.co/) | coinlist | [/docs/coinlist.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coinlist.md) | [🏢](https://trade-docs.coinlist.co/#introduction) | [/R/coinlist.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinlist.R) |
 
 ## Functions:
 
-coinlist_symbols, coinlist_time, coinlist_signature, coinlist_api_call
+coinlist_symbols, coinlist_time, coinlist_signature, coinlist_api_call, coinlist_fees
 
 ### coinlist_symbols()
 
@@ -55,7 +55,7 @@ coinlist_signature <- coinlist_signature(api_secret, coinlist_time, method, path
 
 ### coinlist_api_call(api_key, api_secret, method, path, body)
 
--   Returns a the response from your Coinlist API call
+-   Returns the response from your Coinlist API call
 
 -   api_key: your Coinlist API key
 
@@ -76,4 +76,20 @@ api_key <- "..."
 api_secret <- "..."
 body <- ""
 data <- coinlist_api_call(api_key, api_secret, method, path, body)
+```
+
+### coinlist_fees(api_key, api_secret)
+
+-   Returns a list containing Coinlist fees by symbols.
+
+-   api_key: your Coinlist API key
+
+-   api_secret: your Coinlist API secret
+
+-   The following example retrieves the trading fees for Coinlist and stores the data in a list named "fees".
+
+``` r
+api_key <- "..."
+api_secret <- "..."
+fees <- coinlist_fees(api_key, api_secret)
 ```

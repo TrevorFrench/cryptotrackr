@@ -18,7 +18,7 @@ coinlist_api_call(api_key, api_secret, method, path, body)
 \item{body}{the body of your API call}
 }
 \value{
-returns a the response from your Coinlist API call
+returns the response from your Coinlist API call
 }
 \description{
 coinlist_api_call
