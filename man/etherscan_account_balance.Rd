@@ -7,11 +7,12 @@
 etherscan_account_balance(address, api_key, tag = "latest")
 }
 \arguments{
-\item{address}{the address you wish to retrieve the balance for}
+\item{address}{the address for which you wish to retrieve the balance.}
 
 \item{api_key}{your Etherscan API key}
 
-\item{tag}{pre-defined block parameter, either earliest, pending or latest. Default is latest.}
+\item{tag}{pre-defined block parameter, either earliest, pending or latest.
+Default is latest.}
 }
 \value{
 returns the balance for the specified address

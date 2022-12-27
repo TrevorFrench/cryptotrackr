@@ -6,7 +6,7 @@
 
 ## Functions:
 
-etherscan_api_call, etherscan_account_balance
+etherscan_api_call, etherscan_account_balance, etherscan_contract_abi, etherscan_block_reward, etherscan_gas_oracle
 
 ### etherscan_api_call(method, query)
 
@@ -37,7 +37,7 @@ data <- etherscan_api_call('GET', query_string)
 
 -   Returns the balance for the specified address
 
--   address: the address you wish to retrieve the balance for
+-   address: the address for which you wish to retrieve the balance.
 
 -   api_key: your Etherscan API key
 
@@ -49,4 +49,66 @@ data <- etherscan_api_call('GET', query_string)
 address <- "0xde0b295669a9fd93d5f28d9ec85e40f4cb697bae"
 api_key <- "..."
 account_balance <- etherscan_account_balance(address, api_key)
+```
+
+### etherscan_contract_abi(address, api_key)
+
+-   Returns the contract ABI for the specified address
+
+-   address: the contract address for which you wish to retrieve the ABI.
+
+-   api_key: your Etherscan API key
+
+-   The following example retrieves the ABI for the specified contract and stores it in a variable named "abi".
+
+``` r
+address <- "0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359"
+api_key <- "..."
+abi <- etherscan_contract_abi(address, api_key)
+```
+
+### etherscan_block_reward(block, api_key)
+
+-   Returns the block and uncle reward for the specified block number as a list.
+
+-   block: the numeric block number
+
+-   api_key: your Etherscan API key
+
+-   The following example retrieves the block and uncle rewards for block number 12697906 and stores the data in a list named "block_reward".
+
+``` r
+block <- 12697906
+api_key <- "..."
+block_reward <- etherscan_block_reward(block, api_key)
+```
+
+### etherscan_block_reward(api_key)
+
+-   Returns current safe, proposed and fast gas prices as determined by Etherscan.
+
+-   api_key: your Etherscan API key
+
+-   The following example retrieves data from the Etherscan gas oracle and stores the response in a list named "gas_oracle".
+
+``` r
+api_key <- "..."
+gas_oracle <- etherscan_gas_oracle(api_key)
+# $LastBlock
+# [1] "16278960"
+# 
+# $SafeGasPrice
+# [1] "25"
+# 
+# $ProposeGasPrice
+# [1] "25"
+# 
+# $FastGasPrice
+# [1] "26"
+# 
+# $suggestBaseFee
+# [1] "24.959953709"
+# 
+# $gasUsedRatio
+# [1] "0.472567333333333,0.5293583,0.369716666666667,0.5435785,0.5312433"
 ```
