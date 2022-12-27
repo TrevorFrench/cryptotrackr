@@ -119,3 +119,28 @@ magic_eden_token_listings <- function(mint_address) {
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
+
+#-------------------------------------------------------------------------------
+#----------------------------MAGIC EDEN COLLECTION STATS------------------------
+#-------------------------------------------------------------------------------
+#' magic_eden_collection_stats
+#'
+#' @param symbol the collection symbol you are requesting data for
+#'
+#' @return returns a list containing statistics about the specified collection.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' symbol <- "gothic_degens"
+#' stats <- magic_eden_collection_stats(symbol)}
+
+magic_eden_collection_stats <- function(symbol) {
+  url <- paste('http://api-mainnet.magiceden.dev/v2/collections/'
+               , symbol
+               , '/stats'
+               , sep = '')
+  res = httr::GET(url)
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}

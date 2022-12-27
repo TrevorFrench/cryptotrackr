@@ -6,7 +6,7 @@
 
 ## Functions:
 
-magic_eden_transactions, magic_eden_tokens_owned, magic_eden_token_metadata, magic_eden_token_listings
+magic_eden_transactions, magic_eden_tokens_owned, magic_eden_token_metadata, magic_eden_token_listings, magic_eden_collection_stats
 
 ### magic_eden_transactions(wallet, offset, limit)
 
@@ -68,4 +68,17 @@ metadata <- magic_eden_token_metadata(mint_address)
 ``` r
 mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
 listings <- magic_eden_token_listings(mint_address)
+```
+
+### magic_eden_collection_stats(symbol)
+
+-   Returns a list containing statistics about the specified collection.
+
+-   symbol: the collection symbol you are requesting data for
+
+-   The following example retrieves collection statistics for the collection with the symbol "gothic_degens" and stores the rsulting data in a list named "stats".
+
+``` r
+symbol <- "gothic_degens"
+stats <- magic_eden_collection_stats(symbol)
 ```
