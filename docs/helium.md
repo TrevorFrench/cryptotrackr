@@ -1,12 +1,12 @@
 # Helium
 
 | Logo                                                       | Name                              | Code   | cryptotrackr Docs                                                                        | Exchange Docs                      | Source Code                                                                      |
-|------------------------------------------------------------|-----------------------------------|--------|------------------------------------------------------------------------------------------|------------------------------------|----------------------------------------------------------------------------------|
+|------------|------------|------------|--------------|------------|-------------|
 | ![helium](https://docs.helium.com/img/icons/logoblack.svg) | [Helium](https://www.helium.com/) | helium | [/docs/helium.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/helium.md) | [🏢](https://docs.helium.com/api/) | [/R/helium.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/helium.R) |
 
 ## Functions:
 
-helium_blockchain_stats, helium_token_supply, helium_height, helium_block_stats, helium_block_descriptions, helium_block_at_height, helium_transactions_at_height
+helium_blockchain_stats, helium_token_supply, helium_height, helium_block_stats, helium_block_descriptions, helium_block_at_height, helium_transactions_at_height, helium_block_at_hash
 
 ### helium_blockchain_stats()
 
@@ -92,4 +92,17 @@ block_stats <- helium_block_descriptions(height)
 
 cursor <- block_stats$cursor
 block_stats <- helium_block_descriptions(height, cursor)
+```
+
+### helium_block_at_hash(hash)
+
+-   Returns block descriptor for the given block hash
+
+-   hash: block hash for the block to fetch
+
+-   The following example block descriptors for the block at the specified hash and stores the resulting data in a list named "block_at_hash".
+
+``` r
+hash <- 'o5o8cBL1Zvp1KmA1d8vYJ38wXXWVxf1HW2e1uZxVJYg'
+block_at_hash <- helium_block_at_hash(hash)
 ```

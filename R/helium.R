@@ -145,3 +145,24 @@ helium_transactions_at_height <- function(height, cursor = NULL) {
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data$data)
 }
+
+#-------------------------------------------------------------------------------
+#-------------------------------HELIUM BLOCK AT HASH----------------------------
+#-------------------------------------------------------------------------------
+#' helium_block_at_hash
+#'
+#' @param hash block hash for the block to fetch
+#'
+#' @return returns block descriptor for the given block hash
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' hash <- 'o5o8cBL1Zvp1KmA1d8vYJ38wXXWVxf1HW2e1uZxVJYg'
+#' block_at_hash <- helium_block_at_hash(hash)}
+
+helium_block_at_hash <- function(hash) {
+  res = httr::GET(paste('https://api.helium.io/v1/blocks/hash/', hash, sep = ''))
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data$data)
+}
