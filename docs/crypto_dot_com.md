@@ -6,7 +6,7 @@
 
 ## Functions:
 
-crypto_dot_com_instruments, crypto_dot_com_get_book
+crypto_dot_com_instruments, crypto_dot_com_get_book, crypto_dot_com_get_candlestick, crypto_dot_com_get_ticker, crypto_dot_com_get_trades
 
 ### crypto_dot_com_instruments()
 
@@ -30,4 +30,42 @@ instruments <- crypto_dot_com_instruments()
 
 ``` r
 book <- crypto_dot_com_get_book("BTC_USDT")
+```
+
+### crypto_dot_com_get_candlestick(instrument, timeframe)
+
+-   Returns a list which contains metadata about your query along with a dataframe containing your candlestick data.
+
+-   instrument: the instrument name which you want to query
+
+-   timeframe: the timeframe which each candle represents. You can choose from the following options: '1m', '5m', '15m', '30m', '1h', '4h', '6h', '12h', '1D', '7D', '14D', '1M'. The defailt option is '5m'.
+
+-   The following example retrieves the candlestick data for the "BTC_USDT" instrument.
+
+``` r
+candlesticks <- crypto_dot_com_get_candlestick("BTC_USDT")
+```
+
+### crypto_dot_com_get_ticker(instrument)
+
+-   Returns ticker data for specified instrument. Refer to Crypto.com for help interpreting response data: <https://exchange-docs.crypto.com/spot/index.html#public-get-ticker>
+
+-   instrument: the instrument name which you want to query
+
+-   The following example retrieves the ticker data for the "BTC_USDT" instrument.
+
+``` r
+ticker <- crypto_dot_com_get_ticker("BTC_USDT")
+```
+
+### crypto_dot_com_get_trades(instrument)
+
+-   Rreturns trade data for specified instrument. Refer to Crypto.com for help interpreting response data: <https://exchange-docs.crypto.com/spot/index.html#public-get-trades>
+
+-   instrument: the instrument name which you want to query
+
+-   The following example retrieves the trade data for the "BTC_USDT" instrument.
+
+``` r
+trades <- crypto_dot_com_get_trades("BTC_USDT")
 ```
