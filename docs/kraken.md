@@ -1,7 +1,7 @@
 # Kraken
 
 | Logo                                                                                                            | Name                              | Code   | cryptotrackr Docs                                                                        | Exchange Docs                       | Source Code                                                                      |
-|------------|------------|------------|------------|------------|------------|
+|-----------------------------------------------------------------------------------------------------------------|-----------------------------------|--------|------------------------------------------------------------------------------------------|-------------------------------------|----------------------------------------------------------------------------------|
 | ![kraken](https://user-images.githubusercontent.com/51840849/76173629-fc67fb00-61b1-11ea-84fe-f2de582f58a3.jpg) | [Kraken](https://www.kraken.com/) | kraken | [/docs/kraken.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/kraken.md) | [🏢](https://docs.kraken.com/rest/) | [/R/kraken.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/kraken.R) |
 
 ## Functions:

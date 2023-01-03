@@ -1,7 +1,7 @@
 # Etherscan
 
 | Logo                                                                           | Name                               | Code      | cryptotrackr Docs                                                                              | Exchange Docs                    | Source Code                                                                            |
-|------------|------------|------------|------------|------------|------------|
+|--------------------------------------------------------------------------------|------------------------------------|-----------|------------------------------------------------------------------------------------------------|----------------------------------|----------------------------------------------------------------------------------------|
 | ![etherscan](https://etherscan.io/assets/svg/logos/logo-etherscan.svg?v=0.0.2) | [Etherscan](https://etherscan.io/) | etherscan | [/docs/etherscan.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/etherscan.md) | [🏢](https://docs.etherscan.io/) | [/R/etherscan.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/etherscan.R) |
 
 ## Functions:

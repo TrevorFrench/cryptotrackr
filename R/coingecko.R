@@ -144,3 +144,39 @@ coingecko_categories <- function() {
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
+
+#-------------------------------------------------------------------------------
+#------------------------------COINGECKO PRICE HISTORY--------------------------
+#-------------------------------------------------------------------------------
+#' coingecko_price_history
+#'
+#' @param id The asset id you wish to query. IDs can be retrieved with the
+#' coingecko_coins function.
+#' @param date the date you wish to query formatted as "dd-mm-yyyy"
+#' @param localization "true" or "false" to include/exclude localized languages
+#' in the response. The default value is "false".
+#'
+#' @return returns a list containing data about asset pricing.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' price <- coingecko_price_history("bitcoin", "30-12-2017")
+#' price$market_data$current_price$usd}
+
+coingecko_price_history <- function(id
+                            , date
+                            , localization = "false") {
+  url <- paste('https://api.coingecko.com/api/v3/coins/'
+               , id
+               , '/history'
+               , sep = '')
+  query <- list(id = id, date = date, localization = localization)
+  res <- httr::VERB('GET'
+                    , url
+                    , httr::accept("application/json")
+                    , query = query
+  )
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data)
+}
