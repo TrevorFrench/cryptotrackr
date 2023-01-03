@@ -1,7 +1,7 @@
 # Kucoin
 
 | Logo                                                                                            | Name                              | Code   | cryptotrackr Docs                                                                        | Exchange Docs                  | Source Code                                                                      |
-|-------------|-------------|-------------|-------------|-------------|-------------|
+|-------------------------------------------------------------------------------------------------|-----------------------------------|--------|------------------------------------------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------|
 | ![kucoin](https://assets.staticimg.com/cms/media/1lB3PkckFDyfxz6VudCEACBeRRBi6sQQ7DDjz0yWM.svg) | [Kucoin](https://www.kucoin.com/) | kucoin | [/docs/kucoin.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/kucoin.md) | [🏢](https://docs.kucoin.com/) | [/R/kucoin.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/kucoin.R) |
 
 ## Functions:
@@ -57,7 +57,7 @@ sig <- kucoin_signature(api_secret, time, method, path, body)
 
 -   time: a timestamp string formatted the way Kucoin requires. This can be created with the "kucoin_time" function.
 
--    passphrase: the passphrase you created when you created your Kucoin API key.
+-   passphrase: the passphrase you created when you created your Kucoin API key.
 
 -   version: your API key version. This can be retrieved from your Kucoin API console.
 

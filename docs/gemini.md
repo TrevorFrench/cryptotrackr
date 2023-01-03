@@ -1,7 +1,7 @@
 # Gemini
 
 | Logo                                                                                                           | Name                              | Code   | cryptotrackr Docs                                                                        | Exchange Docs                           | Source Code                                                                      |
-|------------|------------|------------|------------|------------|------------|
+|----------------------------------------------------------------------------------------------------------------|-----------------------------------|--------|------------------------------------------------------------------------------------------|-----------------------------------------|----------------------------------------------------------------------------------|
 | ![gemini](https://user-images.githubusercontent.com/1294454/27816857-ce7be644-6096-11e7-82d6-3c257263229c.jpg) | [Gemini](https://www.gemini.com/) | gemini | [/docs/gemini.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/gemini.md) | [🏢](https://docs.gemini.com/rest-api/) | [/R/gemini.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/gemini.R) |
 
 ## Functions:

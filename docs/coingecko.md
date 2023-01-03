@@ -1,12 +1,12 @@
 # CoinGecko
 
 | Logo                                     | Name                                    | Code      | cryptotrackr Docs                                                                              | Exchange Docs                                        | Source Code                                                                            |
-|------------|------------|------------|------------|------------|------------|
+|------------|------------|------------|--------------|------------|-------------|
 | ![coingecko](/man/figures/coingecko.png) | [CoinGecko](https://www.coingecko.com/) | coingecko | [/docs/coingecko.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coingecko.md) | [🏢](https://www.coingecko.com/en/api/documentation) | [/R/coingecko.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coingecko.R) |
 
 ## Functions:
 
-coingecko_ping, coingecko_vs_currencies, coingecko_coins, coingecko_price, coingecko_categories
+coingecko_ping, coingecko_vs_currencies, coingecko_coins, coingecko_price, coingecko_categories, coingecko_price_history
 
 ### coingecko_ping()
 
@@ -72,4 +72,21 @@ prices <- coingecko_price(id = 'bitcoin', vs_currency = 'usd')
 
 ``` r
 categories <- coingecko_categories()
+```
+
+### coingecko_price_history(id, date, localization)
+
+-   Returns a list containing data about asset pricing.
+
+-   id: The asset id you wish to query. IDs can be retrieved with the coingecko_coins function.
+
+-   date: the date you wish to query formatted as "dd-mm-yyyy"
+
+-   localization: "true" or "false" to include/exclude localized languages in the response. The default value is "false".
+
+-   The following example gets the price of BTC on 12-30-2017.
+
+``` r
+price <- coingecko_price_history("bitcoin", "30-12-2017")
+price$market_data$current_price$usd
 ```

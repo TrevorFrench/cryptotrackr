@@ -1,7 +1,7 @@
 # Coinlist
 
 | Logo                                                                                                                                    | Name                             | Code     | cryptotrackr Docs                                                                            | Exchange Docs                                      | Source Code                                                                          |
-|-----------------|-----------|-----------|-----------|-----------|-----------|
+|-----------------------------------------------------------------------------------------------------------------------------------------|----------------------------------|----------|----------------------------------------------------------------------------------------------|----------------------------------------------------|--------------------------------------------------------------------------------------|
 | ![coinlist](https://coinlist.co/assets/shared/coinlist_logo_black-0a6489d220c15f8f95242acb727bacbdd9d8b36ed91027ed7af138992dcbb4ce.svg) | [Coinlist](https://coinlist.co/) | coinlist | [/docs/coinlist.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coinlist.md) | [🏢](https://trade-docs.coinlist.co/#introduction) | [/R/coinlist.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coinlist.R) |
 
 ## Functions:
