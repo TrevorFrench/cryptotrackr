@@ -1,12 +1,12 @@
 # CoinGecko
 
 | Logo                                     | Name                                    | Code      | cryptotrackr Docs                                                                              | Exchange Docs                                        | Source Code                                                                            |
-|------------|------------|------------|--------------|------------|-------------|
+|------------|------------|------------|------------|------------|------------|
 | ![coingecko](/man/figures/coingecko.png) | [CoinGecko](https://www.coingecko.com/) | coingecko | [/docs/coingecko.md](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/coingecko.md) | [🏢](https://www.coingecko.com/en/api/documentation) | [/R/coingecko.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/coingecko.R) |
 
 ## Functions:
 
-coingecko_ping, coingecko_vs_currencies, coingecko_coins, coingecko_price, coingecko_categories, coingecko_price_history
+coingecko_ping, coingecko_vs_currencies, coingecko_coins, coingecko_price, coingecko_categories, coingecko_price_history, coingecko_global_data
 
 ### coingecko_ping()
 
@@ -89,4 +89,14 @@ categories <- coingecko_categories()
 ``` r
 price <- coingecko_price_history("bitcoin", "30-12-2017")
 price$market_data$current_price$usd
+```
+
+### coingecko_global_data()
+
+-   Returns a list containing high-level statistics about the cryptocurrency ecosystem.
+
+-   The following example returns a list containing high-level statistics about the cryptocurrency ecosystem.
+
+``` r
+global_data <- coingecko_global_data()
 ```
