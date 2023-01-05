@@ -180,3 +180,26 @@ coingecko_price_history <- function(id
   data = jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
+
+#-------------------------------------------------------------------------------
+#-------------------------------COINGECKO GLOBAL DATA---------------------------
+#-------------------------------------------------------------------------------
+#' coingecko_global_data
+#'
+#' @return returns a list containing high-level statistics about the
+#' cryptocurrency ecosystem.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' global_data <- coingecko_global_data()}
+
+coingecko_global_data <- function() {
+  url <- 'https://api.coingecko.com/api/v3/global'
+  res <- httr::VERB('GET'
+                    , url
+                    , httr::accept("application/json")
+  )
+  data = jsonlite::fromJSON(rawToChar(res$content))
+  return(data$data)
+}
