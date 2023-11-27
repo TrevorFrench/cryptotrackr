@@ -1,7 +1,7 @@
 Package: cryptotrackr
 Type: Package
 Title: Crypto Tracker
-Version: 0.1.0
+Version: 1.0.0
 Author: Trevor French
 Maintainer: Trevor French <none@none.com>
 Description: cryptotrackr allows you to connect to data sources across the 
