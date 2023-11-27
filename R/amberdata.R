@@ -1,12 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - Amberdata allows csv responses. Figure out a clean way to allow this data
-#   format as a response.
-
-#-------------------------------------------------------------------------------
-#--------------------------------AMBERDATA API CALL-----------------------------
-#-------------------------------------------------------------------------------
 #' amberdata_api_call
 #'
 #' @param url the url for your Amberdata API call
@@ -36,9 +27,6 @@ amberdata_api_call <- function(url, api_key, method, query = NULL){
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------AMBERDATA SPOT EXCHANGES--------------------------
-#-------------------------------------------------------------------------------
 #' amberdata_spot_exchanges
 #'
 #' @param api_key your Amberdata API key
@@ -84,9 +72,6 @@ amberdata_spot_exchanges <- function(api_key
   return(data$payload)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------AMBERDATA MARKET METRICS--------------------------
-#-------------------------------------------------------------------------------
 #' amberdata_market_metrics
 #'
 #' @param api_key your Amberdata API key
@@ -109,9 +94,6 @@ amberdata_market_metrics <- function(api_key, symbol){
   return(data$payload)
 }
 
-#-------------------------------------------------------------------------------
-#---------------------------AMBERDATA BLOCKCHAIN METRICS------------------------
-#-------------------------------------------------------------------------------
 #' amberdata_blockchain_metrics
 #'
 #' @param api_key your Amberdata API key
@@ -139,9 +121,6 @@ amberdata_blockchain_metrics <- function(api_key, blockchain_id = "ethereum-main
   return(data$payload)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------AMBERDATA HISTORICAL EXCHANGE VOLUME--------------------
-#-------------------------------------------------------------------------------
 #' amberdata_historical_exchange_volume
 #'
 #' @param api_key your Amberdata API key
