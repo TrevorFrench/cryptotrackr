@@ -1,4 +1,6 @@
-<a href='https://github.com/TrevorFrench/cryptotrackr'><img src="https://raw.githubusercontent.com/TrevorFrench/cryptotrackr/main/man/figures/cryptotrackr-cropped.png" align="right" height="300"/></a> \# cryptotrackr
+<a href='https://github.com/TrevorFrench/cryptotrackr'><img src="https://raw.githubusercontent.com/TrevorFrench/cryptotrackr/main/man/figures/cryptotrackr-cropped.png" align="right" height="300"/></a>
+
+\# cryptotrackr
 
 ## 📖 Description
 
@@ -30,7 +32,7 @@ cryptotrackr is dependent on the following packages: httr, jsonlite, stringi, op
 ## Supported Data Sources
 
 | Logo                                                                                                                                    | Name                                             | Code               | [cryptotrackr Docs](https://github.com/TrevorFrench/cryptotrackr/wiki) | Exchange Docs                                                                                          | Source Code                                                                                              |
-|-------------|------------|------------|------------|------------|------------|
+|------------|------------|------------|------------|------------|------------|
 | ![amberdata](https://www.amberdata.io/hubfs/amberdata_logo_color.svg)                                                                   | [Amberdata](https://www.amberdata.io/)           | amberdata          | [📜](https://github.com/TrevorFrench/cryptotrackr/wiki/Amberdata)      | [🏢](https://docs.amberdata.io/)                                                                       | [/R/amberdata.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/amberdata.R)                   |
 | ![binance_us](https://user-images.githubusercontent.com/1294454/65177307-217b7c80-da5f-11e9-876e-0b748ba0a358.jpg)                      | [Binance.US](https://binance.us/)                | binance_us         | [📜](https://github.com/TrevorFrench/cryptotrackr/wiki/Binance-US)     | [🏢](https://docs.binance.us/)                                                                         | [/R/binance_us.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/binance_us.R)                 |
 | ![blockchain_dot_com](https://user-images.githubusercontent.com/1294454/147515585-1296e91b-7398-45e5-9d32-f6121538533f.jpeg)            | [Blockchain.com](https://www.blockchain.com/en/) | blockchain_dot_com | [📜](https://github.com/TrevorFrench/cryptotrackr/wiki/Blockchain.com) | [🏢](https://api.blockchain.com/v3/#/)                                                                 | [/R/blockchain_dot_com.R](https://github.com/TrevorFrench/cryptotrackr/blob/main/R/blockchain_dot_com.R) |
