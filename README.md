@@ -58,7 +58,7 @@ Contributions are encouraged!
 
 Feel free to add your own functionality, report an issue, or pick up an issue here: [Issue Board](https://github.com/TrevorFrench/cryptotrackr/issues)
 
-Be sure to check out our contribution guide here: [Contribution Guide](https://github.com/TrevorFrench/cryptotrackr/blob/main/docs/contribution.md)
+Be sure to check out our contribution guide here: [Contribution Guide](https://github.com/TrevorFrench/cryptotrackr/wiki/Contribution-Guide)
 
 ## License
 
