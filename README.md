@@ -1,6 +1,6 @@
 <a href='https://github.com/TrevorFrench/cryptotrackr'><img src="https://raw.githubusercontent.com/TrevorFrench/cryptotrackr/main/man/figures/cryptotrackr-cropped.png" align="right" height="300"/></a>
 
-\# cryptotrackr
+# cryptotrackr
 
 ## 📖 Description
 
