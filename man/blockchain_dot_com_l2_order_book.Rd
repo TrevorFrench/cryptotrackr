@@ -10,7 +10,8 @@ blockchain_dot_com_l2_order_book(symbol)
 \item{symbol}{the symbol for which to retrieve data}
 }
 \value{
-returns a list containing a 'bids' and an 'asks' dataframe along with the specified symbol
+returns a list containing a 'bids' and an 'asks' dataframe along with
+the specified symbol
 }
 \description{
 blockchain_dot_com_l2_order_book

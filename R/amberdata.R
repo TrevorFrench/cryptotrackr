@@ -72,6 +72,47 @@ amberdata_spot_exchanges <- function(api_key
   return(data$payload)
 }
 
+#' amberdata_spot_pairs
+#'
+#' @param api_key your Amberdata API key
+#' @param exchange choose a specific exchange or multiple exchanges
+#' (comma-separated) rather than all exchanges
+#' @param pair choose a specific pair or multiple pairs (comma-separated) rather
+#' than all pairs
+#' @param include_dates include a start date and an end date along with your
+#' data. Default is "false"
+#' @param time_format the format to return your times in. Choose from:
+#' "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
+#' is "ms".
+#'
+#' @return returns a list of spot pairs and exchanges supported on Amberdata
+#' with the option of including the dates each one was supported.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' pairs <- amberdata_spot_pairs(api_key)
+#' btc_usd <- amberdata_spot_pairs(api_key, pair = "btc_usd")}
+
+amberdata_spot_pairs <- function(api_key
+                                     , exchange = NULL
+                                     , pair = NULL
+                                     , include_dates = "false"
+                                     , time_format = "ms"){
+
+  query_string <- list(
+    exchange = exchange,
+    pair = pair,
+    includeDates = include_dates,
+    timeFormat = time_format
+  )
+
+  url <- 'https://web3api.io/api/v2/market/pairs'
+  data <- amberdata_api_call(url, api_key, 'GET', query_string)
+  return(data$payload)
+}
+
 #' amberdata_market_metrics
 #'
 #' @param api_key your Amberdata API key
@@ -165,3 +206,4 @@ amberdata_historical_exchange_volume <- function(api_key
   data <- amberdata_api_call(url, api_key, 'GET', query)
   return(data$payload$data)
 }
+

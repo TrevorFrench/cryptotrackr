@@ -3,7 +3,7 @@ Type: Package
 Title: Crypto Tracker
 Version: 1.0.0
 Author: Trevor French
-Maintainer: Trevor French <none@none.com>
+Maintainer: Trevor French <frenchtrevor@outlook.com>
 Description: cryptotrackr allows you to connect to data sources across the 
         crypto ecosystem. This data can enable a range of activity such as 
         portfolio tracking, programmatic trading, or industry analysis.
