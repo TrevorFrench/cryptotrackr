@@ -113,6 +113,47 @@ amberdata_spot_pairs <- function(api_key
   return(data$payload)
 }
 
+#' amberdata_spot_reference
+#'
+#' @param api_key your Amberdata API key
+#' @param exchange choose a specific exchange or multiple exchanges
+#' (comma-separated) rather than all exchanges
+#' @param pair choose a specific pair or multiple pairs (comma-separated) rather
+#' than all pairs
+#' @param include_inactive If 'True', endpoint returns all pairs, including
+#' delisted ones. Default is 'False'.
+#' @param include_original_reference If 'True', endpoint returns
+#' originalReference. Default is 'False'.
+#'
+#' @return returns a list of reference information for each of the pairs on
+#' Amberdata.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' reference <- amberdata_spot_reference(api_key)
+#' btc_usd <- amberdata_spot_reference(api_key, pair = "btc_usd")}
+
+amberdata_spot_reference <- function(api_key
+                                 , exchange = NULL
+                                 , pair = NULL
+                                 , include_inactive = "False"
+                                 , include_original_reference = "False"){
+
+  query_string <- list(
+    exchange = exchange,
+    pair = pair,
+    includeInactive = include_inactive,
+    includeOriginalReference = include_original_reference
+  )
+
+  url <- 'https://web3api.io/api/v2/market/spot/exchanges/reference'
+  data <- amberdata_api_call(url, api_key, 'GET', query_string)
+  print(data)
+  return(data$payload)
+}
+
 #' amberdata_market_metrics
 #'
 #' @param api_key your Amberdata API key
