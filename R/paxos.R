@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - ‘scope=[SCOPE 1] [SCOPE 2]’
-
-#-------------------------------------------------------------------------------
-#---------------------------------PAXOS BEARER TOKEN----------------------------
-#-------------------------------------------------------------------------------
 #' paxos_bearer_token
 #'
 #' @param client_id the client id you generated when you created your API key
@@ -32,13 +24,11 @@ paxos_bearer_token <- function(client_id, client_secret, scope) {
   return(data$access_token)
 }
 
-#-------------------------------------------------------------------------------
-#---------------------------------PAXOS LIST PROFILES---------------------------
-#-------------------------------------------------------------------------------
 #' paxos_list_profiles
 #'
 #' @param client_id the client id you generated when you created your API key
-#' @param client_secret the client secret you generated when you created your API key
+#' @param client_secret the client secret you generated when you created your
+#' API key
 #'
 #' @return returns a dataframe containing all user profiles
 #' @export

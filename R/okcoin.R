@@ -18,11 +18,15 @@ okcoin_trading_pairs <- function() {
 #'
 #' @param secret your secret key for Okcoin
 #' @param key your API key for Okcoin
-#' @param passphrase the passphrase which you created when generating your Okcoin API key
+#' @param passphrase the passphrase which you created when generating your
+#' Okcoin API key
 #' @param instrument_id the trading pair symbol
-#' @param state Order Status: -1: Canceled, 0: Open, 1: Partially Filled, 2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially filled), 7: Complete (canceled + fully filled)
+#' @param state Order Status: -1: Canceled, 0: Open, 1: Partially Filled,
+#' 2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially
+#' filled), 7: Complete (canceled + fully filled)
 #'
-#' @return returns a dataframe containing your orders from the most recent 3 months
+#' @return returns a dataframe containing your orders from the most recent 3
+#' months
 #' @export
 #'
 #' @examples
