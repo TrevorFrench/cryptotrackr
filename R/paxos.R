@@ -1,7 +1,8 @@
 #' paxos_bearer_token
 #'
 #' @param client_id the client id you generated when you created your API key
-#' @param client_secret the client secret you generated when you created your API key
+#' @param client_secret the client secret you generated when you created your
+#' API key
 #' @param scope the scope needed for your specific API call
 #'
 #' @return returns your Paxos bearer token
