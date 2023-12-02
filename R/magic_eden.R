@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# -
-
-#-------------------------------------------------------------------------------
-#------------------------------MAGIC EDEN TRANSACTIONS--------------------------
-#-------------------------------------------------------------------------------
 #' magic_eden_transactions
 #'
 #' @param wallet the address of the wallet you are trying to query
@@ -34,9 +26,6 @@ magic_eden_transactions <- function(wallet, offset = NULL, limit = NULL) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------MAGIC EDEN TOKENS OWNED--------------------------
-#-------------------------------------------------------------------------------
 #' magic_eden_tokens_owned
 #'
 #' @param wallet the address of the wallet you are trying to query
@@ -69,9 +58,6 @@ magic_eden_tokens_owned <- function(wallet
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------MAGIC EDEN TOKEN METADATA-------------------------
-#-------------------------------------------------------------------------------
 #' magic_eden_token_metadata
 #'
 #' @param mint_address the mint address of the token you wish to query
@@ -94,9 +80,6 @@ magic_eden_token_metadata <- function(mint_address) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------MAGIC EDEN TOKEN LISTINGS-------------------------
-#-------------------------------------------------------------------------------
 #' magic_eden_token_listings
 #'
 #' @param mint_address the mint address of the token you wish to query
@@ -120,9 +103,6 @@ magic_eden_token_listings <- function(mint_address) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------MAGIC EDEN COLLECTION STATS------------------------
-#-------------------------------------------------------------------------------
 #' magic_eden_collection_stats
 #'
 #' @param symbol the collection symbol you are requesting data for
