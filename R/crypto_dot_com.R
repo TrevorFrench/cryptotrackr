@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# -
-
-#-------------------------------------------------------------------------------
-#------------------------------CRYPTO.COM INSTRUMENTS---------------------------
-#-------------------------------------------------------------------------------
 #' crypto_dot_com_instruments
 #'
 #' @return returns a dataframe with information about instruments available on
@@ -22,9 +14,6 @@ crypto_dot_com_instruments <- function() {
   return(data$result$instruments)
 }
 
-#-------------------------------------------------------------------------------
-#-------------------------------CRYPTO.COM GET BOOK-----------------------------
-#-------------------------------------------------------------------------------
 #' crypto_dot_com_get_book
 #'
 #' @param instrument the instrument name which you want to query
@@ -46,9 +35,6 @@ crypto_dot_com_get_book <- function(instrument, depth = 50) {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------CRYPTO.COM GET CANDLESTICK-------------------------
-#-------------------------------------------------------------------------------
 #' crypto_dot_com_get_candlestick
 #'
 #' @param instrument the instrument name which you want to query
@@ -72,9 +58,6 @@ crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m') {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------CRYPTO.COM GET TICKER----------------------------
-#-------------------------------------------------------------------------------
 #' crypto_dot_com_get_ticker
 #'
 #' @param instrument the instrument name which you want to query
@@ -95,9 +78,6 @@ crypto_dot_com_get_ticker <- function(instrument) {
   return(data$result$data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------CRYPTO.COM GET TRADES----------------------------
-#-------------------------------------------------------------------------------
 #' crypto_dot_com_get_trades
 #'
 #' @param instrument the instrument name which you want to query
