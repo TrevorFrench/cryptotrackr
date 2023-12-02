@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# -
-
-#-------------------------------------------------------------------------------
-#--------------------------------KRAKEN SERVER TIME-----------------------------
-#-------------------------------------------------------------------------------
 #' kraken_server_time
 #'
 #' @return returns a list with Kraken's server time in unix and rfc1123 formats
@@ -21,9 +13,6 @@ kraken_server_time <- function() {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#-------------------------------KRAKEN SERVER STATUS----------------------------
-#-------------------------------------------------------------------------------
 #' kraken_server_status
 #'
 #' @return returns a list with Kraken's server status along with a timestamp
@@ -39,9 +28,6 @@ kraken_server_status <- function() {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------KRAKEN ASSET INFO------------------------------
-#-------------------------------------------------------------------------------
 #' kraken_asset_info
 #'
 #' @param asset optionally provide one or more comma-separated ticker symbols.
@@ -63,9 +49,6 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL) {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------KRAKEN ASSET PAIRS-----------------------------
-#-------------------------------------------------------------------------------
 #' kraken_asset_pairs
 #'
 #' @param pair optionally provide one or more comma-separated asset pairs to query.
@@ -87,9 +70,6 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL) {
   return(data$result)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------KRAKEN TICKER INFO-----------------------------
-#-------------------------------------------------------------------------------
 #' kraken_ticker_info
 #'
 #' @param pair optionally provide one or more comma-separated asset pairs.
