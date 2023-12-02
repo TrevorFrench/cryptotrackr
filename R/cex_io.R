@@ -1,15 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - Don't know what the ticker symbol by market endpoint is doing. did not create function
-# - Same for last markets
-# - NAMED LIST DOES NOT WORK FOR BODY FOR SOME REASON
-# - Make headers a variable
-# - Make API Call Function
-
-#-------------------------------------------------------------------------------
-#-----------------------------------CEX.IO TICKER-------------------------------
-#-------------------------------------------------------------------------------
 #' cex_io_ticker
 #'
 #' @param symbol_1 the first currency in your pair

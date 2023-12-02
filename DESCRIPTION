@@ -1,9 +1,11 @@
 Package: cryptotrackr
 Type: Package
-Title: Crypto Tracker
-Version: 1.0.0
-Author: Trevor French
-Maintainer: Trevor French <frenchtrevor@outlook.com>
+Title: An Interface to Crypto Data Sourcess
+Version: 1.1.0
+Authors@R: c(
+    person("Trevor", "French", , "FrenchTrevor@outlook.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-6246-2249"))
+    )
 Description: Allows you to connect to data sources across the 
         crypto ecosystem. This data can enable a range of activity such as 
         portfolio tracking, programmatic trading, or industry analysis.
