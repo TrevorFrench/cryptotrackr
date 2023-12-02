@@ -1,6 +1,6 @@
 Package: cryptotrackr
 Type: Package
-Title: An Interface to Crypto Data Sourcess
+Title: An Interface to Crypto Data Sources
 Version: 1.1.0
 Authors@R: c(
     person("Trevor", "French", ,"FrenchTrevor@outlook.com", role = c("aut", "cre"),
