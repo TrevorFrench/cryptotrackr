@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - Check examples with cursor for pagination
-
-#-------------------------------------------------------------------------------
-#-----------------------------HELIUM BLOCKCHAIN STATS---------------------------
-#-------------------------------------------------------------------------------
 #' helium_blockchain_stats
 #'
 #' @return returns a list containing statistics about the Helium blockchain
@@ -21,9 +13,6 @@ helium_blockchain_stats <- function() {
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#-------------------------------HELIUM TOKEN SUPPLY-----------------------------
-#-------------------------------------------------------------------------------
 #' helium_token_supply
 #'
 #' @return returns the token supply of the Helium blockchain
@@ -39,9 +28,6 @@ helium_token_supply <- function() {
   return(data$data$token_supply)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------------HELIUM HEIGHT--------------------------------
-#-------------------------------------------------------------------------------
 #' helium_height
 #'
 #' @return returns the height of the Helium blockchain
@@ -57,9 +43,6 @@ helium_height <- function() {
   return(data$data$height)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------HELIUM BLOCK STATS-----------------------------
-#-------------------------------------------------------------------------------
 #' helium_block_stats
 #'
 #' @return returns a list containing block production statistics
@@ -75,14 +58,12 @@ helium_block_stats <- function() {
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------HELIUM BLOCK DESCRIPTIONS-------------------------
-#-------------------------------------------------------------------------------
 #' helium_block_descriptions
 #'
 #' @param cursor used to retrieve more results. Default value is NULL.
 #'
-#' @return returns a list contaning block descriptions. a cursor field will be returned if there are more results.
+#' @return returns a list contaning block descriptions. a cursor field will be
+#' returned if there are more results.
 #' @export
 #'
 #' @examples
@@ -99,9 +80,6 @@ helium_block_descriptions <- function(cursor = NULL) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------HELIUM BLOCK AT HEIGHT----------------------------
-#-------------------------------------------------------------------------------
 #' helium_block_at_height
 #'
 #' @param height the blockchain height
@@ -120,9 +98,6 @@ helium_block_at_height <- function(height) {
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#---------------------------HELIUM TRANSACTIONS AT HEIGHT-----------------------
-#-------------------------------------------------------------------------------
 #' helium_transactions_at_height
 #'
 #' @param height the blockchain height
@@ -146,9 +121,6 @@ helium_transactions_at_height <- function(height, cursor = NULL) {
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#-------------------------------HELIUM BLOCK AT HASH----------------------------
-#-------------------------------------------------------------------------------
 #' helium_block_at_hash
 #'
 #' @param hash block hash for the block to fetch
