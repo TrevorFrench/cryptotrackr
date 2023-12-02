@@ -1,11 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - Have not tested the airdrop function (need a hobbyist plan)
-
-#-------------------------------------------------------------------------------
-#------------------------------COINMARKETCAP API CALL---------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_api_call
 #'
 #' @param url the url for your CoinMarketCap API call
@@ -42,9 +34,6 @@ coinmarketcap_api_call <- function(url, api_key, method, query = NULL){
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-------------------------------COINMARKETCAP ID MAP----------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_id_map
 #'
 #' @param api_key your CoinMarketCap API key
@@ -100,9 +89,6 @@ coinmarketcap_id_map <- function(api_key
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------COINMARKETCAP METADATA---------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_metadata
 #'
 #' @param api_key your CoinMarketCap API key
@@ -150,9 +136,6 @@ coinmarketcap_metadata <- function(api_key
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------COINMARKETCAP AIRDROP----------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_airdrop
 #'
 #' @param api_key your CoinMarketCap API key
@@ -174,9 +157,6 @@ coinmarketcap_airdrop <- function(api_key, id){
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------COINMARKETCAP CATEGORIES--------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_categories
 #'
 #' @param api_key your CoinMarketCap API key
@@ -221,9 +201,6 @@ coinmarketcap_categories <- function(api_key
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------COINMARKETCAP CATEGORY---------------------------
-#-------------------------------------------------------------------------------
 #' coinmarketcap_category
 #'
 #' @param api_key your CoinMarketCap API key
