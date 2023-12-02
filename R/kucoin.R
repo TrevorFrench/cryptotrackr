@@ -1,12 +1,3 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - Not sure how to work with query parameters given that you also need a json
-#   string of parameters for the signature.
-
-#-------------------------------------------------------------------------------
-#------------------------------------KUCOIN TIME--------------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_time
 #'
 #' @return returns a timestamp formatted in the way it is required in order to
@@ -24,9 +15,6 @@ kucoin_time <- function() {
   return(as.character(formatted_time))
 }
 
-#-------------------------------------------------------------------------------
-#---------------------------------KUCOIN SIGNATURE------------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_signature
 #'
 #' @param api_secret your Kucoin API secret
@@ -62,9 +50,6 @@ kucoin_signature <- function(api_secret, time, method, path, body) {
   return(encoded_sig)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------------KUCOIN API CALL------------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_api_call
 #'
 #' @param url the full url for your Kucoin API call
@@ -97,7 +82,8 @@ kucoin_signature <- function(api_secret, time, method, path, body) {
 #' passphrase <- "..."
 #' version <- "2"
 #'
-#' accounts <- kucoin_api_call(url, method, api_key, sig, time, passphrase, version, api_secret)}
+#' accounts <- kucoin_api_call(url, method, api_key, sig, time, passphrase,
+#' version, api_secret)}
 
 kucoin_api_call <- function(url
                             , method
@@ -135,9 +121,6 @@ kucoin_api_call <- function(url
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------KUCOIN SUB-ACCOUNTS----------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_subaccounts
 #'
 #' @param api_key your Kucoin API key.
@@ -177,9 +160,6 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2"){
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------------KUCOIN ACCOUNTS------------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_accounts
 #'
 #' @param api_key your Kucoin API key.
@@ -222,9 +202,6 @@ kucoin_accounts <- function(api_key
   return(data$data)
 }
 
-#-------------------------------------------------------------------------------
-#--------------------------------KUCOIN SYMBOLS LIST----------------------------
-#-------------------------------------------------------------------------------
 #' kucoin_symbols_list
 #'
 #' @param market optionally provide a market to filter on. This function will
