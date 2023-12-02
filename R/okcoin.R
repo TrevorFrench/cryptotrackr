@@ -1,17 +1,7 @@
-#-------------------------------------------------------------------------------
-#------------------------------------ACTION LIST--------------------------------
-#-------------------------------------------------------------------------------
-# - okcoin_api_call is only 'GET' right now
-# - need pagination
-# - maybe change api call to authenticated api call
-
-
-#-------------------------------------------------------------------------------
-#-----------------------------------OKCOIN TRADES-------------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_trading_pairs
 #'
-#' @return returns a dataframe containing information about all trading pairs on Okcoin
+#' @return returns a dataframe containing information about all trading pairs on
+#' Okcoin
 #' @export
 #'
 #' @examples
@@ -24,9 +14,6 @@ okcoin_trading_pairs <- function() {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------------OKCOIN ORDERS-------------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_orders
 #'
 #' @param secret your secret key for Okcoin
@@ -56,14 +43,12 @@ okcoin_orders <- function(secret, key, passphrase, instrument_id, state) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#-----------------------------OKCOIN SPOT ACCOUNT INFO--------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_spot_account_info
 #'
 #' @param secret your secret key for Okcoin
 #' @param key your API key for Okcoin
-#' @param passphrase the passphrase which you created when generating your Okcoin API key
+#' @param passphrase the passphrase which you created when generating your
+#' Okcoin API key
 #'
 #' @return returns a dataframe containing your spot account balances
 #' @export
@@ -84,9 +69,6 @@ okcoin_spot_account_info <- function(secret, key, passphrase) {
   return(data)
 }
 
-#-------------------------------------------------------------------------------
-#------------------------------------OKCOIN TIME--------------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_time
 #'
 #' @return returns a string with the current timestamp in ISO 8601 format
@@ -103,17 +85,16 @@ okcoin_time <- function() {
   return(formatted_time)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------------OKCOIN SIGNATURE-----------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_signature
 #'
 #' @param path the API endpoint
 #' @param secret your Okcoin secret key
-#' @param formatted_time a string containing the currrent timestamp in ISO 8601 format
+#' @param formatted_time a string containing the currrent timestamp in ISO 8601
+#' format
 #' @param method 'POST' or 'GET'
 #'
-#' @return returns a base64 encoded SHA256 signature for signing Okcoin API calls
+#' @return returns a base64 encoded SHA256 signature for signing Okcoin API
+#' calls
 #' @export
 #'
 #' @examples
@@ -132,16 +113,15 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
   return(signature_encoded)
 }
 
-#-------------------------------------------------------------------------------
-#----------------------------------OKCOIN API CALL------------------------------
-#-------------------------------------------------------------------------------
 #' okcoin_api_call
 #'
 #' @param url the full URL for the API call
 #' @param key your API key for Okcoin
 #' @param signature your hashed and encoded signature for Okcoin API calls
-#' @param formatted_time a string containing the currrent timestamp in ISO 8601 format
-#' @param passphrase the passphrase which you created when generating your Okcoin API key
+#' @param formatted_time a string containing the currrent timestamp in ISO 8601
+#' format
+#' @param passphrase the passphrase which you created when generating your
+#' Okcoin API key
 #'
 #' @return returns a dataframe containing the results of your API call
 #' @export
