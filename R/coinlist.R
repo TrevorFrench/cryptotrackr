@@ -23,6 +23,8 @@ coinlist_symbols <- function() {
 #' coinlist_time <- coinlist_time()}
 
 coinlist_time <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)))
