@@ -4,8 +4,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' symbols <- coinlist_symbols()}
+#' coinlist_symbols()
 
 coinlist_symbols <- function() {
   res = httr::GET('https://trade-api.coinlist.co/v1/symbols')
@@ -19,8 +18,7 @@ coinlist_symbols <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' coinlist_time <- coinlist_time()}
+#' coinlist_time()
 
 coinlist_time <- function() {
   old <- options()
