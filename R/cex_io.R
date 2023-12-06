@@ -111,6 +111,8 @@ cex_io_ohlcv <- function(date, symbol_1, symbol_2) {
 #' nonce <- cex_io_nonce()}
 
 cex_io_nonce <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)))
