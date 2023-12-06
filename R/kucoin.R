@@ -5,8 +5,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' time <- kucoin_time()}
+#' kucoin_time()
 
 kucoin_time <- function() {
   old <- options()
@@ -213,8 +212,7 @@ kucoin_accounts <- function(api_key
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' symbols <- kucoin_symbols_list('btc')}
+#' kucoin_symbols_list('btc')
 
 kucoin_symbols_list <- function(market = NULL){
   query <- list(market = toupper(market))
