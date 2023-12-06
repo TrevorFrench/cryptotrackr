@@ -7,9 +7,12 @@
 huobi_candles(period, size, symbol)
 }
 \arguments{
-\item{period}{the period of each candle. The following are acceptable options:    "1min", "5min", "15min", "30min", "60min", "4hour", "1day", "1mon", "1week", "1year"}
+\item{period}{the period of each candle. The following are acceptable options:
+"1min", "5min", "15min", "30min", "60min", "4hour", "1day", "1mon", "1week",
+"1year"}
 
-\item{size}{the number of datapoints to return. This should fall between 1 and 2000.}
+\item{size}{the number of datapoints to return. This should fall between 1
+and 2000.}
 
 \item{symbol}{the trading symbol to query.}
 }

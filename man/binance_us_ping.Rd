@@ -13,6 +13,5 @@ returns a response from the Binance.US API server
 binance_us_ping
 }
 \examples{
-\dontrun{
-ping <- binance_us_ping()}
+binance_us_ping()
 }

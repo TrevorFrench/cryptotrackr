@@ -11,12 +11,14 @@ okcoin_signature(path, secret, formatted_time, method)
 
 \item{secret}{your Okcoin secret key}
 
-\item{formatted_time}{a string containing the currrent timestamp in ISO 8601 format}
+\item{formatted_time}{a string containing the currrent timestamp in ISO 8601
+format}
 
 \item{method}{'POST' or 'GET'}
 }
 \value{
-returns a base64 encoded SHA256 signature for signing Okcoin API calls
+returns a base64 encoded SHA256 signature for signing Okcoin API
+calls
 }
 \description{
 okcoin_signature

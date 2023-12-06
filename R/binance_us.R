@@ -131,7 +131,7 @@ binance_us_ping <- function() {
 #' @export
 #'
 #' @examples
-#' server_time <- binance_us_server_time()
+#' binance_us_server_time()
 
 binance_us_server_time <- function() {
   url <- 'https://api.binance.us/api/v3/time'

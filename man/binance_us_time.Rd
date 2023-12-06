@@ -13,6 +13,5 @@ returns a timestamp in the format that Binance.US expects
 binance_us_time
 }
 \examples{
-\dontrun{
-time <- binance_us_time()}
+binance_us_time()
 }
