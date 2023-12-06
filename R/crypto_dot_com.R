@@ -5,8 +5,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' instruments <- crypto_dot_com_instruments()}
+#' crypto_dot_com_instruments()
 
 crypto_dot_com_instruments <- function() {
   res = httr::GET('https://api.crypto.com/v2/public/get-instruments')
@@ -25,8 +24,7 @@ crypto_dot_com_instruments <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' book <- crypto_dot_com_get_book("BTC_USDT")}
+#' crypto_dot_com_get_book("BTC_USDT")
 
 crypto_dot_com_get_book <- function(instrument, depth = 50) {
   query <- list(instrument_name = instrument, depth = depth)
@@ -47,8 +45,7 @@ crypto_dot_com_get_book <- function(instrument, depth = 50) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' candlesticks <- crypto_dot_com_get_candlestick("BTC_USDT")}
+#' crypto_dot_com_get_candlestick("BTC_USDT")
 
 crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m') {
   query <- list(instrument_name = instrument, timeframe = timeframe)
@@ -68,8 +65,7 @@ crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m') {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' ticker <- crypto_dot_com_get_ticker("BTC_USDT")}
+#' crypto_dot_com_get_ticker("BTC_USDT")
 
 crypto_dot_com_get_ticker <- function(instrument) {
   query <- list(instrument_name = instrument)
@@ -88,8 +84,7 @@ crypto_dot_com_get_ticker <- function(instrument) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' trades <- crypto_dot_com_get_trades("BTC_USDT")}
+#' crypto_dot_com_get_trades("BTC_USDT")
 
 crypto_dot_com_get_trades <- function(instrument) {
   query <- list(instrument_name = instrument)
