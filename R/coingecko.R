@@ -4,8 +4,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' status <- coingecko_ping()}
+#' coingecko_ping()
 
 coingecko_ping <- function() {
   res <- httr::VERB('GET'
@@ -23,8 +22,7 @@ coingecko_ping <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' vs_currencies <- coingecko_vs_currencies()}
+#' coingecko_vs_currencies()
 
 coingecko_vs_currencies <- function() {
   url <- 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies'
@@ -46,8 +44,7 @@ coingecko_vs_currencies <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' coins <- coingecko_coins()}
+#' coingecko_coins()
 
 coingecko_coins <- function(include_platform = NULL) {
   url <- 'https://api.coingecko.com/api/v3/coins/list'
@@ -80,8 +77,7 @@ coingecko_coins <- function(include_platform = NULL) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' prices <- coingecko_price(id = 'bitcoin', vs_currency = 'usd')}
+#' coingecko_price(id = 'bitcoin', vs_currency = 'usd')
 
 coingecko_price <- function(id
                             , vs_currency
@@ -113,8 +109,7 @@ coingecko_price <- function(id
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' categories <- coingecko_categories()}
+#' coingecko_categories()
 
 coingecko_categories <- function() {
   url <- 'https://api.coingecko.com/api/v3/coins/categories/list'
@@ -137,9 +132,8 @@ coingecko_categories <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' price <- coingecko_price_history("bitcoin", "30-12-2017")
-#' price$market_data$current_price$usd}
+#' price$market_data$current_price$usd
 
 coingecko_price_history <- function(id
                             , date
@@ -165,8 +159,7 @@ coingecko_price_history <- function(id
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' global_data <- coingecko_global_data()}
+#' coingecko_global_data()
 
 coingecko_global_data <- function() {
   url <- 'https://api.coingecko.com/api/v3/global'
