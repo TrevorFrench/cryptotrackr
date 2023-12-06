@@ -7,7 +7,8 @@
 okcoin_trading_pairs()
 }
 \value{
-returns a dataframe containing information about all trading pairs on Okcoin
+returns a dataframe containing information about all trading pairs on
+Okcoin
 }
 \description{
 okcoin_trading_pairs

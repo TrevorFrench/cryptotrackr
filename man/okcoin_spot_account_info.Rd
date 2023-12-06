@@ -11,7 +11,8 @@ okcoin_spot_account_info(secret, key, passphrase)
 
 \item{key}{your API key for Okcoin}
 
-\item{passphrase}{the passphrase which you created when generating your Okcoin API key}
+\item{passphrase}{the passphrase which you created when generating your
+Okcoin API key}
 }
 \value{
 returns a dataframe containing your spot account balances

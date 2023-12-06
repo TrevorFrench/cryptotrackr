@@ -4,8 +4,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' currencies <- coinbase_all_currencies()}
+#' coinbase_all_currencies()
 
 coinbase_all_currencies <- function() {
   res = httr::GET('https://api.exchange.coinbase.com/currencies',
@@ -24,9 +23,8 @@ coinbase_all_currencies <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' currency <- 'btc'
-#' currency_data <- coinbase_single_currency(currency)}
+#' coinbase_single_currency(currency)
 
 coinbase_single_currency <- function(currency) {
   res = httr::GET(paste('https://api.exchange.coinbase.com/currencies/', toupper(currency), sep = ''),
@@ -43,10 +41,11 @@ coinbase_single_currency <- function(currency) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' coinbase_time <- coinbase_time()}
+#' coinbase_time()
 
 coinbase_time <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)))

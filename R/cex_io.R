@@ -7,10 +7,9 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' ticker_info <- cex_io_ticker(symbol_1, symbol_2)}
+#' cex_io_ticker(symbol_1, symbol_2)
 
 cex_io_ticker <- function(symbol_1, symbol_2) {
   res = httr::GET(paste('https://cex.io/api/ticker/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
@@ -24,8 +23,7 @@ cex_io_ticker <- function(symbol_1, symbol_2) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' currency_limits <- cex_io_currency_limits()}
+#' cex_io_currency_limits()
 
 cex_io_currency_limits <- function() {
   res = httr::GET('https://cex.io/api/currency_limits')
@@ -42,10 +40,9 @@ cex_io_currency_limits <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' last_price <- cex_io_last_price(symbol_1, symbol_2)}
+#' cex_io_last_price(symbol_1, symbol_2)
 
 cex_io_last_price <- function(symbol_1, symbol_2) {
   res = httr::GET(paste('https://cex.io/api/last_price/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
@@ -63,11 +60,10 @@ cex_io_last_price <- function(symbol_1, symbol_2) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
 #' amount <- '2.5'
-#' converted <- cex_io_converter(symbol_1, symbol_2, amount)}
+#' cex_io_converter(symbol_1, symbol_2, amount)
 
 cex_io_converter <- function(symbol_1, symbol_2, amount) {
   res = httr::POST(paste('https://cex.io/api/convert/', toupper(symbol_1), '/', toupper(symbol_2), sep = '')
@@ -89,11 +85,10 @@ cex_io_converter <- function(symbol_1, symbol_2, amount) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' date <- '20220927'
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' ohlcv <- cex_io_ohlcv(date, symbol_1, symbol_2)}
+#' cex_io_ohlcv(date, symbol_1, symbol_2)
 
 cex_io_ohlcv <- function(date, symbol_1, symbol_2) {
   res = httr::GET(paste('https://cex.io/api/ohlcv/hd/', date, '/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
@@ -107,10 +102,11 @@ cex_io_ohlcv <- function(date, symbol_1, symbol_2) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' nonce <- cex_io_nonce()}
+#' cex_io_nonce()
 
 cex_io_nonce <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)))

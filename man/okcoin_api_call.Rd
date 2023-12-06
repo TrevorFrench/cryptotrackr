@@ -13,9 +13,11 @@ okcoin_api_call(url, key, signature, formatted_time, passphrase)
 
 \item{signature}{your hashed and encoded signature for Okcoin API calls}
 
-\item{formatted_time}{a string containing the currrent timestamp in ISO 8601 format}
+\item{formatted_time}{a string containing the currrent timestamp in ISO 8601
+format}
 
-\item{passphrase}{the passphrase which you created when generating your Okcoin API key}
+\item{passphrase}{the passphrase which you created when generating your
+Okcoin API key}
 }
 \value{
 returns a dataframe containing the results of your API call

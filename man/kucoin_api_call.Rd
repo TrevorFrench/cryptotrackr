@@ -58,5 +58,6 @@ sig <- kucoin_signature(api_secret, time, method, path, body)
 passphrase <- "..."
 version <- "2"
 
-accounts <- kucoin_api_call(url, method, api_key, sig, time, passphrase, version, api_secret)}
+accounts <- kucoin_api_call(url, method, api_key, sig, time, passphrase,
+version, api_secret)}
 }

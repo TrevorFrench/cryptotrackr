@@ -11,14 +11,18 @@ okcoin_orders(secret, key, passphrase, instrument_id, state)
 
 \item{key}{your API key for Okcoin}
 
-\item{passphrase}{the passphrase which you created when generating your Okcoin API key}
+\item{passphrase}{the passphrase which you created when generating your
+Okcoin API key}
 
 \item{instrument_id}{the trading pair symbol}
 
-\item{state}{Order Status: -1: Canceled, 0: Open, 1: Partially Filled, 2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially filled), 7: Complete (canceled + fully filled)}
+\item{state}{Order Status: -1: Canceled, 0: Open, 1: Partially Filled,
+2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially
+filled), 7: Complete (canceled + fully filled)}
 }
 \value{
-returns a dataframe containing your orders from the most recent 3 months
+returns a dataframe containing your orders from the most recent 3
+months
 }
 \description{
 okcoin_orders

@@ -69,8 +69,7 @@ gemini_trades <- function(key, secret) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' symbols <- gemini_symbols()}
+#' gemini_symbols()
 
 gemini_symbols <- function() {
   res = httr::GET("https://api.gemini.com/v1/symbols")
@@ -85,8 +84,7 @@ gemini_symbols <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' prices <- gemini_price_feed()}
+#' gemini_price_feed()
 
 gemini_price_feed <- function() {
   res = httr::GET("https://api.gemini.com/v1/pricefeed")

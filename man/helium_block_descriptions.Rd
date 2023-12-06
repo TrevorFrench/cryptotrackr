@@ -10,7 +10,8 @@ helium_block_descriptions(cursor = NULL)
 \item{cursor}{used to retrieve more results. Default value is NULL.}
 }
 \value{
-returns a list contaning block descriptions. a cursor field will be returned if there are more results.
+returns a list contaning block descriptions. a cursor field will be
+returned if there are more results.
 }
 \description{
 helium_block_descriptions

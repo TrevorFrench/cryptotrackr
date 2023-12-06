@@ -9,7 +9,8 @@ paxos_list_profiles(client_id, client_secret)
 \arguments{
 \item{client_id}{the client id you generated when you created your API key}
 
-\item{client_secret}{the client secret you generated when you created your API key}
+\item{client_secret}{the client secret you generated when you created your
+API key}
 }
 \value{
 returns a dataframe containing all user profiles

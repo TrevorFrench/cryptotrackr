@@ -11,11 +11,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' period <- '1day'
 #' size <- '200'
 #' symbol <- 'btcusdt'
-#' candles <- huobi_candles(period, size, symbol)}
+#' huobi_candles(period, size, symbol)
 
 huobi_candles <- function(period, size, symbol) {
   base <- 'https://api.huobi.pro'

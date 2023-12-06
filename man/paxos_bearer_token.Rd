@@ -9,7 +9,8 @@ paxos_bearer_token(client_id, client_secret, scope)
 \arguments{
 \item{client_id}{the client id you generated when you created your API key}
 
-\item{client_secret}{the client secret you generated when you created your API key}
+\item{client_secret}{the client secret you generated when you created your
+API key}
 
 \item{scope}{the scope needed for your specific API call}
 }

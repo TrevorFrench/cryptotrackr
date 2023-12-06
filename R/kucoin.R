@@ -5,10 +5,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' time <- kucoin_time()}
+#' kucoin_time()
 
 kucoin_time <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm))) * 1000
@@ -211,8 +212,7 @@ kucoin_accounts <- function(api_key
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' symbols <- kucoin_symbols_list('btc')}
+#' kucoin_symbols_list('btc')
 
 kucoin_symbols_list <- function(market = NULL){
   query <- list(market = toupper(market))

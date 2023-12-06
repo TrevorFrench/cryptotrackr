@@ -19,8 +19,7 @@ the designated currency pair on Binance US
 binance_us_recent_trades
 }
 \examples{
-\dontrun{
 symbol <- 'LTCBTC'
 limit <- '1000'
-recent_trades <- binance_us_recent_trades(symbol, limit)}
+binance_us_recent_trades(symbol, limit)
 }
