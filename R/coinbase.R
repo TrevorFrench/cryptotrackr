@@ -47,6 +47,8 @@ coinbase_single_currency <- function(currency) {
 #' coinbase_time <- coinbase_time()}
 
 coinbase_time <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=0)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)))
