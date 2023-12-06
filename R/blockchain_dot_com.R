@@ -7,11 +7,10 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol <- 'BTC-USD'
 #' l2_order_book <- blockchain_dot_com_l2_order_book(symbol)
-#' bids <- l2_order_book$bids
-#' asks <- l2_order_book$asks}
+#' l2_order_book$bids
+#' l2_order_book$asks
 
 blockchain_dot_com_l2_order_book <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l2/',
@@ -29,11 +28,10 @@ blockchain_dot_com_l2_order_book <- function(symbol) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol <- 'BTC-USD'
 #' l3_order_book <- blockchain_dot_com_l3_order_book(symbol)
-#' bids <- l3_order_book$bids
-#' asks <- l3_order_book$asks}
+#' l3_order_book$bids
+#' l3_order_book$asks
 
 blockchain_dot_com_l3_order_book <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l3/',
@@ -48,8 +46,7 @@ blockchain_dot_com_l3_order_book <- function(symbol) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' tickers <- blockchain_dot_com_tickers()}
+#' blockchain_dot_com_tickers()
 
 blockchain_dot_com_tickers <- function() {
   res = httr::GET('https://api.blockchain.com/v3/exchange/tickers')
@@ -65,9 +62,8 @@ blockchain_dot_com_tickers <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol <- 'BTC-USD'
-#' ticker_data <- blockchain_dot_com_ticker_symbol(symbol)}
+#' blockchain_dot_com_ticker_symbol(symbol)
 
 blockchain_dot_com_ticker_symbol <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/tickers/',
@@ -82,8 +78,7 @@ blockchain_dot_com_ticker_symbol <- function(symbol) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' symbol_data <- blockchain_dot_com_symbols()}
+#' blockchain_dot_com_symbols()
 
 blockchain_dot_com_symbols <- function() {
   res = httr::GET('https://api.blockchain.com/v3/exchange/symbols')
@@ -99,9 +94,8 @@ blockchain_dot_com_symbols <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol <- 'BTC-USD'
-#' symbol_data <- blockchain_dot_com_symbol(symbol)}
+#' blockchain_dot_com_symbol(symbol)
 
 blockchain_dot_com_symbol <- function(symbol) {
   res = httr::GET(paste('https://api.blockchain.com/v3/exchange/symbols/',
