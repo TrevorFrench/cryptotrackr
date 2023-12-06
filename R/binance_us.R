@@ -8,10 +8,9 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' symbol <- 'LTCBTC'
 #' limit <- '1000'
-#' recent_trades <- binance_us_recent_trades(symbol, limit)}
+#' binance_us_recent_trades(symbol, limit)
 
 binance_us_recent_trades <- function(symbol, limit) {
   url <- paste('https://api.binance.us/api/v3/trades'
@@ -100,8 +99,7 @@ binance_us_signature <- function(data, secret) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' time <- binance_us_time()}
+#' binance_us_time()
 
 binance_us_time <- function() {
   old <- options()
@@ -118,8 +116,7 @@ binance_us_time <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' ping <- binance_us_ping()}
+#' binance_us_ping()
 
 binance_us_ping <- function() {
   url <- 'https://api.binance.us/api/v3/ping'
@@ -134,8 +131,7 @@ binance_us_ping <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' server_time <- binance_us_server_time()}
+#' server_time <- binance_us_server_time()
 
 binance_us_server_time <- function() {
   url <- 'https://api.binance.us/api/v3/time'
