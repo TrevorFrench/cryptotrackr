@@ -4,8 +4,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' time <- kraken_server_time()}
+#' kraken_server_time()
 
 kraken_server_time <- function() {
   res = httr::GET('https://api.kraken.com/0/public/Time')
@@ -19,8 +18,7 @@ kraken_server_time <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' status <- kraken_server_status()}
+#' kraken_server_status()
 
 kraken_server_status <- function() {
   res = httr::GET('https://api.kraken.com/0/public/SystemStatus')
@@ -37,10 +35,9 @@ kraken_server_status <- function() {
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' all_asset_info <- kraken_asset_info()
 #' eth_btc_info <- kraken_asset_info("ETH,BTC")
-#' currency_info <- kraken_asset_info(aclass = "currency")}
+#' currency_info <- kraken_asset_info(aclass = "currency")
 
 kraken_asset_info <- function(asset = NULL, aclass = NULL) {
   query <- list(asset = asset, aclass = aclass)
@@ -60,8 +57,7 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' asset_pairs <- kraken_asset_pairs()}
+#' kraken_asset_pairs()
 
 kraken_asset_pairs <- function(pair = NULL, info = NULL) {
   query <- list(pair = pair, info = info)
@@ -80,8 +76,7 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' ticker_info <- kraken_ticker_info("ETHUSD")}
+#' kraken_ticker_info("ETHUSD")
 
 kraken_ticker_info <- function(pair = NULL) {
   query <- list(pair = pair)
