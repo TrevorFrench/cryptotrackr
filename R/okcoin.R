@@ -5,8 +5,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' trading_pairs <- okcoin_trading_pairs()}
+#' okcoin_trading_pairs()
 
 okcoin_trading_pairs <- function() {
   res = httr::GET("https://www.okcoin.com/api/spot/v3/instruments")
@@ -79,8 +78,7 @@ okcoin_spot_account_info <- function(secret, key, passphrase) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
-#' formatted_time <- okcoin_time()}
+#' okcoin_time()
 
 okcoin_time <- function() {
   old <- options()
