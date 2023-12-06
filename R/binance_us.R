@@ -104,6 +104,8 @@ binance_us_signature <- function(data, secret) {
 #' time <- binance_us_time()}
 
 binance_us_time <- function() {
+  old <- options()
+  on.exit(options(old))
   op <- options(digits.secs=3)
   tm <- as.POSIXlt(Sys.time(), "UTC")
   formatted_time <- round(as.numeric(as.POSIXct(tm)) * 1000)
