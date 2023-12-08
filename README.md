@@ -15,7 +15,7 @@ Trevor French <https://trevorfrench.com>
 Install the cryptotrackr package via CRAN:
 
 ``` r
-# NOT YET AVAILABLE VIA CRAN
+install.packages("cryptotrackr")
 ```
 
 You can also install the package via the Github repository.
