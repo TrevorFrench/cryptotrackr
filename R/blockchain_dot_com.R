@@ -13,9 +13,9 @@
 #' l2_order_book$asks
 
 blockchain_dot_com_l2_order_book <- function(symbol) {
-  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l2/',
+  res <- httr::GET(paste('https://api.blockchain.com/v3/exchange/l2/',
                         toupper(symbol), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -34,9 +34,9 @@ blockchain_dot_com_l2_order_book <- function(symbol) {
 #' l3_order_book$asks
 
 blockchain_dot_com_l3_order_book <- function(symbol) {
-  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/l3/',
+  res <- httr::GET(paste('https://api.blockchain.com/v3/exchange/l3/',
                         toupper(symbol), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -49,8 +49,8 @@ blockchain_dot_com_l3_order_book <- function(symbol) {
 #' blockchain_dot_com_tickers()
 
 blockchain_dot_com_tickers <- function() {
-  res = httr::GET('https://api.blockchain.com/v3/exchange/tickers')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.blockchain.com/v3/exchange/tickers')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -66,9 +66,9 @@ blockchain_dot_com_tickers <- function() {
 #' blockchain_dot_com_ticker_symbol(symbol)
 
 blockchain_dot_com_ticker_symbol <- function(symbol) {
-  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/tickers/',
+  res <- httr::GET(paste('https://api.blockchain.com/v3/exchange/tickers/',
                         toupper(symbol), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -81,8 +81,8 @@ blockchain_dot_com_ticker_symbol <- function(symbol) {
 #' blockchain_dot_com_symbols()
 
 blockchain_dot_com_symbols <- function() {
-  res = httr::GET('https://api.blockchain.com/v3/exchange/symbols')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.blockchain.com/v3/exchange/symbols')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -98,8 +98,8 @@ blockchain_dot_com_symbols <- function() {
 #' blockchain_dot_com_symbol(symbol)
 
 blockchain_dot_com_symbol <- function(symbol) {
-  res = httr::GET(paste('https://api.blockchain.com/v3/exchange/symbols/',
+  res <- httr::GET(paste('https://api.blockchain.com/v3/exchange/symbols/',
                         toupper(symbol), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }

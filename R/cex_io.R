@@ -3,7 +3,8 @@
 #' @param symbol_1 the first currency in your pair
 #' @param symbol_2 the second currency in your pair
 #'
-#' @return returns a list with basic trading information about your specified currency pair for the last 24 hours.
+#' @return returns a list with basic trading information about your specified
+#' currency pair for the last 24 hours.
 #' @export
 #'
 #' @examples
@@ -12,8 +13,9 @@
 #' cex_io_ticker(symbol_1, symbol_2)
 
 cex_io_ticker <- function(symbol_1, symbol_2) {
-  res = httr::GET(paste('https://cex.io/api/ticker/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(paste('https://cex.io/api/ticker/', toupper(symbol_1), '/',
+                         toupper(symbol_2), sep = ''))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -26,8 +28,8 @@ cex_io_ticker <- function(symbol_1, symbol_2) {
 #' cex_io_currency_limits()
 
 cex_io_currency_limits <- function() {
-  res = httr::GET('https://cex.io/api/currency_limits')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://cex.io/api/currency_limits')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$data$pairs)
 }
 
@@ -45,8 +47,9 @@ cex_io_currency_limits <- function() {
 #' cex_io_last_price(symbol_1, symbol_2)
 
 cex_io_last_price <- function(symbol_1, symbol_2) {
-  res = httr::GET(paste('https://cex.io/api/last_price/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(paste('https://cex.io/api/last_price/', toupper(symbol_1),
+                         '/', toupper(symbol_2), sep = ''))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -66,12 +69,13 @@ cex_io_last_price <- function(symbol_1, symbol_2) {
 #' cex_io_converter(symbol_1, symbol_2, amount)
 
 cex_io_converter <- function(symbol_1, symbol_2, amount) {
-  res = httr::POST(paste('https://cex.io/api/convert/', toupper(symbol_1), '/', toupper(symbol_2), sep = '')
+  res <- httr::POST(paste('https://cex.io/api/convert/', toupper(symbol_1), '/',
+                          toupper(symbol_2), sep = '')
                    , body = paste('{"amnt": "', amount, '"}', sep = '')
                    , httr::add_headers('Content-Type' = 'application/json'
                                       , 'Accept' = '*/*'
                    ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$amnt)
 }
 
@@ -81,7 +85,8 @@ cex_io_converter <- function(symbol_1, symbol_2, amount) {
 #' @param symbol_1 the first currency in your pair
 #' @param symbol_2 the second currency in your pair
 #'
-#' @return returns a list containing open, high, low, close, volume data for the past minute, hour, and day
+#' @return returns a list containing open, high, low, close, volume data for the
+#' past minute, hour, and day
 #' @export
 #'
 #' @examples
@@ -91,8 +96,10 @@ cex_io_converter <- function(symbol_1, symbol_2, amount) {
 #' cex_io_ohlcv(date, symbol_1, symbol_2)
 
 cex_io_ohlcv <- function(date, symbol_1, symbol_2) {
-  res = httr::GET(paste('https://cex.io/api/ohlcv/hd/', date, '/', toupper(symbol_1), '/', toupper(symbol_2), sep = ''))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(paste('https://cex.io/api/ohlcv/hd/',
+                         date, '/', toupper(symbol_1), '/',
+                         toupper(symbol_2), sep = ''))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -162,10 +169,10 @@ cex_io_balance <- function(username, api_key, api_secret) {
                         , '", "signature": "', sig
                         , '", "nonce": "', nonce, '"}'
                         , sep = '')
-  res = httr::POST('https://cex.io/api/balance/'
+  res <- httr::POST('https://cex.io/api/balance/'
                    , httr::add_headers('Content-Type' = 'application/json'
                                        , 'Accept' = '*/*')
                    , body = request_body)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
