@@ -7,11 +7,11 @@
 #' coinbase_all_currencies()
 
 coinbase_all_currencies <- function() {
-  res = httr::GET('https://api.exchange.coinbase.com/currencies',
+  res <- httr::GET('https://api.exchange.coinbase.com/currencies',
                   httr::add_headers('Content-Type' = 'application/octet-stream'
                                     , 'accept' = 'application/json'
                   ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -27,11 +27,12 @@ coinbase_all_currencies <- function() {
 #' coinbase_single_currency(currency)
 
 coinbase_single_currency <- function(currency) {
-  res = httr::GET(paste('https://api.exchange.coinbase.com/currencies/', toupper(currency), sep = ''),
+  res <- httr::GET(paste('https://api.exchange.coinbase.com/currencies/',
+                         toupper(currency), sep = ''),
                   httr::add_headers('Content-Type' = 'application/octet-stream'
                                     , 'accept' = 'application/json'
                   ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -103,13 +104,13 @@ coinbase_api_call <- function(api_key, api_secret, method, path, body) {
   coinbase_time <- coinbase_time()
   sig <- coinbase_signature(api_secret, coinbase_time, method, path, body)
   url <- paste('https://api.coinbase.com', path, sep = '')
-  res = httr::GET(url
+  res <- httr::GET(url
                   , body = body
                   , httr::add_headers('CB-ACCESS-KEY' = api_key
                                       , 'CB-ACCESS-SIGN' = sig
                                       , 'CB-ACCESS-TIMESTAMP' = coinbase_time
                   ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
