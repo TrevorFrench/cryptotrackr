@@ -14,7 +14,7 @@
 
 binance_us_recent_trades <- function(symbol, limit) {
   url <- paste('https://api.binance.us/api/v3/trades'
-               , '?symbol=', symbol
+               , '?symbol=', toupper(symbol)
                , '&limit=', limit
                , sep = '')
   res <- httr::GET(url)
