@@ -17,8 +17,8 @@ binance_us_recent_trades <- function(symbol, limit) {
                , '?symbol=', symbol
                , '&limit=', limit
                , sep = '')
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -65,10 +65,10 @@ binance_us_account_info <- function(key, secret) {
 
 binance_us_api_call <- function(url, key, data, secret) {
   signature <- binance_us_signature(data, secret)
-  res = httr::GET(paste(url, '?', data, '&signature=', signature,  sep = '')
+  res <- httr::GET(paste(url, '?', data, '&signature=', signature,  sep = '')
                   , httr::add_headers('Content-Type' = 'application/json'
                                          , 'X-MBX-APIKEY' = key))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -120,9 +120,8 @@ binance_us_time <- function() {
 
 binance_us_ping <- function() {
   url <- 'https://api.binance.us/api/v3/ping'
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  res <- httr::GET(url)
+  return(res)
 }
 
 #' binance_us_server_time
@@ -135,8 +134,8 @@ binance_us_ping <- function() {
 
 binance_us_server_time <- function() {
   url <- 'https://api.binance.us/api/v3/time'
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$serverTime)
 }
 
