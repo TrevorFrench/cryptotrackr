@@ -13,6 +13,5 @@ returns a vector containing all symbols available on Gemini
 gemini_symbols
 }
 \examples{
-\dontrun{
-symbols <- gemini_symbols()}
+gemini_symbols()
 }

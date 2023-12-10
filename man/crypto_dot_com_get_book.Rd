@@ -20,6 +20,5 @@ instrument.
 crypto_dot_com_get_book
 }
 \examples{
-\dontrun{
-book <- crypto_dot_com_get_book("BTC_USDT")}
+crypto_dot_com_get_book("BTC_USDT")
 }

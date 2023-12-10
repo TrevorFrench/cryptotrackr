@@ -7,8 +7,8 @@
 #' kraken_server_time()
 
 kraken_server_time <- function() {
-  res = httr::GET('https://api.kraken.com/0/public/Time')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.kraken.com/0/public/Time')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -21,8 +21,8 @@ kraken_server_time <- function() {
 #' kraken_server_status()
 
 kraken_server_status <- function() {
-  res = httr::GET('https://api.kraken.com/0/public/SystemStatus')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.kraken.com/0/public/SystemStatus')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -41,8 +41,8 @@ kraken_server_status <- function() {
 
 kraken_asset_info <- function(asset = NULL, aclass = NULL) {
   query <- list(asset = asset, aclass = aclass)
-  res = httr::GET('https://api.kraken.com/0/public/Assets', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.kraken.com/0/public/Assets', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -61,8 +61,8 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL) {
 
 kraken_asset_pairs <- function(pair = NULL, info = NULL) {
   query <- list(pair = pair, info = info)
-  res = httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -80,7 +80,7 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL) {
 
 kraken_ticker_info <- function(pair = NULL) {
   query <- list(pair = pair)
-  res = httr::GET('https://api.kraken.com/0/public/Ticker', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.kraken.com/0/public/Ticker', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }

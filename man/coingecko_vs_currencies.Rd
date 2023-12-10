@@ -7,13 +7,12 @@
 coingecko_vs_currencies()
 }
 \value{
-returns a character vector containg all supported currencies on
+returns a character vector containing all supported currencies on
 Coingecko.
 }
 \description{
 coingecko_vs_currencies
 }
 \examples{
-\dontrun{
-vs_currencies <- coingecko_vs_currencies()}
+coingecko_vs_currencies()
 }

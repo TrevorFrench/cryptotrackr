@@ -20,6 +20,5 @@ returns a list containing information on Kraken asset pairs.
 kraken_asset_pairs
 }
 \examples{
-\dontrun{
-asset_pairs <- kraken_asset_pairs()}
+kraken_asset_pairs()
 }

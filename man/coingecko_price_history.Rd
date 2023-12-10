@@ -22,7 +22,6 @@ returns a list containing data about asset pricing.
 coingecko_price_history
 }
 \examples{
-\dontrun{
 price <- coingecko_price_history("bitcoin", "30-12-2017")
-price$market_data$current_price$usd}
+price$market_data$current_price$usd
 }

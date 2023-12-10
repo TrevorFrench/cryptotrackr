@@ -11,13 +11,13 @@ coingecko_ping <- function() {
                     , 'https://api.coingecko.com/api/v3/ping'
                     , httr::accept("application/json")
                     )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
 #' coingecko_vs_currencies
 #'
-#' @return returns a character vector containg all supported currencies on
+#' @return returns a character vector containing all supported currencies on
 #' Coingecko.
 #' @export
 #'
@@ -30,7 +30,7 @@ coingecko_vs_currencies <- function() {
                     , url
                     , httr::accept("application/json")
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -54,7 +54,7 @@ coingecko_coins <- function(include_platform = NULL) {
                     , httr::accept("application/json")
                     , query = query
                     )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -99,7 +99,7 @@ coingecko_price <- function(id
                     , httr::accept("application/json")
                     , query = query
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -116,7 +116,7 @@ coingecko_categories <- function() {
   res <- httr::VERB('GET'
                     , url
                     , httr::accept("application/json"))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -148,7 +148,7 @@ coingecko_price_history <- function(id
                     , httr::accept("application/json")
                     , query = query
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -167,6 +167,6 @@ coingecko_global_data <- function() {
                     , url
                     , httr::accept("application/json")
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$data)
 }

@@ -17,6 +17,5 @@ returns a dataframe containing information about trading symbols
 kucoin_symbols_list
 }
 \examples{
-\dontrun{
-symbols <- kucoin_symbols_list('btc')}
+kucoin_symbols_list('btc')
 }

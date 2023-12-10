@@ -18,8 +18,7 @@ returns a list containing asset information
 kraken_asset_info
 }
 \examples{
-\dontrun{
 all_asset_info <- kraken_asset_info()
 eth_btc_info <- kraken_asset_info("ETH,BTC")
-currency_info <- kraken_asset_info(aclass = "currency")}
+currency_info <- kraken_asset_info(aclass = "currency")
 }

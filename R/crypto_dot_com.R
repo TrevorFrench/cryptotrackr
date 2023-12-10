@@ -8,8 +8,8 @@
 #' crypto_dot_com_instruments()
 
 crypto_dot_com_instruments <- function() {
-  res = httr::GET('https://api.crypto.com/v2/public/get-instruments')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.crypto.com/v2/public/get-instruments')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result$instruments)
 }
 
@@ -28,8 +28,8 @@ crypto_dot_com_instruments <- function() {
 
 crypto_dot_com_get_book <- function(instrument, depth = 50) {
   query <- list(instrument_name = instrument, depth = depth)
-  res = httr::GET('https://api.crypto.com/v2/public/get-book', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.crypto.com/v2/public/get-book', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -49,9 +49,9 @@ crypto_dot_com_get_book <- function(instrument, depth = 50) {
 
 crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m') {
   query <- list(instrument_name = instrument, timeframe = timeframe)
-  res = httr::GET('https://api.crypto.com/v2/public/get-candlestick'
+  res <- httr::GET('https://api.crypto.com/v2/public/get-candlestick'
                   , query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
@@ -69,8 +69,8 @@ crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m') {
 
 crypto_dot_com_get_ticker <- function(instrument) {
   query <- list(instrument_name = instrument)
-  res = httr::GET('https://api.crypto.com/v2/public/get-ticker', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.crypto.com/v2/public/get-ticker', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result$data)
 }
 
@@ -88,7 +88,7 @@ crypto_dot_com_get_ticker <- function(instrument) {
 
 crypto_dot_com_get_trades <- function(instrument) {
   query <- list(instrument_name = instrument)
-  res = httr::GET('https://api.crypto.com/v2/public/get-trades', query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://api.crypto.com/v2/public/get-trades', query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result$data)
 }

@@ -14,15 +14,15 @@ cex_io_ohlcv(date, symbol_1, symbol_2)
 \item{symbol_2}{the second currency in your pair}
 }
 \value{
-returns a list containing open, high, low, close, volume data for the past minute, hour, and day
+returns a list containing open, high, low, close, volume data for the
+past minute, hour, and day
 }
 \description{
 cex_io_ohlcv
 }
 \examples{
-\dontrun{
 date <- '20220927'
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
-ohlcv <- cex_io_ohlcv(date, symbol_1, symbol_2)}
+cex_io_ohlcv(date, symbol_1, symbol_2)
 }

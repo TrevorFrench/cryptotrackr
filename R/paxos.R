@@ -16,12 +16,12 @@
 #' token <- paxos_bearer_token(client_id, client_secret, scope)}
 
 paxos_bearer_token <- function(client_id, client_secret, scope) {
-  request_body = list('grant_type' = 'client_credentials'
+  request_body <- list('grant_type' = 'client_credentials'
                       , 'client_id' = client_id
                       , 'client_secret' = client_secret
                       , 'scope' = scope)
-  res = httr::POST('https://oauth.paxos.com/oauth2/token', body = request_body)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::POST('https://oauth.paxos.com/oauth2/token', body = request_body)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$access_token)
 }
 
@@ -42,11 +42,11 @@ paxos_bearer_token <- function(client_id, client_secret, scope) {
 
 paxos_list_profiles <- function(client_id, client_secret) {
   token <- paxos_bearer_token(client_id, client_secret, 'funding:read_profile')
-  res = httr::GET('https://api.paxos.com/v2/profiles',
+  res <- httr::GET('https://api.paxos.com/v2/profiles',
                   httr::add_headers('Content-Type' = 'application/json'
                                     , 'accept' = 'application/json'
                                     , 'Authorization' = paste('Bearer ', token, sep = '')
                   ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$items)
 }

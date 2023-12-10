@@ -13,6 +13,5 @@ returns a dataframe of all categories on CoinGecko.
 coingecko_categories
 }
 \examples{
-\dontrun{
-categories <- coingecko_categories()}
+coingecko_categories()
 }

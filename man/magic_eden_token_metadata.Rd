@@ -17,7 +17,6 @@ address.
 magic_eden_token_metadata
 }
 \examples{
-\dontrun{
 mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
-metadata <- magic_eden_token_metadata(mint_address)}
+magic_eden_token_metadata(mint_address)
 }

@@ -23,9 +23,8 @@ returns a dataframe containing Huobi candle data
 huobi_candles
 }
 \examples{
-\dontrun{
 period <- '1day'
 size <- '200'
 symbol <- 'btcusdt'
-candles <- huobi_candles(period, size, symbol)}
+huobi_candles(period, size, symbol)
 }

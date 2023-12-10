@@ -18,6 +18,5 @@ ids, symbols, and names
 coingecko_coins
 }
 \examples{
-\dontrun{
-coins <- coingecko_coins()}
+coingecko_coins()
 }

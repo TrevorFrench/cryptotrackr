@@ -23,7 +23,6 @@ wallet.
 magic_eden_transactions
 }
 \examples{
-\dontrun{
 wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-transactions <- magic_eden_transactions(wallet)}
+magic_eden_transactions(wallet)
 }

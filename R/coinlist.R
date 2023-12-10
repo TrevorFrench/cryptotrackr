@@ -1,14 +1,15 @@
 #' coinlist_symbols
 #'
-#' @return returns a dataframe with information about symbols available on Coinlist Pro
+#' @return returns a dataframe with information about symbols available on
+#' Coinlist Pro
 #' @export
 #'
 #' @examples
 #' coinlist_symbols()
 
 coinlist_symbols <- function() {
-  res = httr::GET('https://trade-api.coinlist.co/v1/symbols')
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET('https://trade-api.coinlist.co/v1/symbols')
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$symbols)
 }
 
@@ -86,14 +87,14 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body) {
   coinlist_time <- coinlist_time()
   sig <- coinlist_signature(api_secret, coinlist_time, method, path, body)
   url <- paste('https://trade-api.coinlist.co', path, sep = '')
-  res = httr::GET(url
+  res <- httr::GET(url
                   , httr::accept("application/json")
                   , body = body
                   , httr::add_headers('CL-ACCESS-KEY' = api_key
                                       , 'CL-ACCESS-SIG' = sig
                                       , 'CL-ACCESS-TIMESTAMP' = coinlist_time
                   ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 

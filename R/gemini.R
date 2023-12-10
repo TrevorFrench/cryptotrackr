@@ -29,7 +29,7 @@ gemini_api_call <- function(key, secret, path, method) {
   payload <- stringi::stri_enc_toutf8(payload)
   payload <- jsonlite::base64_enc(payload)
   signature <- openssl::sha384(payload, key = secret)
-  res = httr::VERB(method
+  res <- httr::VERB(method
                    , url
                    , httr::add_headers('Content-Type' = 'text/plain'
                                      , 'Content-Length' = '0'
@@ -38,7 +38,7 @@ gemini_api_call <- function(key, secret, path, method) {
                                      , 'X-GEMINI-PAYLOAD' = payload
                                      , 'Cache-Control' = 'no-cache'
                    ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -72,8 +72,8 @@ gemini_trades <- function(key, secret) {
 #' gemini_symbols()
 
 gemini_symbols <- function() {
-  res = httr::GET("https://api.gemini.com/v1/symbols")
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET("https://api.gemini.com/v1/symbols")
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -87,7 +87,7 @@ gemini_symbols <- function() {
 #' gemini_price_feed()
 
 gemini_price_feed <- function() {
-  res = httr::GET("https://api.gemini.com/v1/pricefeed")
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET("https://api.gemini.com/v1/pricefeed")
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }

@@ -18,6 +18,5 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-trades
 crypto_dot_com_get_trades
 }
 \examples{
-\dontrun{
-trades <- crypto_dot_com_get_trades("BTC_USDT")}
+crypto_dot_com_get_trades("BTC_USDT")
 }

@@ -16,7 +16,6 @@ returns a list with price and volume data for specified symbol
 blockchain_dot_com_ticker_symbol
 }
 \examples{
-\dontrun{
 symbol <- 'BTC-USD'
-ticker_data <- blockchain_dot_com_ticker_symbol(symbol)}
+blockchain_dot_com_ticker_symbol(symbol)
 }

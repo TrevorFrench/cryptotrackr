@@ -18,8 +18,7 @@ returns a list with the last price of your specified currency pair.
 cex_io_last_price
 }
 \examples{
-\dontrun{
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
-last_price <- cex_io_last_price(symbol_1, symbol_2)}
+cex_io_last_price(symbol_1, symbol_2)
 }

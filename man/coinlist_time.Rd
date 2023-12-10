@@ -13,6 +13,5 @@ returns a timestamp for use in your Coinlist API calls
 coinlist_time
 }
 \examples{
-\dontrun{
-coinlist_time <- coinlist_time()}
+coinlist_time()
 }

@@ -118,7 +118,7 @@ kucoin_api_call <- function(url
                     )
                     , query = query
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -221,6 +221,6 @@ kucoin_symbols_list <- function(market = NULL){
                     , httr::accept("application/json")
                     , query = query
   )
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$data)
 }

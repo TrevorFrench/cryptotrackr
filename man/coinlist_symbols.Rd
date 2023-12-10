@@ -7,12 +7,12 @@
 coinlist_symbols()
 }
 \value{
-returns a dataframe with information about symbols available on Coinlist Pro
+returns a dataframe with information about symbols available on
+Coinlist Pro
 }
 \description{
 coinlist_symbols
 }
 \examples{
-\dontrun{
-symbols <- coinlist_symbols()}
+coinlist_symbols()
 }

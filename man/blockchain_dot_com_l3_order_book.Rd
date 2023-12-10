@@ -17,9 +17,8 @@ the specified symbol
 blockchain_dot_com_l3_order_book
 }
 \examples{
-\dontrun{
 symbol <- 'BTC-USD'
 l3_order_book <- blockchain_dot_com_l3_order_book(symbol)
-bids <- l3_order_book$bids
-asks <- l3_order_book$asks}
+l3_order_book$bids
+l3_order_book$asks
 }

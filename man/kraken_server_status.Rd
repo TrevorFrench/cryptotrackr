@@ -13,6 +13,5 @@ returns a list with Kraken's server status along with a timestamp
 kraken_server_status
 }
 \examples{
-\dontrun{
-status <- kraken_server_status()}
+kraken_server_status()
 }

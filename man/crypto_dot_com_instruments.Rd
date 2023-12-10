@@ -14,6 +14,5 @@ Crypto.com
 crypto_dot_com_instruments
 }
 \examples{
-\dontrun{
-instruments <- crypto_dot_com_instruments()}
+crypto_dot_com_instruments()
 }

@@ -14,6 +14,5 @@ returns a dataframe containing pairs, their current price, and their
 gemini_price_feed
 }
 \examples{
-\dontrun{
-prices <- gemini_price_feed()}
+gemini_price_feed()
 }

@@ -13,6 +13,5 @@ returns a list with various data for all symbols
 blockchain_dot_com_symbols
 }
 \examples{
-\dontrun{
-symbol_data <- blockchain_dot_com_symbols()}
+blockchain_dot_com_symbols()
 }

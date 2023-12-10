@@ -13,6 +13,5 @@ returns a string with the current timestamp in ISO 8601 format
 okcoin_time
 }
 \examples{
-\dontrun{
-formatted_time <- okcoin_time()}
+okcoin_time()
 }

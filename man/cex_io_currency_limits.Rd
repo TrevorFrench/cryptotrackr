@@ -13,6 +13,5 @@ returns a dataframe with information about currency limits on CEX.io.
 cex_io_currency_limits
 }
 \examples{
-\dontrun{
-currency_limits <- cex_io_currency_limits()}
+cex_io_currency_limits()
 }
