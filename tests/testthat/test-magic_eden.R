@@ -1,17 +1,23 @@
 library(testthat)
 
-context('Kucoin Public Calls')
+context('Magic Eden Public Calls')
 
-test_that('the "kucoin_time" function returns a character', {
-  expect_type(kucoin_time(), 'character')
+test_that('the "magic_eden_collection_stats" function returns a list with a
+          "symbol" element that matches the provided symbol', {
+  symbol <- "gothic_degens"
+  resp <- magic_eden_collection_stats(symbol)
+  expect_type(resp, 'list')
+  expect_true(resp$symbol == symbol)
 })
 
-test_that('the "kucoin_symbols_list" function returns a dataframe', {
-  expect_s3_class(kucoin_symbols_list('btc'), 'data.frame')
+test_that('the "magic_eden_tokens_owned" function returns a dataframe', {
+  wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+  resp <- magic_eden_tokens_owned(wallet)
+  expect_s3_class(resp, 'data.frame')
 })
 
-# magic_eden_collection_stats,
-# magic_eden_token_listings, magic_eden_token_metadata,
-# magic_eden_tokens_owned, magic_eden_transactions,
-# okcoin_trading_pairs, okcoin_time
-# bittrex source, c source xt
+test_that('the "magic_eden_transactions" function returns a dataframe', {
+  wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+  resp <- magic_eden_transactions(wallet)
+  expect_s3_class(resp, 'data.frame')
+})
