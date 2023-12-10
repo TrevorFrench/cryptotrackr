@@ -13,6 +13,5 @@ returns a dataframe with information about all currencies known to Coinbase
 coinbase_all_currencies
 }
 \examples{
-\dontrun{
-currencies <- coinbase_all_currencies()}
+coinbase_all_currencies()
 }

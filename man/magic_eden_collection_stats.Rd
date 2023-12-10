@@ -16,7 +16,6 @@ returns a list containing statistics about the specified collection.
 magic_eden_collection_stats
 }
 \examples{
-\dontrun{
 symbol <- "gothic_degens"
-stats <- magic_eden_collection_stats(symbol)}
+magic_eden_collection_stats(symbol)
 }

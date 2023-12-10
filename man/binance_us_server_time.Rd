@@ -13,5 +13,5 @@ returns the Binance.US server time
 binance_us_server_time
 }
 \examples{
-server_time <- binance_us_server_time()
+binance_us_server_time()
 }

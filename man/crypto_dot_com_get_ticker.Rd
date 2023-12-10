@@ -18,6 +18,5 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
 crypto_dot_com_get_ticker
 }
 \examples{
-\dontrun{
-ticker <- crypto_dot_com_get_ticker("BTC_USDT")}
+crypto_dot_com_get_ticker("BTC_USDT")
 }

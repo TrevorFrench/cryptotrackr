@@ -14,6 +14,5 @@ make an API call to Kucoin.
 kucoin_time
 }
 \examples{
-\dontrun{
-time <- kucoin_time()}
+kucoin_time()
 }

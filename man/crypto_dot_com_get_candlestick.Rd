@@ -21,6 +21,5 @@ dataframe containing your candlestick data.
 crypto_dot_com_get_candlestick
 }
 \examples{
-\dontrun{
-candlesticks <- crypto_dot_com_get_candlestick("BTC_USDT")}
+crypto_dot_com_get_candlestick("BTC_USDT")
 }

@@ -30,7 +30,6 @@ returns a dataframe containing all tokens owned by specified wallet.
 magic_eden_tokens_owned
 }
 \examples{
-\dontrun{
 wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-tokens <- magic_eden_tokens_owned(wallet)}
+magic_eden_tokens_owned(wallet)
 }

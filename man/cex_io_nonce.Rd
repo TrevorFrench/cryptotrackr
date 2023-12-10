@@ -13,6 +13,5 @@ returns a nonce for use in your signature
 cex_io_nonce
 }
 \examples{
-\dontrun{
-nonce <- cex_io_nonce()}
+cex_io_nonce()
 }

@@ -14,6 +14,5 @@ cryptocurrency ecosystem.
 coingecko_global_data
 }
 \examples{
-\dontrun{
-global_data <- coingecko_global_data()}
+coingecko_global_data()
 }

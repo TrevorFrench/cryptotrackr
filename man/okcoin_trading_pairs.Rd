@@ -14,6 +14,5 @@ Okcoin
 okcoin_trading_pairs
 }
 \examples{
-\dontrun{
-trading_pairs <- okcoin_trading_pairs()}
+okcoin_trading_pairs()
 }

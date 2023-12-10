@@ -13,6 +13,5 @@ returns a list with Kraken's server time in unix and rfc1123 formats
 kraken_server_time
 }
 \examples{
-\dontrun{
-time <- kraken_server_time()}
+kraken_server_time()
 }

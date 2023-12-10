@@ -41,6 +41,5 @@ returns a list of currency prices
 coingecko_price
 }
 \examples{
-\dontrun{
-prices <- coingecko_price(id = 'bitcoin', vs_currency = 'usd')}
+coingecko_price(id = 'bitcoin', vs_currency = 'usd')
 }

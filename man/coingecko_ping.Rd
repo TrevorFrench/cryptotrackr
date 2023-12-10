@@ -13,6 +13,5 @@ returns the Coingecko API server status
 coingecko_ping
 }
 \examples{
-\dontrun{
-status <- coingecko_ping()}
+coingecko_ping()
 }

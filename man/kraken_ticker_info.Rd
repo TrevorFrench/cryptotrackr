@@ -18,6 +18,5 @@ https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation
 kraken_ticker_info
 }
 \examples{
-\dontrun{
-ticker_info <- kraken_ticker_info("ETHUSD")}
+kraken_ticker_info("ETHUSD")
 }

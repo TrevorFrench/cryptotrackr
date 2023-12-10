@@ -17,7 +17,6 @@ mint address.
 magic_eden_token_listings
 }
 \examples{
-\dontrun{
 mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
-listings <- magic_eden_token_listings(mint_address)}
+magic_eden_token_listings(mint_address)
 }

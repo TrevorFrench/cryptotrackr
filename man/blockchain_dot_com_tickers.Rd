@@ -13,6 +13,5 @@ returns a dataframe with price and volume data for all symbols
 blockchain_dot_com_tickers
 }
 \examples{
-\dontrun{
-tickers <- blockchain_dot_com_tickers()}
+blockchain_dot_com_tickers()
 }

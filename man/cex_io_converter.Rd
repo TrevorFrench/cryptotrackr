@@ -20,9 +20,8 @@ returns the converted amount denominated in symbol_2
 cex_io_converter
 }
 \examples{
-\dontrun{
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
 amount <- '2.5'
-converted <- cex_io_converter(symbol_1, symbol_2, amount)}
+cex_io_converter(symbol_1, symbol_2, amount)
 }

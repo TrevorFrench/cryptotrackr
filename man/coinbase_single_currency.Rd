@@ -16,7 +16,6 @@ returns a list with details related to the specified currency
 coinbase_single_currency
 }
 \examples{
-\dontrun{
 currency <- 'btc'
-currency_data <- coinbase_single_currency(currency)}
+coinbase_single_currency(currency)
 }

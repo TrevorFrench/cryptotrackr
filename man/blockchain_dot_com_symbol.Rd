@@ -16,7 +16,6 @@ returns a list with various data for specified symbol
 blockchain_dot_com_symbol
 }
 \examples{
-\dontrun{
 symbol <- 'BTC-USD'
-symbol_data <- blockchain_dot_com_symbol(symbol)}
+blockchain_dot_com_symbol(symbol)
 }

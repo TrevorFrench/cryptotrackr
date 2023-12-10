@@ -13,6 +13,5 @@ returns a timestamp for use in your Coinbase API calls
 coinbase_time
 }
 \examples{
-\dontrun{
-coinbase_time <- coinbase_time()}
+coinbase_time()
 }
