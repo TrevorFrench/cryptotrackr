@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Okcoin Public Calls')
-
 test_that('the "okcocin_trading_pairs" function returns a dataframe', {
   expect_s3_class(okcoin_trading_pairs(), 'data.frame')
 })

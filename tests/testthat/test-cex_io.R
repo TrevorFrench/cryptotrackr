@@ -1,7 +1,3 @@
-library(testthat)
-
-context('CEX.io Public Calls')
-
 test_that('the "cex_io_ticker" function returns a list regardless of casing', {
   expect_type(cex_io_ticker('BTC', 'usd'), 'list')
 })

@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Gemini Public Calls')
-
 test_that('the "gemini_symbols" function returns a character vector', {
   expect_type(gemini_symbols(), 'character')
 })

@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Coinbase Public Calls')
-
 test_that('the "coinbase_all_currencies" function returns a dataframe', {
   expect_s3_class(coinbase_all_currencies(), 'data.frame')
 })

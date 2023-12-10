@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Kraken Public Calls')
-
 test_that('the "kraken_server_time" function returns unixtime as an integer and
           rfc1123 as a character', {
   expect_type(kraken_server_time()$unixtime, 'integer')

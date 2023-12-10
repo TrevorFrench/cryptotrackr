@@ -1,7 +1,3 @@
-library(testthat)
-
-context('CoinGecko Public Calls')
-
 test_that('the "coingecko_ping" function returns a list', {
   expect_type(coingecko_ping(), 'list')
   Sys.sleep(2)

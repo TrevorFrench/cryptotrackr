@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Crypto.com Public Calls')
-
 test_that('the "crypto_dot_com_instruments" function returns a dataframe', {
   expect_s3_class(crypto_dot_com_instruments(), 'data.frame')
 })

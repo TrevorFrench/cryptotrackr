@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Magic Eden Public Calls')
-
 test_that('the "magic_eden_collection_stats" function returns a list with a
           "symbol" element that matches the provided symbol', {
   symbol <- "gothic_degens"

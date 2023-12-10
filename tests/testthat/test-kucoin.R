@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Kucoin Public Calls')
-
 test_that('the "kucoin_time" function returns a character', {
   expect_type(kucoin_time(), 'character')
 })

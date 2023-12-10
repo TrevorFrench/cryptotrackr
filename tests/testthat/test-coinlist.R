@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Coinlist Public Calls')
-
 test_that('the "coinlist_symbols" function returns a dataframe', {
   expect_s3_class(coinlist_symbols(), 'data.frame')
 })

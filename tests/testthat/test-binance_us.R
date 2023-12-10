@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Binance.US Public Calls')
-
 test_that('the "binance_us_server_time" function returns a double', {
   expect_type(binance_us_server_time(), 'double')
 })

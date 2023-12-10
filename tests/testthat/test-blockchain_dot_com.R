@@ -1,7 +1,3 @@
-library(testthat)
-
-context('Blockchain.com Public Calls')
-
 test_that('the "blockchain_dot_com_symbols" function returns a list', {
   expect_type(blockchain_dot_com_symbols(), 'list')
 })
