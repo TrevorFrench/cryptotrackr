@@ -8,9 +8,9 @@
 #' okcoin_trading_pairs()
 
 okcoin_trading_pairs <- function() {
-  res <- httr::GET("https://www.okcoin.com/api/spot/v3/instruments")
+  res <- httr::GET("https://www.okcoin.com/api/v5/public/instruments?instType=SPOT")
   data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  return(data$data)
 }
 
 #' okcoin_orders

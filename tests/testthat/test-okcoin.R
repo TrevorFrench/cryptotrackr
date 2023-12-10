@@ -1,11 +1,9 @@
 library(testthat)
 
-context('Magic Eden Public Calls')
+context('Okcoin Public Calls')
 
-test_that('the "magic_eden_tokens_owned" function returns a dataframe', {
-  wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-  resp <- magic_eden_tokens_owned(wallet)
-  expect_s3_class(resp, 'data.frame')
+test_that('the "okcocin_trading_pairs" function returns a dataframe', {
+  expect_s3_class(okcoin_trading_pairs(), 'data.frame')
 })
 
 
