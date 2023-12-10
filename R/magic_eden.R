@@ -20,8 +20,8 @@ magic_eden_transactions <- function(wallet, offset = NULL, limit = NULL) {
                , '/activities'
                , sep = '')
   query <- list(offset = offset, limit = limit)
-  res = httr::GET(url, query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url, query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -51,8 +51,8 @@ magic_eden_tokens_owned <- function(wallet
                , '/tokens'
                , sep = '')
   query <- list(offset = offset, limit = limit, listStatus = list_status)
-  res = httr::GET(url, query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url, query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -72,8 +72,8 @@ magic_eden_token_metadata <- function(mint_address) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/tokens/'
                , mint_address
                , sep = '')
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -94,8 +94,8 @@ magic_eden_token_listings <- function(mint_address) {
                , mint_address
                , '/listings'
                , sep = '')
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -115,7 +115,7 @@ magic_eden_collection_stats <- function(symbol) {
                , symbol
                , '/stats'
                , sep = '')
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }

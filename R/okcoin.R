@@ -8,8 +8,8 @@
 #' okcoin_trading_pairs()
 
 okcoin_trading_pairs <- function() {
-  res = httr::GET("https://www.okcoin.com/api/spot/v3/instruments")
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET("https://www.okcoin.com/api/spot/v3/instruments")
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
@@ -143,13 +143,13 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
 #' data <- okcoin_api_call()}
 
 okcoin_api_call <- function(url, key, signature, formatted_time, passphrase) {
-  res = httr::GET(url,
+  res <- httr::GET(url,
               httr::add_headers('Content-Type' = 'application/json'
                           , 'OK-ACCESS-KEY' = key
                           , 'OK-ACCESS-SIGN' = signature
                           , 'OK-ACCESS-TIMESTAMP' = formatted_time
                           , 'OK-ACCESS-PASSPHRASE' = passphrase
               ))
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }

@@ -1,6 +1,7 @@
 #' coinlist_symbols
 #'
-#' @return returns a dataframe with information about symbols available on Coinlist Pro
+#' @return returns a dataframe with information about symbols available on
+#' Coinlist Pro
 #' @export
 #'
 #' @examples

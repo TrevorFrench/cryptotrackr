@@ -28,9 +28,9 @@ nifty_gateway_user_nifties <- function(username
                 , limit = limit
                 , offset = offset
                 )
-  res = httr::GET(url
+  res <- httr::GET(url
                   , query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$results)
 }
 
@@ -56,7 +56,7 @@ nifty_gateway_creators <- function(username, limit = NULL, offset = NULL) {
                , '/collectors/'
                , sep = '')
   query <- list(limit = limit, offset = offset)
-  res = httr::GET(url, query = query)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url, query = query)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$results)
 }

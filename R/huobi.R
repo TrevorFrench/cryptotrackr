@@ -24,7 +24,7 @@ huobi_candles <- function(period, size, symbol) {
                   , '&symbol=', symbol
                   , sep = '')
   url <- paste(base, path, params, sep = '')
-  res = httr::GET(url)
-  data = jsonlite::fromJSON(rawToChar(res$content))
+  res <- httr::GET(url)
+  data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$data)
 }
