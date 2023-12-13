@@ -111,9 +111,9 @@ solana_assemble_request_body <-
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_signature_for_address(url)}
+#' address <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+#' data <- solana_get_signature_for_address(url,address)
 
 solana_get_signature_for_address <-
   function(url, address, limit = NULL) {
@@ -122,7 +122,7 @@ solana_get_signature_for_address <-
     config_object <- solana_assemble_list(character_vector)
     params <- paste('["', address, '", {', config_object, '}]', sep = '')
     request_body <-
-      asolana_ssemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
+      solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
     solana_api_call(url, request_body)
   }
 
