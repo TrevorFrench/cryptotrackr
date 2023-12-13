@@ -1,5 +1,8 @@
 <a href='https://github.com/TrevorFrench/cryptotrackr'><img src="https://raw.githubusercontent.com/TrevorFrench/cryptotrackr/main/man/figures/cryptotrackr.png" align="right" height="300"/></a>
 
+[![CRAN status](https://www.r-pkg.org/badges/version/cryptotrackr)](https://cran.r-project.org/package=cryptotrackr)
+[![CRAN RStudio mirror downloads](https://cranlogs.r-pkg.org/badges/grand-total/cryptotrackr?color=blue)](https://r-pkg.org/pkg/cryptotrackr)
+
 # cryptotrackr
 
 ## 📖 Description
