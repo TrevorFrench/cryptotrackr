@@ -129,7 +129,7 @@ solana_get_signature_for_address <-
 #' solana_get_account_info
 #'
 #' @param url the RPC url for your API call
-#' @param address the address for which you're retrieving account info
+#' @param pubkey the pubkey for which you're retrieving account info
 #'
 #' @return Returns all information associated with the account of provided Pubkey
 #' @export
@@ -137,11 +137,11 @@ solana_get_signature_for_address <-
 #' @examples
 #' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' address <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-#' data <- solana_get_account_info(url, address)}
+#' pubkey <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+#' data <- solana_get_account_info(url, pubkey)}
 
-solana_get_account_info <- function(url, address) {
-  params <- paste('["', address, '"]', sep = '')
+solana_get_account_info <- function(url, pubkey) {
+  params <- paste('["', pubkey, '"]', sep = '')
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
   solana_api_call(url, request_body)
