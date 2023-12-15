@@ -112,7 +112,7 @@ solana_assemble_request_body <-
 #'
 #' @examples
 #' url <- "https://api.devnet.solana.com"
-#' address <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+#' address <- "Vote111111111111111111111111111111111111111"
 #' data <- solana_get_signature_for_address(url,address)
 
 solana_get_signature_for_address <-
@@ -123,7 +123,8 @@ solana_get_signature_for_address <-
     params <- paste('["', address, '", {', config_object, '}]', sep = '')
     request_body <-
       solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
-    solana_api_call(url, request_body)
+    data <- solana_api_call(url, request_body)
+    return(data$result)
   }
 
 #' solana_get_account_info
@@ -137,14 +138,15 @@ solana_get_signature_for_address <-
 #' @examples
 #' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' pubkey <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
+#' pubkey <- "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"
 #' data <- solana_get_account_info(url, pubkey)}
 
 solana_get_account_info <- function(url, pubkey) {
   params <- paste('["', pubkey, '"]', sep = '')
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result$value)
 }
 
 #' solana_get_block_height
@@ -159,10 +161,11 @@ solana_get_account_info <- function(url, pubkey) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_block_height(url)}
 
-solana_get_block_height <- function(url, address) {
+solana_get_block_height <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
 }
 
 #' solana_get_health
@@ -177,10 +180,11 @@ solana_get_block_height <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_health(url)}
 
-solana_get_health <- function(url, address) {
+solana_get_health <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
 }
 
 #' solana_get_version
@@ -195,10 +199,11 @@ solana_get_health <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_version(url)}
 
-solana_get_version <- function(url, address) {
+solana_get_version <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
 }
 
 #' solana_get_supply
@@ -213,10 +218,11 @@ solana_get_version <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_supply(url)}
 
-solana_get_supply <- function(url, address) {
+solana_get_supply <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result$value)
 }
 
 #' solana_get_identity
@@ -231,10 +237,11 @@ solana_get_supply <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_identity(url)}
 
-solana_get_identity <- function(url, address) {
+solana_get_identity <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result$identity)
 }
 
 #' solana_get_inflation_rate
@@ -249,10 +256,11 @@ solana_get_identity <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_inflation_rate(url)}
 
-solana_get_inflation_rate <- function(url, address) {
+solana_get_inflation_rate <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
 }
 
 #' solana_get_genesis_hash
@@ -267,8 +275,9 @@ solana_get_inflation_rate <- function(url, address) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_genesis_hash(url)}
 
-solana_get_genesis_hash <- function(url, address) {
+solana_get_genesis_hash <- function(url) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
-  solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
 }
