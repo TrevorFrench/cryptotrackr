@@ -12,13 +12,14 @@ solana_api_call(url, request_body)
 \item{request_body}{the request body for your API call}
 }
 \value{
-returns data from your solana API call
+returns data from your Solana API call
 }
 \description{
 solana_api_call
 }
 \examples{
-\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_api_call(url)}
+request_body <-
+  solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
+data <- solana_api_call(url, request_body)
 }
