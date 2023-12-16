@@ -16,12 +16,11 @@ Returns your config object
 solana_assemble_list
 }
 \examples{
-\dontrun{
 jsonrpc <- solana_assemble_key_pair('jsonrpc', jsonrpc)
 id <- solana_assemble_key_pair('id', id)
 method <- solana_assemble_key_pair('method', method)
 params <- solana_assemble_key_pair('params', params)
 character_vector <- c(jsonrpc, id, method, params)
 body <- solana_assemble_list(character_vector)
-request_body <- paste('{', body, '}', sep = '')}
+request_body <- paste('{', body, '}', sep = '')
 }

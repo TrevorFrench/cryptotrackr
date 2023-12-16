@@ -22,8 +22,7 @@ Returns the request body for your solana API call
 solana_assemble_request_body
 }
 \examples{
-\dontrun{
 limit <- solana_assemble_key_pair('limit', limit)
 params <- paste('["',address,'", {',limit,'}]', sep = '')
-request_body <- solana_assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)}
+request_body <- solana_assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
 }

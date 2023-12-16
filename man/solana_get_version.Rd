@@ -16,7 +16,6 @@ Returns the current Solana version running on the node
 solana_get_version
 }
 \examples{
-\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_version(url)}
+data <- solana_get_version(url)
 }

@@ -19,7 +19,6 @@ exist
 solana_assemble_key_pair
 }
 \examples{
-\dontrun{
 limit <- NULL
-limit <- solana_assemble_key_pair('limit', limit)}
+limit <- solana_assemble_key_pair('limit', limit)
 }
