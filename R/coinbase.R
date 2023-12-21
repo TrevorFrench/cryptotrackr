@@ -147,3 +147,40 @@ coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) 
   data <- coinbase_api_call(api_key, api_secret, method, path, body, query)
   return(data)
 }
+
+#' coinbase_candles
+#'
+#' @param api_key your Coinbase API key
+#' @param api_secret your Coinbase API secret
+#' @param product_id the trading pair.
+#' @param start timestamp for starting range of aggregations, in UNIX time.
+#' @param end timestamp for ending range of aggregations, in UNIX time.
+#' @param granularity time slice value for each candle. Options: "ONE_MINUTE",
+#' "FIVE_MINUTE", "FIFTEEN_MINUTE", "THIRTY_MINUTE", "ONE_HOUR", "TWO_HOUR",
+#' "SIX_HOUR", or "ONE_DAY"
+#'
+#' @return returns a dataframe with your Coinbase candle data.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' api_key <- "..."
+#' api_secret <- "..."
+#' end <- coinbase_time()
+#' end_timestamp <- as.POSIXct(end, origin = "1970-01-01", tz = "UTC")
+#' start_timestamp <- end_timestamp - 20 * 60  # 20 minutes in seconds
+#' start <- as.numeric(start_timestamp)
+#' coinbase_candles(api_key, api_secret, 'BTC-USD', start, end, 'ONE_MINUTE')}
+
+coinbase_candles <- function(api_key, api_secret, product_id, start, end, granularity) {
+  path <- '/api/v3/brokerage/products/BTC-USD/candles'
+  method <- 'GET'
+  body <- ''
+  query <- list(
+    start = start,
+    end = end,
+    granularity = granularity
+  )
+  data <- coinbase_api_call(api_key, api_secret, method, path, body, query)
+  return(data$candles)
+}
