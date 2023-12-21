@@ -100,16 +100,18 @@ coinbase_signature <- function(api_secret, coinbase_time, method, path, body) {
 #' body <- ""
 #' data <- coinbase_api_call(api_key, api_secret, method, path, body)}
 
-coinbase_api_call <- function(api_key, api_secret, method, path, body) {
+coinbase_api_call <- function(api_key, api_secret, method, path, body, query = NULL) {
   coinbase_time <- coinbase_time()
   sig <- coinbase_signature(api_secret, coinbase_time, method, path, body)
   url <- paste('https://api.coinbase.com', path, sep = '')
-  res <- httr::GET(url
+  res <- httr::VERB(method
+                  , url
                   , body = body
                   , httr::add_headers('CB-ACCESS-KEY' = api_key
                                       , 'CB-ACCESS-SIGN' = sig
                                       , 'CB-ACCESS-TIMESTAMP' = coinbase_time
-                  ))
+                  )
+                  , query = query)
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
