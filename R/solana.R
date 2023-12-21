@@ -55,13 +55,9 @@ solana_assemble_key_pair <- function(key, pair) {
 #' @export
 #'
 #' @examples
-#' jsonrpc <- solana_assemble_key_pair('jsonrpc', '2.0')
-#' id <- solana_assemble_key_pair('id', id)
-#' method <- solana_assemble_key_pair('method', method)
-#' params <- solana_assemble_key_pair('params', params)
-#' character_vector <- c(jsonrpc, id, method, params)
-#' body <- solana_assemble_list(character_vector)
-#' request_body <- paste('{', body, '}', sep = '')
+#' limit <- solana_assemble_key_pair('limit', NULL)
+#' character_vector <- c(limit)
+#' config_object <- solana_assemble_list(character_vector)
 
 solana_assemble_list <- function(character_vector) {
   character_vector <- character_vector[character_vector != '']
@@ -80,9 +76,12 @@ solana_assemble_list <- function(character_vector) {
 #' @export
 #'
 #' @examples
-#' limit <- solana_assemble_key_pair('limit', limit)
-#' params <- paste('["',address,'", {',limit,'}]', sep = '')
-#' request_body <- solana_assemble_request_body('2.0', 'null', 'getSignaturesForAddress', params)
+#' limit <- solana_assemble_key_pair('limit', NULL)
+#' character_vector <- c(limit)
+#' config_object <- solana_assemble_list(character_vector)
+#' address <- "Vote111111111111111111111111111111111111111"
+#' params <- paste('["', address, '", {', config_object, '}]', sep = '')
+#' solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
 
 solana_assemble_request_body <-
   function(jsonrpc, id, method, params) {
