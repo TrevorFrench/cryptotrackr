@@ -121,8 +121,13 @@ coinbase_api_call <- function(api_key, api_secret, method, path, body, query = N
 #'
 #' @param api_key your Coinbase API key
 #' @param api_secret your Coinbase API secret
+#' @param limit the maximum number of results to return. The maximum limit is
+#' 250 while the default value is 49.
+#' @param cursor Cursor used for pagination. When provided, the response returns
+#' responses after this cursor.
 #'
-#' @return returns a dataframe with information about your Coinbase accounts
+#' @return returns a list with a dataframe with information about your Coinbase
+#' accounts along with your cursor for use in pagination.
 #' @export
 #'
 #' @examples
@@ -131,10 +136,14 @@ coinbase_api_call <- function(api_key, api_secret, method, path, body, query = N
 #' api_secret <- "..."
 #' accounts <- coinbase_accounts(api_key, api_secret)}
 
-coinbase_accounts <- function(api_key, api_secret) {
+coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) {
   path <- '/api/v3/brokerage/accounts'
   method <- 'GET'
   body <- ''
-  data <- coinbase_api_call(api_key, api_secret, method, path, body)
-  return(data$accounts)
+  query <- list(
+    limit = limit,
+    cursor = cursor
+  )
+  data <- coinbase_api_call(api_key, api_secret, method, path, body, query)
+  return(data)
 }
