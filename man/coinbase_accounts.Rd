@@ -4,15 +4,22 @@
 \alias{coinbase_accounts}
 \title{coinbase_accounts}
 \usage{
-coinbase_accounts(api_key, api_secret)
+coinbase_accounts(api_key, api_secret, limit = NULL, cursor = NULL)
 }
 \arguments{
 \item{api_key}{your Coinbase API key}
 
 \item{api_secret}{your Coinbase API secret}
+
+\item{limit}{the maximum number of results to return. The maximum limit is
+250 while the default value is 49.}
+
+\item{cursor}{Cursor used for pagination. When provided, the response returns
+responses after this cursor.}
 }
 \value{
-returns a dataframe with information about your Coinbase accounts
+returns a list with a dataframe with information about your Coinbase
+accounts along with your cursor for use in pagination.
 }
 \description{
 coinbase_accounts
