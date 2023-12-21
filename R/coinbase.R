@@ -87,6 +87,7 @@ coinbase_signature <- function(api_secret, coinbase_time, method, path, body) {
 #' @param method "GET" or "POST"
 #' @param path the path of your API call
 #' @param body the body of your API call
+#' @param query the query for your coinbase API call as a list
 #'
 #' @return returns the response from your Coinbase API call
 #' @export
