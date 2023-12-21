@@ -4,7 +4,7 @@
 \alias{coinbase_api_call}
 \title{coinbase_api_call}
 \usage{
-coinbase_api_call(api_key, api_secret, method, path, body)
+coinbase_api_call(api_key, api_secret, method, path, body, query = NULL)
 }
 \arguments{
 \item{api_key}{your Coinbase API key}
@@ -16,6 +16,8 @@ coinbase_api_call(api_key, api_secret, method, path, body)
 \item{path}{the path of your API call}
 
 \item{body}{the body of your API call}
+
+\item{query}{the query for your coinbase API call as a list}
 }
 \value{
 returns the response from your Coinbase API call
