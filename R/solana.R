@@ -55,7 +55,7 @@ solana_assemble_key_pair <- function(key, pair) {
 #' @export
 #'
 #' @examples
-#' jsonrpc <- solana_assemble_key_pair('jsonrpc', jsonrpc)
+#' jsonrpc <- solana_assemble_key_pair('jsonrpc', '2.0')
 #' id <- solana_assemble_key_pair('id', id)
 #' method <- solana_assemble_key_pair('method', method)
 #' params <- solana_assemble_key_pair('params', params)
