@@ -290,4 +290,49 @@ solana_get_recent_prioritization_fees <- function(url) {
   return(data$result)
 }
 
+#' solana_get_slot
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns the slot that has reached the given or default commitment
+#' level.
+#' @export
+#'
+#' @examples
+#' url <- "https://api.devnet.solana.com"
+#' data <- solana_get_slot(url)
 
+solana_get_slot <- function(url) {
+  request_body <-
+    solana_assemble_request_body('"2.0"', '1', '"getSlot"', NULL)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
+}
+
+#' solana_get_block
+#'
+#' @param url the RPC url for your API call
+#' @param slot slot number, as u64 integer
+#'
+#' @return Returns identity and transaction information about a confirmed block
+#' in the ledger.
+#' @export
+#'
+#' @examples
+#' url <- "https://api.devnet.solana.com"
+#' slot <- solana_get_slot(url)
+#' data <- solana_get_block(url, slot)
+
+solana_get_block <- function(url, slot) {
+  params <- paste('[', slot, ',
+      {
+        "encoding": "json",
+        "maxSupportedTransactionVersion":0,
+        "transactionDetails":"full",
+        "rewards":false
+      }]', sep = '')
+  request_body <-
+    solana_assemble_request_body('"2.0"', '1', '"getBlock"', params)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
+}
