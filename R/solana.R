@@ -271,3 +271,23 @@ solana_get_genesis_hash <- function(url) {
   data <- solana_api_call(url, request_body)
   return(data$result)
 }
+
+#' solana_get_recent_prioritization_fees
+#'
+#' @param url the RPC url for your API call
+#'
+#' @return Returns a list of prioritization fees from recent blocks.
+#' @export
+#'
+#' @examples
+#' url <- "https://api.devnet.solana.com"
+#' data <- solana_get_recent_prioritization_fees(url)
+
+solana_get_recent_prioritization_fees <- function(url) {
+  request_body <-
+    solana_assemble_request_body('"2.0"', '1', '"getRecentPrioritizationFees"', NULL)
+  data <- solana_api_call(url, request_body)
+  return(data$result)
+}
+
+
