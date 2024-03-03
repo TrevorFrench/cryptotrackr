@@ -53,3 +53,18 @@ test_that('the "solana_get_genesis_hash" function returns a character', {
   data <- solana_get_genesis_hash(url)
   expect_type(data, 'character')
 })
+
+test_that('the "solana_get_slot" function returns an integer and the
+          "solana_get_block" function returns a list', {
+  url <- "https://api.devnet.solana.com"
+  slot <- solana_get_slot(url)
+  data <- solana_get_block(url, slot)
+  expect_type(slot, 'integer')
+  expect_type(data, 'list')
+})
+
+test_that('the "solana_get_recent_prioritization_fees" function returns a list', {
+  url <- "https://api.devnet.solana.com"
+  data <- solana_get_recent_prioritization_fees(url)
+  expect_type(data, 'list')
+})
