@@ -7,10 +7,11 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
 #' request_body <-
 #'   solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
-#' data <- solana_api_call(url, request_body)
+#' data <- solana_api_call(url, request_body)}
 
 solana_api_call <- function(url, request_body) {
   headers <- c("Content-Type" = "application/json")
@@ -76,12 +77,13 @@ solana_assemble_list <- function(character_vector) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' limit <- solana_assemble_key_pair('limit', NULL)
 #' character_vector <- c(limit)
 #' config_object <- solana_assemble_list(character_vector)
 #' address <- "Vote111111111111111111111111111111111111111"
 #' params <- paste('["', address, '", {', config_object, '}]', sep = '')
-#' solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
+#' solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)}
 
 solana_assemble_request_body <-
   function(jsonrpc, id, method, params) {
@@ -108,9 +110,10 @@ solana_assemble_request_body <-
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
 #' address <- "Vote111111111111111111111111111111111111111"
-#' data <- solana_get_signature_for_address(url,address)
+#' data <- solana_get_signature_for_address(url,address)}
 
 solana_get_signature_for_address <-
   function(url, address, limit = NULL) {
@@ -133,9 +136,10 @@ solana_get_signature_for_address <-
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
 #' pubkey <- "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"
-#' data <- solana_get_account_info(url, pubkey)
+#' data <- solana_get_account_info(url, pubkey)}
 
 solana_get_account_info <- function(url, pubkey) {
   params <- paste('["', pubkey, '"]', sep = '')
@@ -153,8 +157,9 @@ solana_get_account_info <- function(url, pubkey) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_block_height(url)
+#' data <- solana_get_block_height(url)}
 
 solana_get_block_height <- function(url) {
   request_body <-
@@ -171,8 +176,9 @@ solana_get_block_height <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_health(url)
+#' data <- solana_get_health(url)}
 
 solana_get_health <- function(url) {
   request_body <-
@@ -189,8 +195,9 @@ solana_get_health <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_version(url)
+#' data <- solana_get_version(url)}
 
 solana_get_version <- function(url) {
   request_body <-
@@ -226,8 +233,9 @@ solana_get_supply <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_identity(url)
+#' data <- solana_get_identity(url)}
 
 solana_get_identity <- function(url) {
   request_body <-
@@ -244,8 +252,9 @@ solana_get_identity <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_inflation_rate(url)
+#' data <- solana_get_inflation_rate(url)}
 
 solana_get_inflation_rate <- function(url) {
   request_body <-
@@ -262,8 +271,9 @@ solana_get_inflation_rate <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_genesis_hash(url)
+#' data <- solana_get_genesis_hash(url)}
 
 solana_get_genesis_hash <- function(url) {
   request_body <-
@@ -280,8 +290,9 @@ solana_get_genesis_hash <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_recent_prioritization_fees(url)
+#' data <- solana_get_recent_prioritization_fees(url)}
 
 solana_get_recent_prioritization_fees <- function(url) {
   request_body <-
@@ -299,8 +310,9 @@ solana_get_recent_prioritization_fees <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
-#' data <- solana_get_slot(url)
+#' data <- solana_get_slot(url)}
 
 solana_get_slot <- function(url) {
   request_body <-
@@ -319,9 +331,10 @@ solana_get_slot <- function(url) {
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' url <- "https://api.devnet.solana.com"
 #' slot <- solana_get_slot(url)
-#' data <- solana_get_block(url, slot)
+#' data <- solana_get_block(url, slot)}
 
 solana_get_block <- function(url, slot) {
   params <- paste('[', slot, ',
