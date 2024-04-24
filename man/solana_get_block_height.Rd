@@ -16,6 +16,7 @@ Returns the current block height of the node
 solana_get_block_height
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_block_height(url)
+data <- solana_get_block_height(url)}
 }

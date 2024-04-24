@@ -17,6 +17,7 @@ level.
 solana_get_slot
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_slot(url)
+data <- solana_get_slot(url)}
 }

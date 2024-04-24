@@ -16,6 +16,7 @@ Returns a list of prioritization fees from recent blocks.
 solana_get_recent_prioritization_fees
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_recent_prioritization_fees(url)
+data <- solana_get_recent_prioritization_fees(url)}
 }

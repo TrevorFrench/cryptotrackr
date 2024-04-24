@@ -19,7 +19,8 @@ in the ledger.
 solana_get_block
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
 slot <- solana_get_slot(url)
-data <- solana_get_block(url, slot)
+data <- solana_get_block(url, slot)}
 }
