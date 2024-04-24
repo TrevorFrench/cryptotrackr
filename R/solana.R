@@ -21,7 +21,7 @@ solana_api_call <- function(url, request_body) {
   if (httr::status_code(response) == 200) {
     return(httr::content(response))
   } else {
-    print(httr::content(response, as = "text"))
+    # print(httr::content(response, as = "text"))
     stop("Request failed with status code: ",
          httr::status_code(response))
   }
