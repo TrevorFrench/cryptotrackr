@@ -23,7 +23,8 @@ the provided signature or most recent confirmed block
 solana_get_signature_for_address
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
 address <- "Vote111111111111111111111111111111111111111"
-data <- solana_get_signature_for_address(url,address)
+data <- solana_get_signature_for_address(url,address)}
 }

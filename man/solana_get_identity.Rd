@@ -16,6 +16,7 @@ Returns the identity pubkey for the current node
 solana_get_identity
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_identity(url)
+data <- solana_get_identity(url)}
 }

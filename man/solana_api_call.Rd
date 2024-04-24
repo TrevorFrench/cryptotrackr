@@ -18,8 +18,9 @@ returns data from your Solana API call
 solana_api_call
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
 request_body <-
   solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
-data <- solana_api_call(url, request_body)
+data <- solana_api_call(url, request_body)}
 }

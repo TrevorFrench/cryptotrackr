@@ -16,6 +16,7 @@ Returns the specific inflation values for the current epoch
 solana_get_inflation_rate
 }
 \examples{
+\dontrun{
 url <- "https://api.devnet.solana.com"
-data <- solana_get_inflation_rate(url)
+data <- solana_get_inflation_rate(url)}
 }
