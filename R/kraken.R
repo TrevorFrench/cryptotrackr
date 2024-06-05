@@ -9,9 +9,26 @@
 #' kraken_server_time()
 
 kraken_server_time <- function(timeout_seconds = 60) {
-  res <- httr::GET('https://api.kraken.com/0/public/Time', httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$result)
+  tryCatch({
+    res <- httr::GET('https://api.kraken.com/0/public/Time', httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$result)) {
+        return(data$result)
+      } else {
+        warning("The response does not contain 'result'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' kraken_server_status
@@ -25,9 +42,26 @@ kraken_server_time <- function(timeout_seconds = 60) {
 #' kraken_server_status()
 
 kraken_server_status <- function(timeout_seconds = 60) {
-  res <- httr::GET('https://api.kraken.com/0/public/SystemStatus', httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$result)
+  tryCatch({
+    res <- httr::GET('https://api.kraken.com/0/public/SystemStatus', httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$result)) {
+        return(data$result)
+      } else {
+        warning("The response does not contain 'result'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' kraken_asset_info
@@ -46,9 +80,26 @@ kraken_server_status <- function(timeout_seconds = 60) {
 
 kraken_asset_info <- function(asset = NULL, aclass = NULL, timeout_seconds = 60) {
   query <- list(asset = asset, aclass = aclass)
-  res <- httr::GET('https://api.kraken.com/0/public/Assets', query = query, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$result)
+  tryCatch({
+    res <- httr::GET('https://api.kraken.com/0/public/Assets', query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$result)) {
+        return(data$result)
+      } else {
+        warning("The response does not contain 'result'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' kraken_asset_pairs
@@ -67,9 +118,26 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL, timeout_seconds = 60)
 
 kraken_asset_pairs <- function(pair = NULL, info = NULL, timeout_seconds = 60) {
   query <- list(pair = pair, info = info)
-  res <- httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$result)
+  tryCatch({
+    res <- httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$result)) {
+        return(data$result)
+      } else {
+        warning("The response does not contain 'result'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' kraken_ticker_info
@@ -87,7 +155,24 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL, timeout_seconds = 60) {
 
 kraken_ticker_info <- function(pair = NULL, timeout_seconds = 60) {
   query <- list(pair = pair)
-  res <- httr::GET('https://api.kraken.com/0/public/Ticker', query = query, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$result)
+  tryCatch({
+    res <- httr::GET('https://api.kraken.com/0/public/Ticker', query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$result)) {
+        return(data$result)
+      } else {
+        warning("The response does not contain 'result'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
