@@ -2,6 +2,7 @@
 #'
 #' @param symbol the trading pair for which you wish to retrieve data.
 #' @param limit the number of results to return. The maximum is 1,000.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing the most recent trades executed for
 #' the designated currency pair on Binance US
@@ -12,20 +13,33 @@
 #' limit <- '1000'
 #' binance_us_recent_trades(symbol, limit)
 
-binance_us_recent_trades <- function(symbol, limit) {
+binance_us_recent_trades <- function(symbol, limit, timeout_seconds = 60) {
   url <- paste('https://api.binance.us/api/v3/trades'
                , '?symbol=', toupper(symbol)
                , '&limit=', limit
                , sep = '')
-  res <- httr::GET(url)
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' binance_us_account_info
 #'
 #' @param key your Binance.US API key
 #' @param secret your Binance.US secret key
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing information about your account
 #' @export
@@ -36,12 +50,19 @@ binance_us_recent_trades <- function(symbol, limit) {
 #' secret <- "..."
 #' account_info <- binance_us_account_info(key, secret)}
 
-binance_us_account_info <- function(key, secret) {
+binance_us_account_info <- function(key, secret, timeout_seconds = 60) {
   time <- binance_us_time()
   data <- paste('timestamp=', time, sep = '')
   url <- 'https://api.binance.us/api/v3/account'
-  data <- binance_us_api_call(url, key, data, secret)
-  return(data)
+  data <- binance_us_api_call(url, key, data, secret, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' binance_us_api_call
@@ -50,6 +71,7 @@ binance_us_account_info <- function(key, secret) {
 #' @param key your Binance.US API key
 #' @param data your URL encoded query parameters
 #' @param secret your Binance.US secret key
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return executes an authenticated API call
 #' @export
@@ -63,13 +85,26 @@ binance_us_account_info <- function(key, secret) {
 #' url <- 'https://api.binance.us/api/v3/account'
 #' data <- binance_us_api_call(url, key, data, secret)}
 
-binance_us_api_call <- function(url, key, data, secret) {
+binance_us_api_call <- function(url, key, data, secret, timeout_seconds = 60) {
   signature <- binance_us_signature(data, secret)
-  res <- httr::GET(paste(url, '?', data, '&signature=', signature,  sep = '')
-                  , httr::add_headers('Content-Type' = 'application/json'
-                                         , 'X-MBX-APIKEY' = key))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::GET(paste(url, '?', data, '&signature=', signature,  sep = '')
+                    , httr::add_headers('Content-Type' = 'application/json'
+                                           , 'X-MBX-APIKEY' = key)
+                    , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' binance_us_signature
@@ -112,19 +147,36 @@ binance_us_time <- function() {
 
 #' binance_us_ping
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns a response from the Binance.US API server
 #' @export
 #'
 #' @examples
 #' binance_us_ping()
 
-binance_us_ping <- function() {
+binance_us_ping <- function(timeout_seconds = 60) {
   url <- 'https://api.binance.us/api/v3/ping'
-  res <- httr::GET(url)
-  return(res)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      return(res)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' binance_us_server_time
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns the Binance.US server time
 #' @export
@@ -132,14 +184,35 @@ binance_us_ping <- function() {
 #' @examples
 #' binance_us_server_time()
 
-binance_us_server_time <- function() {
+binance_us_server_time <- function(timeout_seconds = 60) {
   url <- 'https://api.binance.us/api/v3/time'
-  res <- httr::GET(url)
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$serverTime)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+    data <- jsonlite::fromJSON(rawToChar(res$content))
+
+    if (res$status_code == 200) {
+
+      if (!is.null(data$serverTime)) {
+        return(data$serverTime)
+      } else {
+        warning("The response does not contain 'payload'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' binance_us_system_status
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @param key your Binance.US API key
 #' @param secret your Binance.US secret key
@@ -154,10 +227,21 @@ binance_us_server_time <- function() {
 #' secret <- "..."
 #' system_status <- binance_us_system_status(key, secret)}
 
-binance_us_system_status <- function(key, secret) {
+binance_us_system_status <- function(key, secret, timeout_seconds = 60) {
   time <- binance_us_time()
   data <- paste('timestamp=', time, sep = '')
   url <- 'https://api.binance.us/sapi/v1/system/status'
-  data <- binance_us_api_call(url, key, data, secret)
-  return(data$status)
+  data <- binance_us_api_call(url, key, data, secret, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$status)) {
+    return(data$status)
+  } else {
+    warning("The response does not contain 'payload'.")
+    return(NULL)
+  }
 }

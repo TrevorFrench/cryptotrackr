@@ -57,6 +57,7 @@ nifty_gateway_creators <- function(username, limit = NULL, offset = NULL) {
                , sep = '')
   query <- list(limit = limit, offset = offset)
   res <- httr::GET(url, query = query)
+  #res <- httr::VERB('GET', url, httr::accept("application/json"), query = query)
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$results)
 }
