@@ -1,18 +1,22 @@
 #' kraken_server_time
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns a list with Kraken's server time in unix and rfc1123 formats
 #' @export
 #'
 #' @examples
 #' kraken_server_time()
 
-kraken_server_time <- function() {
-  res <- httr::GET('https://api.kraken.com/0/public/Time')
+kraken_server_time <- function(timeout_seconds = 60) {
+  res <- httr::GET('https://api.kraken.com/0/public/Time', httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
 
 #' kraken_server_status
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list with Kraken's server status along with a timestamp
 #' @export
@@ -20,8 +24,8 @@ kraken_server_time <- function() {
 #' @examples
 #' kraken_server_status()
 
-kraken_server_status <- function() {
-  res <- httr::GET('https://api.kraken.com/0/public/SystemStatus')
+kraken_server_status <- function(timeout_seconds = 60) {
+  res <- httr::GET('https://api.kraken.com/0/public/SystemStatus', httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
@@ -30,6 +34,7 @@ kraken_server_status <- function() {
 #'
 #' @param asset optionally provide one or more comma-separated ticker symbols.
 #' @param aclass optionally provide asset categories to filter by.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing asset information
 #' @export
@@ -39,9 +44,9 @@ kraken_server_status <- function() {
 #' eth_btc_info <- kraken_asset_info("ETH,BTC")
 #' currency_info <- kraken_asset_info(aclass = "currency")
 
-kraken_asset_info <- function(asset = NULL, aclass = NULL) {
+kraken_asset_info <- function(asset = NULL, aclass = NULL, timeout_seconds = 60) {
   query <- list(asset = asset, aclass = aclass)
-  res <- httr::GET('https://api.kraken.com/0/public/Assets', query = query)
+  res <- httr::GET('https://api.kraken.com/0/public/Assets', query = query, httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
@@ -52,6 +57,7 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL) {
 #' @param info optionally select the information to return. You can choose from:
 #' "info" (all info), "leverage" (leverage info), "fees" (fee schedule), or
 #' "margin" (margin info).
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing information on Kraken asset pairs.
 #' @export
@@ -59,9 +65,9 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL) {
 #' @examples
 #' kraken_asset_pairs()
 
-kraken_asset_pairs <- function(pair = NULL, info = NULL) {
+kraken_asset_pairs <- function(pair = NULL, info = NULL, timeout_seconds = 60) {
   query <- list(pair = pair, info = info)
-  res <- httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query)
+  res <- httr::GET('https://api.kraken.com/0/public/AssetPairs', query = query, httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }
@@ -69,6 +75,7 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL) {
 #' kraken_ticker_info
 #'
 #' @param pair optionally provide one or more comma-separated asset pairs.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing ticker info for assets on Kraken. Refer to
 #' Kraken for help interpreting response data:
@@ -78,9 +85,9 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL) {
 #' @examples
 #' kraken_ticker_info("ETHUSD")
 
-kraken_ticker_info <- function(pair = NULL) {
+kraken_ticker_info <- function(pair = NULL, timeout_seconds = 60) {
   query <- list(pair = pair)
-  res <- httr::GET('https://api.kraken.com/0/public/Ticker', query = query)
+  res <- httr::GET('https://api.kraken.com/0/public/Ticker', query = query, httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$result)
 }

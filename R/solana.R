@@ -2,6 +2,7 @@
 #'
 #' @param url the RPC url for your API call
 #' @param request_body the request body for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns data from your Solana API call
 #' @export
@@ -13,10 +14,13 @@
 #'   solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
 #' data <- solana_api_call(url, request_body)}
 
-solana_api_call <- function(url, request_body) {
+solana_api_call <- function(url, request_body, timeout_seconds = 60) {
   headers <- c("Content-Type" = "application/json")
   response <-
-    httr::POST(url, httr::add_headers(.headers = headers), body = request_body)
+    httr::POST(url
+               , httr::add_headers(.headers = headers)
+               , body = request_body
+               , httr::timeout(timeout_seconds))
 
   if (httr::status_code(response) == 200) {
     return(httr::content(response))
@@ -103,6 +107,7 @@ solana_assemble_request_body <-
 #' @param address the address for which you're retrieving signatures
 #' @param limit maximum transaction signatures to return (between 1 and 1,000).
 #' Default is 1,000.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns signatures for confirmed transactions that include the given
 #' address in their accountKeys list. Returns signatures backwards in time from
@@ -116,14 +121,14 @@ solana_assemble_request_body <-
 #' data <- solana_get_signature_for_address(url,address)}
 
 solana_get_signature_for_address <-
-  function(url, address, limit = NULL) {
+  function(url, address, limit = NULL, timeout_seconds = 60) {
     limit <- solana_assemble_key_pair('limit', limit)
     character_vector <- c(limit)
     config_object <- solana_assemble_list(character_vector)
     params <- paste('["', address, '", {', config_object, '}]', sep = '')
     request_body <-
       solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
-    data <- solana_api_call(url, request_body)
+    data <- solana_api_call(url, request_body, timeout_seconds)
     return(data$result)
   }
 
@@ -131,6 +136,7 @@ solana_get_signature_for_address <-
 #'
 #' @param url the RPC url for your API call
 #' @param pubkey the pubkey for which you're retrieving account info
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns all information associated with the account of provided Pubkey
 #' @export
@@ -141,17 +147,18 @@ solana_get_signature_for_address <-
 #' pubkey <- "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"
 #' data <- solana_get_account_info(url, pubkey)}
 
-solana_get_account_info <- function(url, pubkey) {
+solana_get_account_info <- function(url, pubkey, timeout_seconds = 60) {
   params <- paste('["', pubkey, '"]', sep = '')
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result$value)
 }
 
 #' solana_get_block_height
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the current block height of the node
 #' @export
@@ -161,16 +168,17 @@ solana_get_account_info <- function(url, pubkey) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_block_height(url)}
 
-solana_get_block_height <- function(url) {
+solana_get_block_height <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_health
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the current health of the node.
 #' @export
@@ -180,16 +188,17 @@ solana_get_block_height <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_health(url)}
 
-solana_get_health <- function(url) {
+solana_get_health <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_version
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the current Solana version running on the node
 #' @export
@@ -199,16 +208,17 @@ solana_get_health <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_version(url)}
 
-solana_get_version <- function(url) {
+solana_get_version <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_supply
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns information about the current supply.
 #' @export
@@ -218,16 +228,17 @@ solana_get_version <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_supply(url)}
 
-solana_get_supply <- function(url) {
+solana_get_supply <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result$value)
 }
 
 #' solana_get_identity
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the identity pubkey for the current node
 #' @export
@@ -237,16 +248,17 @@ solana_get_supply <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_identity(url)}
 
-solana_get_identity <- function(url) {
+solana_get_identity <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result$identity)
 }
 
 #' solana_get_inflation_rate
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the specific inflation values for the current epoch
 #' @export
@@ -256,16 +268,17 @@ solana_get_identity <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_inflation_rate(url)}
 
-solana_get_inflation_rate <- function(url) {
+solana_get_inflation_rate <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_genesis_hash
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the genesis hash
 #' @export
@@ -275,16 +288,17 @@ solana_get_inflation_rate <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_genesis_hash(url)}
 
-solana_get_genesis_hash <- function(url) {
+solana_get_genesis_hash <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_recent_prioritization_fees
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns a list of prioritization fees from recent blocks.
 #' @export
@@ -294,16 +308,17 @@ solana_get_genesis_hash <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_recent_prioritization_fees(url)}
 
-solana_get_recent_prioritization_fees <- function(url) {
+solana_get_recent_prioritization_fees <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getRecentPrioritizationFees"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
 #' solana_get_slot
 #'
 #' @param url the RPC url for your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns the slot that has reached the given or default commitment
 #' level.
@@ -314,10 +329,10 @@ solana_get_recent_prioritization_fees <- function(url) {
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_slot(url)}
 
-solana_get_slot <- function(url) {
+solana_get_slot <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getSlot"', NULL)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }
 
@@ -325,6 +340,7 @@ solana_get_slot <- function(url) {
 #'
 #' @param url the RPC url for your API call
 #' @param slot slot number, as u64 integer
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return Returns identity and transaction information about a confirmed block
 #' in the ledger.
@@ -336,7 +352,7 @@ solana_get_slot <- function(url) {
 #' slot <- solana_get_slot(url)
 #' data <- solana_get_block(url, slot)}
 
-solana_get_block <- function(url, slot) {
+solana_get_block <- function(url, slot, timeout_seconds = 60) {
   params <- paste('[', slot, ',
       {
         "encoding": "json",
@@ -346,6 +362,6 @@ solana_get_block <- function(url, slot) {
       }]', sep = '')
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getBlock"', params)
-  data <- solana_api_call(url, request_body)
+  data <- solana_api_call(url, request_body, timeout_seconds)
   return(data$result)
 }

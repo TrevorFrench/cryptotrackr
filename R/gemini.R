@@ -4,6 +4,7 @@
 #' @param secret your secret key for Gemini
 #' @param path your API endpoint
 #' @param method "GET" or "POST"
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns data from your Gemini API call
 #' @export
@@ -16,7 +17,7 @@
 #' method <- "POST"
 #' data <- gemini_api_call(key, secret, path, method)}
 
-gemini_api_call <- function(key, secret, path, method) {
+gemini_api_call <- function(key, secret, path, method, timeout_seconds = 60) {
   url <- paste('https://api.gemini.com', path, sep = '')
   secret <- stringi::stri_enc_toutf8(secret)
   nonce <- as.numeric(as.POSIXct(Sys.time()))
@@ -37,7 +38,8 @@ gemini_api_call <- function(key, secret, path, method) {
                                      , 'X-GEMINI-APIKEY' = key
                                      , 'X-GEMINI-PAYLOAD' = payload
                                      , 'Cache-Control' = 'no-cache'
-                   ))
+                   )
+                   , httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
@@ -46,6 +48,7 @@ gemini_api_call <- function(key, secret, path, method) {
 #'
 #' @param key your API key for Gemini
 #' @param secret your secret key for Gemini
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing all of your historical trades.
 #' @export
@@ -56,14 +59,16 @@ gemini_api_call <- function(key, secret, path, method) {
 #' secret <- "..."
 #' df <- gemini_trades(key, secret)}
 
-gemini_trades <- function(key, secret) {
+gemini_trades <- function(key, secret, timeout_seconds = 60) {
   path <- "/v1/mytrades"
   method <- "POST"
-  data <- gemini_api_call(key, secret, path, method)
+  data <- gemini_api_call(key, secret, path, method, timeout_seconds)
   return(data)
 }
 
 #' gemini_symbols
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a vector containing all symbols available on Gemini
 #' @export
@@ -71,13 +76,15 @@ gemini_trades <- function(key, secret) {
 #' @examples
 #' gemini_symbols()
 
-gemini_symbols <- function() {
-  res <- httr::GET("https://api.gemini.com/v1/symbols")
+gemini_symbols <- function(timeout_seconds = 60) {
+  res <- httr::GET("https://api.gemini.com/v1/symbols", httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
 
 #' gemini_price_feed
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing pairs, their current price, and their
 #' 24 hour change in price
@@ -86,8 +93,8 @@ gemini_symbols <- function() {
 #' @examples
 #' gemini_price_feed()
 
-gemini_price_feed <- function() {
-  res <- httr::GET("https://api.gemini.com/v1/pricefeed")
+gemini_price_feed <- function(timeout_seconds = 60) {
+  res <- httr::GET("https://api.gemini.com/v1/pricefeed", httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }

@@ -66,6 +66,7 @@ kucoin_signature <- function(api_secret, time, method, path, body) {
 #' API console.
 #' @param api_secret your Kucoin API secret.
 #' @param query a named list containing your query parameters.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns the data from your Kucoin API call.
 #' @export
@@ -94,7 +95,8 @@ kucoin_api_call <- function(url
                             , passphrase
                             , version
                             , api_secret
-                            , query = NULL){
+                            , query = NULL
+                            , timeout_seconds = 60){
 
   if (version == '2') {
     api_secret <- stringi::stri_enc_toutf8(api_secret)
@@ -116,6 +118,7 @@ kucoin_api_call <- function(url
                                         , 'KC-API-PASSPHRASE' = passphrase
                                         , 'KC-API-KEY-VERSION' = version
                     )
+                    , httr::timeout(timeout_seconds)
                     , query = query
   )
   data <- jsonlite::fromJSON(rawToChar(res$content))
@@ -130,6 +133,7 @@ kucoin_api_call <- function(url
 #' key.
 #' @param version your API key version. This can be retrieved from your Kucoin
 #' API console. The default value is "2".
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing your Kucoin sub-accounts.
 #' @export
@@ -141,7 +145,7 @@ kucoin_api_call <- function(url
 #' passphrase <- "..."
 #' accounts <- kucoin_subaccounts(api_key, api_secret, passphrase)}
 
-kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2"){
+kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2", timeout_seconds = 60){
   url <- "https://api.kucoin.com/api/v1/sub/user"
   time <- kucoin_time()
   method <- "GET"
@@ -156,7 +160,8 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2"){
                           , time
                           , passphrase
                           , version
-                          , api_secret)
+                          , api_secret
+                          , timeout_seconds = timeout_seconds)
 
   return(data$data)
 }
@@ -169,6 +174,7 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2"){
 #' key.
 #' @param version your API key version. This can be retrieved from your Kucoin
 #' API console. The default value is "2".
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing your Kucoin accounts and balances.
 #' @export
@@ -183,7 +189,8 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2"){
 kucoin_accounts <- function(api_key
                             , api_secret
                             , passphrase
-                            , version = '2'){
+                            , version = '2'
+                            , timeout_seconds = 60){
   url <- 'https://api.kucoin.com/api/v1/accounts'
   time <- kucoin_time()
   method <- 'GET'
@@ -198,7 +205,8 @@ kucoin_accounts <- function(api_key
                           , time
                           , passphrase
                           , version
-                          , api_secret)
+                          , api_secret
+                          , timeout_seconds = timeout_seconds)
 
   return(data$data)
 }
@@ -207,6 +215,7 @@ kucoin_accounts <- function(api_key
 #'
 #' @param market optionally provide a market to filter on. This function will
 #' return all markets by default.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing information about trading symbols
 #' @export
@@ -214,11 +223,12 @@ kucoin_accounts <- function(api_key
 #' @examples
 #' kucoin_symbols_list('btc')
 
-kucoin_symbols_list <- function(market = NULL){
+kucoin_symbols_list <- function(market = NULL, timeout_seconds = 60){
   query <- list(market = toupper(market))
   res <- httr::VERB('GET'
                     , 'https://api.kucoin.com/api/v2/symbols'
                     , httr::accept("application/json")
+                    , httr::timeout(timeout_seconds)
                     , query = query
   )
   data <- jsonlite::fromJSON(rawToChar(res$content))

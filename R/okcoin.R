@@ -1,5 +1,7 @@
 #' okcoin_trading_pairs
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns a dataframe containing information about all trading pairs on
 #' Okcoin
 #' @export
@@ -7,8 +9,9 @@
 #' @examples
 #' okcoin_trading_pairs()
 
-okcoin_trading_pairs <- function() {
-  res <- httr::GET("https://www.okcoin.com/api/v5/public/instruments?instType=SPOT")
+okcoin_trading_pairs <- function(timeout_seconds = 60) {
+  res <- httr::GET("https://www.okcoin.com/api/v5/public/instruments?instType=SPOT"
+                   , httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data$data)
 }
@@ -23,6 +26,7 @@ okcoin_trading_pairs <- function() {
 #' @param state Order Status: -1: Canceled, 0: Open, 1: Partially Filled,
 #' 2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially
 #' filled), 7: Complete (canceled + fully filled)
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing your orders from the most recent 3
 #' months
@@ -37,12 +41,12 @@ okcoin_trading_pairs <- function() {
 #' state <- '2'
 #' orders <- okcoin_orders(secret, key, passphrase, instrument_id, state)}
 
-okcoin_orders <- function(secret, key, passphrase, instrument_id, state) {
+okcoin_orders <- function(secret, key, passphrase, instrument_id, state, timeout_seconds = 60) {
   path <- paste('/api/spot/v3/orders?instrument_id=', instrument_id, '&state=', state, sep = '')
   url <- paste('https://www.okcoin.com', path, sep = '')
   formatted_time <- okcoin_time()
   signature <- okcoin_signature(path, secret, formatted_time, 'GET')
-  data <- okcoin_api_call(url, key, signature, formatted_time, passphrase)
+  data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
   return(data)
 }
 
@@ -52,6 +56,7 @@ okcoin_orders <- function(secret, key, passphrase, instrument_id, state) {
 #' @param key your API key for Okcoin
 #' @param passphrase the passphrase which you created when generating your
 #' Okcoin API key
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing your spot account balances
 #' @export
@@ -63,12 +68,12 @@ okcoin_orders <- function(secret, key, passphrase, instrument_id, state) {
 #' passphrase <- "..."
 #' balances <- okcoin_spot_account_info(secret, key, passphrase)}
 
-okcoin_spot_account_info <- function(secret, key, passphrase) {
+okcoin_spot_account_info <- function(secret, key, passphrase, timeout_seconds = 60) {
   path <- paste('/api/spot/v3/accounts', sep = '')
   url <- paste('https://www.okcoin.com', path, sep = '')
   formatted_time <- okcoin_time()
   signature <- okcoin_signature(path, secret, formatted_time, 'GET')
-  data <- okcoin_api_call(url, key, signature, formatted_time, passphrase)
+  data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
   return(data)
 }
 
@@ -126,6 +131,7 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
 #' format
 #' @param passphrase the passphrase which you created when generating your
 #' Okcoin API key
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing the results of your API call
 #' @export
@@ -142,14 +148,15 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
 #' passphrase <- "..."
 #' data <- okcoin_api_call()}
 
-okcoin_api_call <- function(url, key, signature, formatted_time, passphrase) {
+okcoin_api_call <- function(url, key, signature, formatted_time, passphrase, timeout_seconds = 60) {
   res <- httr::GET(url,
               httr::add_headers('Content-Type' = 'application/json'
                           , 'OK-ACCESS-KEY' = key
                           , 'OK-ACCESS-SIGN' = signature
                           , 'OK-ACCESS-TIMESTAMP' = formatted_time
                           , 'OK-ACCESS-PASSPHRASE' = passphrase
-              ))
+              )
+              , httr::timeout(timeout_seconds))
   data <- jsonlite::fromJSON(rawToChar(res$content))
   return(data)
 }
