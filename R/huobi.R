@@ -25,7 +25,28 @@ huobi_candles <- function(period, size, symbol, timeout_seconds = 60) {
                   , '&symbol=', symbol
                   , sep = '')
   url <- paste(base, path, params, sep = '')
-  res <- httr::GET(url, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$data)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+
+      if (!is.null(data$data)) {
+        return(data$data)
+      } else {
+        warning("The response does not contain 'data'.")
+        return(NULL)
+      }
+
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
+

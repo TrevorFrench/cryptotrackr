@@ -30,18 +30,31 @@ gemini_api_call <- function(key, secret, path, method, timeout_seconds = 60) {
   payload <- stringi::stri_enc_toutf8(payload)
   payload <- jsonlite::base64_enc(payload)
   signature <- openssl::sha384(payload, key = secret)
-  res <- httr::VERB(method
-                   , url
-                   , httr::add_headers('Content-Type' = 'text/plain'
-                                     , 'Content-Length' = '0'
-                                     , 'X-GEMINI-SIGNATURE' = signature
-                                     , 'X-GEMINI-APIKEY' = key
-                                     , 'X-GEMINI-PAYLOAD' = payload
-                                     , 'Cache-Control' = 'no-cache'
-                   )
-                   , httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::VERB(method
+                      , url
+                      , httr::add_headers('Content-Type' = 'text/plain'
+                                          , 'Content-Length' = '0'
+                                          , 'X-GEMINI-SIGNATURE' = signature
+                                          , 'X-GEMINI-APIKEY' = key
+                                          , 'X-GEMINI-PAYLOAD' = payload
+                                          , 'Cache-Control' = 'no-cache'
+                      )
+                      , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' gemini_trades
@@ -77,9 +90,21 @@ gemini_trades <- function(key, secret, timeout_seconds = 60) {
 #' gemini_symbols()
 
 gemini_symbols <- function(timeout_seconds = 60) {
-  res <- httr::GET("https://api.gemini.com/v1/symbols", httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::GET("https://api.gemini.com/v1/symbols", httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' gemini_price_feed
@@ -94,7 +119,19 @@ gemini_symbols <- function(timeout_seconds = 60) {
 #' gemini_price_feed()
 
 gemini_price_feed <- function(timeout_seconds = 60) {
-  res <- httr::GET("https://api.gemini.com/v1/pricefeed", httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::GET("https://api.gemini.com/v1/pricefeed", httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
