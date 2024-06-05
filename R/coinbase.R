@@ -232,7 +232,7 @@ coinbase_candles <- function(api_key, api_secret, product_id, start, end, granul
   if (!is.null(data$candles)) {
     return(data$candles)
   } else {
-    warning("The response does not contain 'payload'.")
+    warning("The response does not contain 'candles'.")
     return(NULL)
   }
 }

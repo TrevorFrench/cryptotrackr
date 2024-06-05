@@ -196,7 +196,7 @@ binance_us_server_time <- function(timeout_seconds = 60) {
       if (!is.null(data$serverTime)) {
         return(data$serverTime)
       } else {
-        warning("The response does not contain 'payload'.")
+        warning("The response does not contain 'serverTime'.")
         return(NULL)
       }
     } else {
@@ -240,7 +240,7 @@ binance_us_system_status <- function(key, secret, timeout_seconds = 60) {
   if (!is.null(data$status)) {
     return(data$status)
   } else {
-    warning("The response does not contain 'payload'.")
+    warning("The response does not contain 'status'.")
     return(NULL)
   }
 }

@@ -126,7 +126,7 @@ cex_io_converter <- function(symbol_1, symbol_2, amount, timeout_seconds = 60) {
       if (!is.null(data$amnt)) {
         return(data$amnt)
       } else {
-        warning("The response does not contain 'payload'.")
+        warning("The response does not contain 'amnt'.")
         return(NULL)
       }
 
