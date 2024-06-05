@@ -212,10 +212,9 @@ binance_us_server_time <- function(timeout_seconds = 60) {
 
 #' binance_us_system_status
 #'
-#' @param timeout_seconds seconds until the query times out. Default is 60.
-#'
 #' @param key your Binance.US API key
 #' @param secret your Binance.US secret key
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns the status of the Binance.US API. The response will either be
 #' a "0" for normal or a "1" for system maintenance.
