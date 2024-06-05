@@ -1,21 +1,38 @@
 #' coingecko_ping
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns the Coingecko API server status
 #' @export
 #'
 #' @examples
 #' coingecko_ping()
 
-coingecko_ping <- function() {
-  res <- httr::VERB('GET'
-                    , 'https://api.coingecko.com/api/v3/ping'
-                    , httr::accept("application/json")
-                    )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+coingecko_ping <- function(timeout_seconds = 60) {
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , 'https://api.coingecko.com/api/v3/ping'
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_vs_currencies
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a character vector containing all supported currencies on
 #' Coingecko.
@@ -24,20 +41,34 @@ coingecko_ping <- function() {
 #' @examples
 #' coingecko_vs_currencies()
 
-coingecko_vs_currencies <- function() {
+coingecko_vs_currencies <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies'
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json")
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_coins
 #'
 #' @param include_platform optionally select either "true" or "false" to include
 #' platform contract tokens.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe containing all coins on CoinGecko and their respective
 #' ids, symbols, and names
@@ -46,16 +77,29 @@ coingecko_vs_currencies <- function() {
 #' @examples
 #' coingecko_coins()
 
-coingecko_coins <- function(include_platform = NULL) {
+coingecko_coins <- function(include_platform = NULL, timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/coins/list'
   query <- list(include_platform = include_platform)
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json")
-                    , query = query
-                    )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+                      )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_price
@@ -72,6 +116,7 @@ coingecko_coins <- function(include_platform = NULL) {
 #' include/exclude the last updated information. The default is 'false'.
 #' @param precision optionally specify the decimal precision to return. Choose
 #' either 'full' or any number between 0 and 18.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list of currency prices
 #' @export
@@ -85,7 +130,8 @@ coingecko_price <- function(id
                             , include_24hr_vol = NULL
                             , include_24hr_change = NULL
                             , include_last_updated_at = NULL
-                            , precision = NULL) {
+                            , precision = NULL
+                            , timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/simple/price'
   query <- list(ids = id
                 , vs_currencies = vs_currency
@@ -94,16 +140,31 @@ coingecko_price <- function(id
                 , include_24hr_change = include_24hr_change
                 , include_last_updated_at = include_last_updated_at
                 , precision = precision)
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json")
-                    , query = query
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_categories
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe of all categories on CoinGecko.
 #' @export
@@ -111,13 +172,26 @@ coingecko_price <- function(id
 #' @examples
 #' coingecko_categories()
 
-coingecko_categories <- function() {
+coingecko_categories <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/coins/categories/list'
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json"))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_price_history
@@ -127,6 +201,7 @@ coingecko_categories <- function() {
 #' @param date the date you wish to query formatted as "dd-mm-yyyy"
 #' @param localization "true" or "false" to include/exclude localized languages
 #' in the response. The default value is "false".
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing data about asset pricing.
 #' @export
@@ -137,22 +212,38 @@ coingecko_categories <- function() {
 
 coingecko_price_history <- function(id
                             , date
-                            , localization = "false") {
+                            , localization = "false"
+                            , timeout_seconds = 60) {
   url <- paste('https://api.coingecko.com/api/v3/coins/'
                , id
                , '/history'
                , sep = '')
   query <- list(id = id, date = date, localization = localization)
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json")
-                    , query = query
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coingecko_global_data
+#'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing high-level statistics about the
 #' cryptocurrency ecosystem.
@@ -161,12 +252,25 @@ coingecko_price_history <- function(id
 #' @examples
 #' coingecko_global_data()
 
-coingecko_global_data <- function() {
+coingecko_global_data <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/global'
-  res <- httr::VERB('GET'
-                    , url
-                    , httr::accept("application/json")
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$data)
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data$data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }

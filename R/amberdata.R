@@ -3,7 +3,7 @@
 #' @param url the url for your Amberdata API call
 #' @param api_key your Amberdata API key
 #' @param method "GET" or "POST"
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #' @param query your query parameters. The default value is NULL.
 #'
 #' @return returns data from your Amberdata API call
@@ -16,7 +16,7 @@
 #' method <- "GET"
 #' exchanges <- amberdata_api_call(url, api_key, method)}
 
-amberdata_api_call <- function(url, api_key, method, timeout_seconds = NULL, query = NULL){
+amberdata_api_call <- function(url, api_key, method, timeout_seconds = 60, query = NULL){
   tryCatch({
     res <- httr::VERB(method
                       , url
@@ -53,7 +53,7 @@ amberdata_api_call <- function(url, api_key, method, timeout_seconds = NULL, que
 #' @param time_format the format to return your times in. Choose from:
 #' "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
 #' is "ms".
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list of spot exchanges and pairs supported on Amberdata
 #' with the option of including the dates each one was supported.
@@ -74,7 +74,7 @@ amberdata_spot_exchanges <- function(api_key
                                      , pair = NULL
                                      , include_dates = "false"
                                      , time_format = "ms"
-                                     , timeout_seconds = NULL){
+                                     , timeout_seconds = 60){
 
   query_string <- list(
     exchange = exchange,
@@ -112,7 +112,7 @@ amberdata_spot_exchanges <- function(api_key
 #' @param time_format the format to return your times in. Choose from:
 #' "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
 #' is "ms".
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list of spot pairs and exchanges supported on Amberdata
 #' with the option of including the dates each one was supported.
@@ -129,7 +129,7 @@ amberdata_spot_pairs <- function(api_key
                                      , pair = NULL
                                      , include_dates = "false"
                                      , time_format = "ms"
-                                     , timeout_seconds = NULL){
+                                     , timeout_seconds = 60){
 
   query_string <- list(
     exchange = exchange,
@@ -165,7 +165,7 @@ amberdata_spot_pairs <- function(api_key
 #' delisted ones. Default is 'False'.
 #' @param include_original_reference If 'True', endpoint returns
 #' originalReference. Default is 'False'.
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list of reference information for each of the pairs on
 #' Amberdata.
@@ -182,7 +182,7 @@ amberdata_spot_reference <- function(api_key
                                  , pair = NULL
                                  , include_inactive = "False"
                                  , include_original_reference = "False"
-                                 , timeout_seconds = NULL){
+                                 , timeout_seconds = 60){
 
   query_string <- list(
     exchange = exchange,
@@ -211,7 +211,7 @@ amberdata_spot_reference <- function(api_key
 #'
 #' @param api_key your Amberdata API key
 #' @param symbol the asset symbol you wish to receive metrics for
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing market metrics for the specified symbol.
 #' @export
@@ -221,7 +221,7 @@ amberdata_spot_reference <- function(api_key
 #' api_key <- "..."
 #' metrics <- amberdata_market_metrics(api_key, "btc")}
 
-amberdata_market_metrics <- function(api_key, symbol, timeout_seconds = NULL){
+amberdata_market_metrics <- function(api_key, symbol, timeout_seconds = 60){
   url <- paste('https://web3api.io/api/v2/market/metrics/'
                , symbol
                , '/latest'
@@ -246,7 +246,7 @@ amberdata_market_metrics <- function(api_key, symbol, timeout_seconds = NULL){
 #' @param api_key your Amberdata API key
 #' @param blockchain_id the id for the blockchain you wish to query. The default
 #' blockchain_id is "ethereum-mainnet".
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing blockchain metrics for your specified
 #' blockchain_id.
@@ -259,7 +259,7 @@ amberdata_market_metrics <- function(api_key, symbol, timeout_seconds = NULL){
 
 amberdata_blockchain_metrics <- function(api_key
                                          , blockchain_id = "ethereum-mainnet"
-                                         , timeout_seconds = NULL){
+                                         , timeout_seconds = 60){
   url <- 'https://web3api.io/api/v2/blockchains/metrics/latest'
   tryCatch({
     res <- httr::GET(url
@@ -304,7 +304,7 @@ amberdata_blockchain_metrics <- function(api_key
 #' @param time_format the format to return your times in. Choose from:
 #' "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
 #' is "ms".
-#' @param timeout_seconds seconds until the query times out. Default is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe with your volume data.
 #' @export
@@ -325,7 +325,7 @@ amberdata_historical_exchange_volume <- function(api_key
                                                  , start_date = NULL
                                                  , end_date = NULL
                                                  , time_format = NULL
-                                                 , timeout_seconds = NULL){
+                                                 , timeout_seconds = 60){
   url <- 'https://web3api.io/api/v2/market/metrics/exchanges/volumes/historical'
   query <- list(exchange = exchange
                 , direction = direction
