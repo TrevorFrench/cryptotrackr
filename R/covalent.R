@@ -5,6 +5,7 @@
 #' @param query your query parameters formatted as a named list
 #' @param csv 'TRUE' will return csv data parsed as a dataframe while 'FALSE'
 #' will return json data. The default value is 'FALSE'.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns your Covalent API data
 #' @export
@@ -17,18 +18,32 @@
 #' method <- "GET"
 #' balances <- covalent_api_call(url, method, api_key, method, query, csv = FALSE)}
 
-covalent_api_call <- function(url, method, query = NULL, csv = FALSE){
-  res <- httr::VERB(method
-                    , url
-                    , httr::accept("application/json")
-                    , query = query
-  )
-  if (csv == FALSE) {
-    data <- jsonlite::fromJSON(rawToChar(res$content))
-  } else {
-    data <- utils::read.table(text = rawToChar(res$content), sep = ',', header = TRUE)
-  }
-  return(data)
+covalent_api_call <- function(url, method, query = NULL, csv = FALSE, timeout_seconds = 60){
+  tryCatch({
+    res <- httr::VERB(method
+                      , url
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+
+    if (res$status_code == 200) {
+      if (csv == FALSE) {
+        data <- jsonlite::fromJSON(rawToChar(res$content))
+      } else {
+        data <- utils::read.table(text = rawToChar(res$content), sep = ',', header = TRUE)
+      }
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' covalent_balances
@@ -39,6 +54,7 @@ covalent_api_call <- function(url, method, query = NULL, csv = FALSE){
 #' @param address the address you for which wish to check balances.
 #' @param csv 'TRUE' will return csv data parsed as a dataframe while 'FALSE'
 #' will return json data. The default value is 'FALSE'.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns either a list or a dataframe with account balances
 #' @export
@@ -48,7 +64,7 @@ covalent_api_call <- function(url, method, query = NULL, csv = FALSE){
 #' api_key <- "..."
 #' balances <- covalent_balances(api_key, "1", "trevorfrench.eth", csv = FALSE)}
 
-covalent_balances <- function(api_key, chain_id, address, csv = FALSE){
+covalent_balances <- function(api_key, chain_id, address, csv = FALSE, timeout_seconds = 60){
   base <- 'https://api.covalenthq.com/v1/'
   endpoint <- paste(chain_id, '/address/', address, '/balances_v2/', sep = '')
   url <- paste(base, endpoint, sep = '')
@@ -58,7 +74,7 @@ covalent_balances <- function(api_key, chain_id, address, csv = FALSE){
     format <- 'csv'
   }
   query <- list(key = api_key, format = format)
-  data <- covalent_api_call(url, 'GET', query, csv)
+  data <- covalent_api_call(url, 'GET', query, csv, timeout_seconds)
   return(data)
 }
 
@@ -70,6 +86,7 @@ covalent_balances <- function(api_key, chain_id, address, csv = FALSE){
 #' @param address the address you for which wish to get portfolio history.
 #' @param csv 'TRUE' will return csv data parsed as a dataframe while 'FALSE'
 #' will return json data. The default value is 'FALSE'.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns either a list or a dataframe with portfolio history
 #' @export
@@ -79,7 +96,7 @@ covalent_balances <- function(api_key, chain_id, address, csv = FALSE){
 #' api_key <- "..."
 #' portfolio <- covalent_portfolio(api_key, "1", "trevorfrench.eth", csv = FALSE)}
 
-covalent_portfolio <- function(api_key, chain_id, address, csv = FALSE){
+covalent_portfolio <- function(api_key, chain_id, address, csv = FALSE, timeout_seconds = 60){
   base <- 'https://api.covalenthq.com/v1/'
   endpoint <- paste(chain_id, '/address/', address, '/portfolio_v2/', sep = '')
   url <- paste(base, endpoint, sep = '')
@@ -89,6 +106,6 @@ covalent_portfolio <- function(api_key, chain_id, address, csv = FALSE){
     format <- 'csv'
   }
   query <- list(key = api_key, format = format)
-  data <- covalent_api_call(url, 'GET', query, csv)
+  data <- covalent_api_call(url, 'GET', query, csv, timeout_seconds)
   return(data)
 }
