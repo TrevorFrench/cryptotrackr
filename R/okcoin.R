@@ -10,10 +10,27 @@
 #' okcoin_trading_pairs()
 
 okcoin_trading_pairs <- function(timeout_seconds = 60) {
-  res <- httr::GET("https://www.okcoin.com/api/v5/public/instruments?instType=SPOT"
-                   , httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$data)
+  tryCatch({
+    res <- httr::GET("https://www.okcoin.com/api/v5/public/instruments?instType=SPOT"
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$data)) {
+        return(data$data)
+      } else {
+        warning("The response does not contain 'data'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' okcoin_orders
@@ -47,6 +64,12 @@ okcoin_orders <- function(secret, key, passphrase, instrument_id, state, timeout
   formatted_time <- okcoin_time()
   signature <- okcoin_signature(path, secret, formatted_time, 'GET')
   data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
   return(data)
 }
 
@@ -74,6 +97,12 @@ okcoin_spot_account_info <- function(secret, key, passphrase, timeout_seconds = 
   formatted_time <- okcoin_time()
   signature <- okcoin_signature(path, secret, formatted_time, 'GET')
   data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
   return(data)
 }
 
@@ -149,14 +178,26 @@ okcoin_signature <- function(path, secret, formatted_time, method) {
 #' data <- okcoin_api_call()}
 
 okcoin_api_call <- function(url, key, signature, formatted_time, passphrase, timeout_seconds = 60) {
-  res <- httr::GET(url,
-              httr::add_headers('Content-Type' = 'application/json'
-                          , 'OK-ACCESS-KEY' = key
-                          , 'OK-ACCESS-SIGN' = signature
-                          , 'OK-ACCESS-TIMESTAMP' = formatted_time
-                          , 'OK-ACCESS-PASSPHRASE' = passphrase
-              )
-              , httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::GET(url,
+                     httr::add_headers('Content-Type' = 'application/json'
+                                       , 'OK-ACCESS-KEY' = key
+                                       , 'OK-ACCESS-SIGN' = signature
+                                       , 'OK-ACCESS-TIMESTAMP' = formatted_time
+                                       , 'OK-ACCESS-PASSPHRASE' = passphrase
+                     )
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
