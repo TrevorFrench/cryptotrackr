@@ -109,20 +109,32 @@ kucoin_api_call <- function(url
     passphrase <- openssl::base64_encode(passphrase)
   }
 
-  res <- httr::VERB(method
-                    , url
-                    , httr::accept("application/json")
-                    , httr::add_headers('KC-API-KEY' = api_key
-                                        , 'KC-API-SIGN' = sig
-                                        , 'KC-API-TIMESTAMP' = time
-                                        , 'KC-API-PASSPHRASE' = passphrase
-                                        , 'KC-API-KEY-VERSION' = version
-                    )
-                    , httr::timeout(timeout_seconds)
-                    , query = query
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+  tryCatch({
+    res <- httr::VERB(method
+                      , url
+                      , httr::accept("application/json")
+                      , httr::add_headers('KC-API-KEY' = api_key
+                                          , 'KC-API-SIGN' = sig
+                                          , 'KC-API-TIMESTAMP' = time
+                                          , 'KC-API-PASSPHRASE' = passphrase
+                                          , 'KC-API-KEY-VERSION' = version
+                      )
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' kucoin_subaccounts
@@ -163,7 +175,12 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2", t
                           , api_secret
                           , timeout_seconds = timeout_seconds)
 
-  return(data$data)
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }
 
 #' kucoin_accounts
@@ -208,7 +225,12 @@ kucoin_accounts <- function(api_key
                           , api_secret
                           , timeout_seconds = timeout_seconds)
 
-  return(data$data)
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }
 
 #' kucoin_symbols_list
@@ -225,12 +247,32 @@ kucoin_accounts <- function(api_key
 
 kucoin_symbols_list <- function(market = NULL, timeout_seconds = 60){
   query <- list(market = toupper(market))
-  res <- httr::VERB('GET'
-                    , 'https://api.kucoin.com/api/v2/symbols'
-                    , httr::accept("application/json")
-                    , httr::timeout(timeout_seconds)
-                    , query = query
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$data)
+
+  tryCatch({
+    res <- httr::VERB('GET'
+                      , 'https://api.kucoin.com/api/v2/symbols'
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+
+      if (!is.null(data$data)) {
+        return(data$data)
+      } else {
+        warning("The response does not contain 'data'.")
+        return(NULL)
+      }
+
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
