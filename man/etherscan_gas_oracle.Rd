@@ -4,10 +4,12 @@
 \alias{etherscan_gas_oracle}
 \title{etherscan_gas_oracle}
 \usage{
-etherscan_gas_oracle(api_key)
+etherscan_gas_oracle(api_key, timeout_seconds = 60)
 }
 \arguments{
 \item{api_key}{your Etherscan API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns current safe, proposed and fast gas prices as determined by

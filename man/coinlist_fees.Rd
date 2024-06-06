@@ -4,12 +4,14 @@
 \alias{coinlist_fees}
 \title{coinlist_fees}
 \usage{
-coinlist_fees(api_key, api_secret)
+coinlist_fees(api_key, api_secret, timeout_seconds = 60)
 }
 \arguments{
 \item{api_key}{your Coinlist API key}
 
 \item{api_secret}{your Coinlist API secret}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing Coinlist fees by symbols.

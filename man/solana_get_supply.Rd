@@ -4,10 +4,12 @@
 \alias{solana_get_supply}
 \title{solana_get_supply}
 \usage{
-solana_get_supply(url)
+solana_get_supply(url, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns information about the current supply.

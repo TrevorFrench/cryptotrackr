@@ -4,7 +4,10 @@
 \alias{coinbase_all_currencies}
 \title{coinbase_all_currencies}
 \usage{
-coinbase_all_currencies()
+coinbase_all_currencies(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with information about all currencies known to Coinbase
@@ -13,5 +16,5 @@ returns a dataframe with information about all currencies known to Coinbase
 coinbase_all_currencies
 }
 \examples{
-coinbase_all_currencies()
+coinbase_all_currencies(4.5)
 }

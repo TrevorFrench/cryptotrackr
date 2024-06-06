@@ -4,11 +4,13 @@
 \alias{coingecko_coins}
 \title{coingecko_coins}
 \usage{
-coingecko_coins(include_platform = NULL)
+coingecko_coins(include_platform = NULL, timeout_seconds = 60)
 }
 \arguments{
 \item{include_platform}{optionally select either "true" or "false" to include
 platform contract tokens.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing all coins on CoinGecko and their respective
@@ -18,5 +20,5 @@ ids, symbols, and names
 coingecko_coins
 }
 \examples{
-coingecko_coins()
+coingecko_coins(timeout_seconds = 4.5)
 }

@@ -4,7 +4,10 @@
 \alias{coingecko_categories}
 \title{coingecko_categories}
 \usage{
-coingecko_categories()
+coingecko_categories(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe of all categories on CoinGecko.
@@ -13,5 +16,5 @@ returns a dataframe of all categories on CoinGecko.
 coingecko_categories
 }
 \examples{
-coingecko_categories()
+coingecko_categories(4.5)
 }

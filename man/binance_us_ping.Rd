@@ -4,7 +4,10 @@
 \alias{binance_us_ping}
 \title{binance_us_ping}
 \usage{
-binance_us_ping()
+binance_us_ping(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a response from the Binance.US API server
@@ -13,5 +16,5 @@ returns a response from the Binance.US API server
 binance_us_ping
 }
 \examples{
-binance_us_ping()
+binance_us_ping(4.5)
 }

@@ -4,7 +4,12 @@
 \alias{nifty_gateway_creators}
 \title{nifty_gateway_creators}
 \usage{
-nifty_gateway_creators(username, limit = NULL, offset = NULL)
+nifty_gateway_creators(
+  username,
+  limit = NULL,
+  offset = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{username}{the username you wish to query}
@@ -14,6 +19,8 @@ is a numeric parameter.}
 
 \item{offset}{optionally specify how many results to skip. This is a numeric
 parameter.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing ownership information for all nifties

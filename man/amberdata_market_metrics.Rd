@@ -4,12 +4,14 @@
 \alias{amberdata_market_metrics}
 \title{amberdata_market_metrics}
 \usage{
-amberdata_market_metrics(api_key, symbol)
+amberdata_market_metrics(api_key, symbol, timeout_seconds = 60)
 }
 \arguments{
 \item{api_key}{your Amberdata API key}
 
 \item{symbol}{the asset symbol you wish to receive metrics for}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing market metrics for the specified symbol.

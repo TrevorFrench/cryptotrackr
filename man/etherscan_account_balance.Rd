@@ -4,7 +4,12 @@
 \alias{etherscan_account_balance}
 \title{etherscan_account_balance}
 \usage{
-etherscan_account_balance(address, api_key, tag = "latest")
+etherscan_account_balance(
+  address,
+  api_key,
+  tag = "latest",
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{address}{the address for which you wish to retrieve the balance.}
@@ -13,6 +18,8 @@ etherscan_account_balance(address, api_key, tag = "latest")
 
 \item{tag}{pre-defined block parameter, either earliest, pending or latest.
 Default is latest.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the balance for the specified address

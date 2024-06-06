@@ -4,7 +4,7 @@
 \alias{cex_io_balance}
 \title{cex_io_balance}
 \usage{
-cex_io_balance(username, api_key, api_secret)
+cex_io_balance(username, api_key, api_secret, timeout_seconds = 60)
 }
 \arguments{
 \item{username}{your cex.io username}
@@ -12,6 +12,8 @@ cex_io_balance(username, api_key, api_secret)
 \item{api_key}{your cex.io api_key}
 
 \item{api_secret}{your cex.io api_secret}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with your balances for each currency
@@ -24,5 +26,5 @@ cex_io_balance
 username <- "..."
 api_key <- "..."
 api_secret <- "..."
-balances <- cex_io_balance(username, api_key, api_secret)}
+balances <- cex_io_balance(username, api_key, api_secret, 4.5)}
 }

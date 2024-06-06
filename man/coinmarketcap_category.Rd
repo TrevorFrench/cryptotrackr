@@ -10,7 +10,8 @@ coinmarketcap_category(
   start = "1",
   limit = NULL,
   convert = NULL,
-  convert_id = NULL
+  convert_id = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ symbols.}
 
 \item{convert_id}{Optionally calculate market quotes by CoinMarketCap id
 instead of symbol.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with information about the specified category.

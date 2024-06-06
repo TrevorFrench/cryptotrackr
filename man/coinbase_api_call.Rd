@@ -4,7 +4,15 @@
 \alias{coinbase_api_call}
 \title{coinbase_api_call}
 \usage{
-coinbase_api_call(api_key, api_secret, method, path, body, query = NULL)
+coinbase_api_call(
+  api_key,
+  api_secret,
+  method,
+  path,
+  body,
+  query = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Coinbase API key}
@@ -18,6 +26,8 @@ coinbase_api_call(api_key, api_secret, method, path, body, query = NULL)
 \item{body}{the body of your API call}
 
 \item{query}{the query for your coinbase API call as a list}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the response from your Coinbase API call

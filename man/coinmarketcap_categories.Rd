@@ -10,7 +10,8 @@ coinmarketcap_categories(
   limit = NULL,
   id = NULL,
   slug = NULL,
-  symbol = NULL
+  symbol = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -30,6 +31,8 @@ NULL. Multiple values must be comma-separated.}
 
 \item{symbol}{filter categories by one or more asset symbols. The default
 value is NULL. Multiple values must be comma-separated.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a datafrane with information about CoinMarketCap asset

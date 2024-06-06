@@ -4,11 +4,13 @@
 \alias{kucoin_symbols_list}
 \title{kucoin_symbols_list}
 \usage{
-kucoin_symbols_list(market = NULL)
+kucoin_symbols_list(market = NULL, timeout_seconds = 60)
 }
 \arguments{
 \item{market}{optionally provide a market to filter on. This function will
 return all markets by default.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing information about trading symbols
@@ -17,5 +19,5 @@ returns a dataframe containing information about trading symbols
 kucoin_symbols_list
 }
 \examples{
-kucoin_symbols_list('btc')
+kucoin_symbols_list('btc', 4.5)
 }

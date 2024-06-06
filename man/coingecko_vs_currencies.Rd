@@ -4,7 +4,10 @@
 \alias{coingecko_vs_currencies}
 \title{coingecko_vs_currencies}
 \usage{
-coingecko_vs_currencies()
+coingecko_vs_currencies(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a character vector containing all supported currencies on
@@ -14,5 +17,5 @@ Coingecko.
 coingecko_vs_currencies
 }
 \examples{
-coingecko_vs_currencies()
+coingecko_vs_currencies(4.5)
 }

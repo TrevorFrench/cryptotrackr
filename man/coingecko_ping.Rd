@@ -4,7 +4,10 @@
 \alias{coingecko_ping}
 \title{coingecko_ping}
 \usage{
-coingecko_ping()
+coingecko_ping(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the Coingecko API server status
@@ -13,5 +16,5 @@ returns the Coingecko API server status
 coingecko_ping
 }
 \examples{
-coingecko_ping()
+coingecko_ping(4.5)
 }

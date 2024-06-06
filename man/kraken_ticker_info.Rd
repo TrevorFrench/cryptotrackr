@@ -4,10 +4,12 @@
 \alias{kraken_ticker_info}
 \title{kraken_ticker_info}
 \usage{
-kraken_ticker_info(pair = NULL)
+kraken_ticker_info(pair = NULL, timeout_seconds = 60)
 }
 \arguments{
 \item{pair}{optionally provide one or more comma-separated asset pairs.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing ticker info for assets on Kraken. Refer to
@@ -18,5 +20,5 @@ https://docs.kraken.com/rest/#tag/Market-Data/operation/getTickerInformation
 kraken_ticker_info
 }
 \examples{
-kraken_ticker_info("ETHUSD")
+kraken_ticker_info("ETHUSD", 4.5)
 }

@@ -4,12 +4,14 @@
 \alias{cex_io_last_price}
 \title{cex_io_last_price}
 \usage{
-cex_io_last_price(symbol_1, symbol_2)
+cex_io_last_price(symbol_1, symbol_2, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol_1}{the first currency in your pair}
 
 \item{symbol_2}{the second currency in your pair}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with the last price of your specified currency pair.
@@ -20,5 +22,5 @@ cex_io_last_price
 \examples{
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
-cex_io_last_price(symbol_1, symbol_2)
+cex_io_last_price(symbol_1, symbol_2, 4.5)
 }

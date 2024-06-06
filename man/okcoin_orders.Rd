@@ -4,7 +4,14 @@
 \alias{okcoin_orders}
 \title{okcoin_orders}
 \usage{
-okcoin_orders(secret, key, passphrase, instrument_id, state)
+okcoin_orders(
+  secret,
+  key,
+  passphrase,
+  instrument_id,
+  state,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{secret}{your secret key for Okcoin}
@@ -19,6 +26,8 @@ Okcoin API key}
 \item{state}{Order Status: -1: Canceled, 0: Open, 1: Partially Filled,
 2: Fully Filled, 3: Submitting, 4: Canceling, 6: Incomplete (open + partially
 filled), 7: Complete (canceled + fully filled)}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing your orders from the most recent 3

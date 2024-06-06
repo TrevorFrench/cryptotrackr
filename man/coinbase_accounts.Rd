@@ -4,7 +4,13 @@
 \alias{coinbase_accounts}
 \title{coinbase_accounts}
 \usage{
-coinbase_accounts(api_key, api_secret, limit = NULL, cursor = NULL)
+coinbase_accounts(
+  api_key,
+  api_secret,
+  limit = NULL,
+  cursor = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Coinbase API key}
@@ -16,6 +22,8 @@ coinbase_accounts(api_key, api_secret, limit = NULL, cursor = NULL)
 
 \item{cursor}{Cursor used for pagination. When provided, the response returns
 responses after this cursor.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with a dataframe with information about your Coinbase

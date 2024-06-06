@@ -4,12 +4,14 @@
 \alias{gemini_trades}
 \title{gemini_trades}
 \usage{
-gemini_trades(key, secret)
+gemini_trades(key, secret, timeout_seconds = 60)
 }
 \arguments{
 \item{key}{your API key for Gemini}
 
 \item{secret}{your secret key for Gemini}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing all of your historical trades.

@@ -4,7 +4,10 @@
 \alias{cex_io_currency_limits}
 \title{cex_io_currency_limits}
 \usage{
-cex_io_currency_limits()
+cex_io_currency_limits(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with information about currency limits on CEX.io.
@@ -13,5 +16,5 @@ returns a dataframe with information about currency limits on CEX.io.
 cex_io_currency_limits
 }
 \examples{
-cex_io_currency_limits()
+cex_io_currency_limits(4.5)
 }

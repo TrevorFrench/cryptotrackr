@@ -11,7 +11,8 @@ coinmarketcap_id_map(
   limit = NULL,
   sort = "id",
   symbol = NULL,
-  aux = "platform,first_historical_data,last_historical_data,is_active,status"
+  aux = "platform,first_historical_data,last_historical_data,is_active,status",
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -41,6 +42,8 @@ symbols to return CoinMarketCap IDs for. The default value is NULL.}
 fields to return. Pass "platform,first_historical_data,last_historical_data,
 is_active,status" to include all auxiliary fields. This function will include
 all auxiliary fields by default.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe which includes the id mapping for CoinMarketCap

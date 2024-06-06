@@ -4,7 +4,14 @@
 \alias{coinlist_api_call}
 \title{coinlist_api_call}
 \usage{
-coinlist_api_call(api_key, api_secret, method, path, body)
+coinlist_api_call(
+  api_key,
+  api_secret,
+  method,
+  path,
+  body,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Coinlist API key}
@@ -16,6 +23,8 @@ coinlist_api_call(api_key, api_secret, method, path, body)
 \item{path}{the path of your API call}
 
 \item{body}{the body of your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the response from your Coinlist API call

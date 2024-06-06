@@ -4,7 +4,10 @@
 \alias{binance_us_server_time}
 \title{binance_us_server_time}
 \usage{
-binance_us_server_time()
+binance_us_server_time(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the Binance.US server time
@@ -13,5 +16,5 @@ returns the Binance.US server time
 binance_us_server_time
 }
 \examples{
-binance_us_server_time()
+binance_us_server_time(4.5)
 }

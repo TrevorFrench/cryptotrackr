@@ -4,10 +4,12 @@
 \alias{solana_get_inflation_rate}
 \title{solana_get_inflation_rate}
 \usage{
-solana_get_inflation_rate(url)
+solana_get_inflation_rate(url, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns the specific inflation values for the current epoch

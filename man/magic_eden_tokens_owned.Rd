@@ -8,7 +8,8 @@ magic_eden_tokens_owned(
   wallet,
   offset = NULL,
   limit = NULL,
-  list_status = NULL
+  list_status = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ results.}
 
 \item{list_status}{either "listed", "unlisted" or "both". The default is
 "both".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing all tokens owned by specified wallet.
@@ -31,5 +34,5 @@ magic_eden_tokens_owned
 }
 \examples{
 wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-magic_eden_tokens_owned(wallet)
+magic_eden_tokens_owned(wallet, timeout_seconds = 4.5)
 }

@@ -4,12 +4,14 @@
 \alias{solana_get_block}
 \title{solana_get_block}
 \usage{
-solana_get_block(url, slot)
+solana_get_block(url, slot, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
 
 \item{slot}{slot number, as u64 integer}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns identity and transaction information about a confirmed block

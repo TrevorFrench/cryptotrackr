@@ -4,7 +4,10 @@
 \alias{kraken_server_status}
 \title{kraken_server_status}
 \usage{
-kraken_server_status()
+kraken_server_status(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with Kraken's server status along with a timestamp
@@ -13,5 +16,5 @@ returns a list with Kraken's server status along with a timestamp
 kraken_server_status
 }
 \examples{
-kraken_server_status()
+kraken_server_status(4.5)
 }

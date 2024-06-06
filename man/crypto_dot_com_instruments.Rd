@@ -4,7 +4,10 @@
 \alias{crypto_dot_com_instruments}
 \title{crypto_dot_com_instruments}
 \usage{
-crypto_dot_com_instruments()
+crypto_dot_com_instruments(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with information about instruments available on
@@ -14,5 +17,5 @@ Crypto.com
 crypto_dot_com_instruments
 }
 \examples{
-crypto_dot_com_instruments()
+crypto_dot_com_instruments(4.5)
 }

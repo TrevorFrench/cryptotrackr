@@ -4,7 +4,7 @@
 \alias{kraken_asset_pairs}
 \title{kraken_asset_pairs}
 \usage{
-kraken_asset_pairs(pair = NULL, info = NULL)
+kraken_asset_pairs(pair = NULL, info = NULL, timeout_seconds = 60)
 }
 \arguments{
 \item{pair}{optionally provide one or more comma-separated asset pairs to query.}
@@ -12,6 +12,8 @@ kraken_asset_pairs(pair = NULL, info = NULL)
 \item{info}{optionally select the information to return. You can choose from:
 "info" (all info), "leverage" (leverage info), "fees" (fee schedule), or
 "margin" (margin info).}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing information on Kraken asset pairs.
@@ -20,5 +22,5 @@ returns a list containing information on Kraken asset pairs.
 kraken_asset_pairs
 }
 \examples{
-kraken_asset_pairs()
+kraken_asset_pairs(timeout_seconds = 4.5)
 }

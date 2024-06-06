@@ -4,7 +4,7 @@
 \alias{binance_us_api_call}
 \title{binance_us_api_call}
 \usage{
-binance_us_api_call(url, key, data, secret)
+binance_us_api_call(url, key, data, secret, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the base url and endpoint followed by '?' for your API call}
@@ -14,6 +14,8 @@ binance_us_api_call(url, key, data, secret)
 \item{data}{your URL encoded query parameters}
 
 \item{secret}{your Binance.US secret key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 executes an authenticated API call

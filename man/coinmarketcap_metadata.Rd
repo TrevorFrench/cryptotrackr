@@ -10,7 +10,8 @@ coinmarketcap_metadata(
   slug = NULL,
   symbol = NULL,
   address = NULL,
-  aux = "urls,logo,description,tags,platform,date_added,notice,status"
+  aux = "urls,logo,description,tags,platform,date_added,notice,status",
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -33,6 +34,8 @@ The default calue is NULL. You can also pass multiple comma-separated values.}
 fields to return. Pass "urls,logo,description,tags,platform,date_added,
 notice,status" to include all auxiliary fields. This function will include
 all auxiliary fields by default.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list which includes a dataframe for each asset you

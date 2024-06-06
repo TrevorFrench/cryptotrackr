@@ -4,7 +4,15 @@
 \alias{coinbase_candles}
 \title{coinbase_candles}
 \usage{
-coinbase_candles(api_key, api_secret, product_id, start, end, granularity)
+coinbase_candles(
+  api_key,
+  api_secret,
+  product_id,
+  start,
+  end,
+  granularity,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Coinbase API key}
@@ -20,6 +28,8 @@ coinbase_candles(api_key, api_secret, product_id, start, end, granularity)
 \item{granularity}{time slice value for each candle. Options: "ONE_MINUTE",
 "FIVE_MINUTE", "FIFTEEN_MINUTE", "THIRTY_MINUTE", "ONE_HOUR", "TWO_HOUR",
 "SIX_HOUR", or "ONE_DAY"}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with your Coinbase candle data.

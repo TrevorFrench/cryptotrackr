@@ -4,7 +4,7 @@
 \alias{gemini_api_call}
 \title{gemini_api_call}
 \usage{
-gemini_api_call(key, secret, path, method)
+gemini_api_call(key, secret, path, method, timeout_seconds = 60)
 }
 \arguments{
 \item{key}{your API key for Gemini}
@@ -14,6 +14,8 @@ gemini_api_call(key, secret, path, method)
 \item{path}{your API endpoint}
 
 \item{method}{"GET" or "POST"}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns data from your Gemini API call

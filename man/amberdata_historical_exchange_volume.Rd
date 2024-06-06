@@ -10,7 +10,8 @@ amberdata_historical_exchange_volume(
   direction = NULL,
   start_date = NULL,
   end_date = NULL,
-  time_format = NULL
+  time_format = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ milliseconds, or iso8601.}
 \item{time_format}{the format to return your times in. Choose from:
 "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
 is "ms".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with your volume data.

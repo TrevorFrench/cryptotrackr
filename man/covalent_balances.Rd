@@ -4,7 +4,13 @@
 \alias{covalent_balances}
 \title{covalent_balances}
 \usage{
-covalent_balances(api_key, chain_id, address, csv = FALSE)
+covalent_balances(
+  api_key,
+  chain_id,
+  address,
+  csv = FALSE,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Covalent API key}
@@ -16,6 +22,8 @@ balances.}
 
 \item{csv}{'TRUE' will return csv data parsed as a dataframe while 'FALSE'
 will return json data. The default value is 'FALSE'.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns either a list or a dataframe with account balances

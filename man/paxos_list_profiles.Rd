@@ -4,13 +4,15 @@
 \alias{paxos_list_profiles}
 \title{paxos_list_profiles}
 \usage{
-paxos_list_profiles(client_id, client_secret)
+paxos_list_profiles(client_id, client_secret, timeout_seconds = 60)
 }
 \arguments{
 \item{client_id}{the client id you generated when you created your API key}
 
 \item{client_secret}{the client secret you generated when you created your
 API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing all user profiles

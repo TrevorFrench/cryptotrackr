@@ -4,7 +4,13 @@
 \alias{coinmarketcap_api_call}
 \title{coinmarketcap_api_call}
 \usage{
-coinmarketcap_api_call(url, api_key, method, query = NULL)
+coinmarketcap_api_call(
+  url,
+  api_key,
+  method,
+  query = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{url}{the url for your CoinMarketCap API call}
@@ -14,6 +20,8 @@ coinmarketcap_api_call(url, api_key, method, query = NULL)
 \item{method}{"GET" or "POST"}
 
 \item{query}{your query parameters. The default value is NULL.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns data from your CoinMarketCap API call

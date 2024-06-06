@@ -4,7 +4,10 @@
 \alias{gemini_price_feed}
 \title{gemini_price_feed}
 \usage{
-gemini_price_feed()
+gemini_price_feed(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing pairs, their current price, and their
@@ -14,5 +17,5 @@ returns a dataframe containing pairs, their current price, and their
 gemini_price_feed
 }
 \examples{
-gemini_price_feed()
+gemini_price_feed(4.5)
 }

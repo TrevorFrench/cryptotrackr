@@ -4,7 +4,7 @@
 \alias{huobi_candles}
 \title{huobi_candles}
 \usage{
-huobi_candles(period, size, symbol)
+huobi_candles(period, size, symbol, timeout_seconds = 60)
 }
 \arguments{
 \item{period}{the period of each candle. The following are acceptable options:
@@ -15,6 +15,8 @@ huobi_candles(period, size, symbol)
 and 2000.}
 
 \item{symbol}{the trading symbol to query.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing Huobi candle data
@@ -26,5 +28,5 @@ huobi_candles
 period <- '1day'
 size <- '200'
 symbol <- 'btcusdt'
-huobi_candles(period, size, symbol)
+huobi_candles(period, size, symbol, 4.5)
 }

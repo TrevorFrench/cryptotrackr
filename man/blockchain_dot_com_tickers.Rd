@@ -4,7 +4,10 @@
 \alias{blockchain_dot_com_tickers}
 \title{blockchain_dot_com_tickers}
 \usage{
-blockchain_dot_com_tickers()
+blockchain_dot_com_tickers(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with price and volume data for all symbols
@@ -13,5 +16,5 @@ returns a dataframe with price and volume data for all symbols
 blockchain_dot_com_tickers
 }
 \examples{
-blockchain_dot_com_tickers()
+blockchain_dot_com_tickers(4.5)
 }

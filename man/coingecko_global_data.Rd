@@ -4,7 +4,10 @@
 \alias{coingecko_global_data}
 \title{coingecko_global_data}
 \usage{
-coingecko_global_data()
+coingecko_global_data(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing high-level statistics about the
@@ -14,5 +17,5 @@ cryptocurrency ecosystem.
 coingecko_global_data
 }
 \examples{
-coingecko_global_data()
+coingecko_global_data(4.5)
 }

@@ -4,7 +4,7 @@
 \alias{paxos_bearer_token}
 \title{paxos_bearer_token}
 \usage{
-paxos_bearer_token(client_id, client_secret, scope)
+paxos_bearer_token(client_id, client_secret, scope, timeout_seconds = 60)
 }
 \arguments{
 \item{client_id}{the client id you generated when you created your API key}
@@ -13,6 +13,8 @@ paxos_bearer_token(client_id, client_secret, scope)
 API key}
 
 \item{scope}{the scope needed for your specific API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns your Paxos bearer token

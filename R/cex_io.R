@@ -50,7 +50,14 @@ cex_io_currency_limits <- function(timeout_seconds = 60) {
 
     if (res$status_code == 200) {
       data <- jsonlite::fromJSON(rawToChar(res$content))
-      return(data)
+
+      if (!is.null(data$data$pairs)) {
+        return(data$data$pairs)
+      } else {
+        warning("The response does not contain 'data$pairs'.")
+        return(NULL)
+      }
+
     } else {
       stop(paste("API call failed with status code", res$status_code))
     }

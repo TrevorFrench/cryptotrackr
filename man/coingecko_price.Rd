@@ -11,7 +11,8 @@ coingecko_price(
   include_24hr_vol = NULL,
   include_24hr_change = NULL,
   include_last_updated_at = NULL,
-  precision = NULL
+  precision = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -33,6 +34,8 @@ include/exclude the last updated information. The default is 'false'.}
 
 \item{precision}{optionally specify the decimal precision to return. Choose
 either 'full' or any number between 0 and 18.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list of currency prices
@@ -41,5 +44,5 @@ returns a list of currency prices
 coingecko_price
 }
 \examples{
-coingecko_price(id = 'bitcoin', vs_currency = 'usd')
+coingecko_price(id = 'bitcoin', vs_currency = 'usd', timeout_seconds = 4.5)
 }

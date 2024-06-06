@@ -4,12 +4,14 @@
 \alias{binance_us_recent_trades}
 \title{binance_us_recent_trades}
 \usage{
-binance_us_recent_trades(symbol, limit)
+binance_us_recent_trades(symbol, limit, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol}{the trading pair for which you wish to retrieve data.}
 
 \item{limit}{the number of results to return. The maximum is 1,000.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing the most recent trades executed for
@@ -21,5 +23,5 @@ binance_us_recent_trades
 \examples{
 symbol <- 'LTCBTC'
 limit <- '1000'
-binance_us_recent_trades(symbol, limit)
+binance_us_recent_trades(symbol, limit, 4.5)
 }

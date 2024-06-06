@@ -4,7 +4,12 @@
 \alias{solana_get_signature_for_address}
 \title{solana_get_signature_for_address}
 \usage{
-solana_get_signature_for_address(url, address, limit = NULL)
+solana_get_signature_for_address(
+  url,
+  address,
+  limit = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
@@ -13,6 +18,8 @@ solana_get_signature_for_address(url, address, limit = NULL)
 
 \item{limit}{maximum transaction signatures to return (between 1 and 1,000).
 Default is 1,000.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns signatures for confirmed transactions that include the given

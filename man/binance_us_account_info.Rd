@@ -4,12 +4,14 @@
 \alias{binance_us_account_info}
 \title{binance_us_account_info}
 \usage{
-binance_us_account_info(key, secret)
+binance_us_account_info(key, secret, timeout_seconds = 60)
 }
 \arguments{
 \item{key}{your Binance.US API key}
 
 \item{secret}{your Binance.US secret key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing information about your account
@@ -21,5 +23,5 @@ binance_us_account_info
 \dontrun{
 key <- "..."
 secret <- "..."
-account_info <- binance_us_account_info(key, secret)}
+account_info <- binance_us_account_info(key, secret, 4.5)}
 }
