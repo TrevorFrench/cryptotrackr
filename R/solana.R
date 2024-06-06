@@ -16,19 +16,26 @@
 
 solana_api_call <- function(url, request_body, timeout_seconds = 60) {
   headers <- c("Content-Type" = "application/json")
-  response <-
-    httr::POST(url
-               , httr::add_headers(.headers = headers)
-               , body = request_body
-               , httr::timeout(timeout_seconds))
 
-  if (httr::status_code(response) == 200) {
-    return(httr::content(response))
-  } else {
-    # print(httr::content(response, as = "text"))
-    stop("Request failed with status code: ",
-         httr::status_code(response))
-  }
+  tryCatch({
+    res <-
+      httr::POST(url
+                 , httr::add_headers(.headers = headers)
+                 , body = request_body
+                 , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' solana_assemble_key_pair
@@ -129,7 +136,19 @@ solana_get_signature_for_address <-
     request_body <-
       solana_assemble_request_body('"2.0"', 'null', '"getSignaturesForAddress"', params)
     data <- solana_api_call(url, request_body, timeout_seconds)
-    return(data$result)
+
+    if (is.null(data)) {
+      warning("Failed to retrieve data from Amberdata API.")
+      return(NULL)
+    }
+
+    if (!is.null(data$result)) {
+      return(data$result)
+    } else {
+      warning("The response does not contain 'result'.")
+      return(NULL)
+    }
+
   }
 
 #' solana_get_account_info
@@ -152,7 +171,19 @@ solana_get_account_info <- function(url, pubkey, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getAccountInfo"', params)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result$value)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result$value)) {
+    return(data$result$value)
+  } else {
+    warning("The response does not contain 'result$value'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_block_height
@@ -172,7 +203,19 @@ solana_get_block_height <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_health
@@ -192,7 +235,18 @@ solana_get_health <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getHealth"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
 }
 
 #' solana_get_version
@@ -212,7 +266,19 @@ solana_get_version <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getVersion"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_supply
@@ -232,7 +298,19 @@ solana_get_supply <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getSupply"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result$value)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result$value)) {
+    return(data$result$value)
+  } else {
+    warning("The response does not contain 'result$value'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_identity
@@ -252,7 +330,19 @@ solana_get_identity <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getIdentity"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result$identity)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result$identity)) {
+    return(data$result$identity)
+  } else {
+    warning("The response does not contain 'result$identity'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_inflation_rate
@@ -272,7 +362,19 @@ solana_get_inflation_rate <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getInflationRate"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_genesis_hash
@@ -292,7 +394,19 @@ solana_get_genesis_hash <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', 'null', '"getGenesisHash"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_recent_prioritization_fees
@@ -312,7 +426,19 @@ solana_get_recent_prioritization_fees <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getRecentPrioritizationFees"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_slot
@@ -333,7 +459,19 @@ solana_get_slot <- function(url, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getSlot"', NULL)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
 
 #' solana_get_block
@@ -363,5 +501,17 @@ solana_get_block <- function(url, slot, timeout_seconds = 60) {
   request_body <-
     solana_assemble_request_body('"2.0"', '1', '"getBlock"', params)
   data <- solana_api_call(url, request_body, timeout_seconds)
-  return(data$result)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Amberdata API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$result)) {
+    return(data$result)
+  } else {
+    warning("The response does not contain 'result'.")
+    return(NULL)
+  }
+
 }
