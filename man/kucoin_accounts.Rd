@@ -4,7 +4,13 @@
 \alias{kucoin_accounts}
 \title{kucoin_accounts}
 \usage{
-kucoin_accounts(api_key, api_secret, passphrase, version = "2")
+kucoin_accounts(
+  api_key,
+  api_secret,
+  passphrase,
+  version = "2",
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Kucoin API key.}
@@ -16,6 +22,8 @@ key.}
 
 \item{version}{your API key version. This can be retrieved from your Kucoin
 API console. The default value is "2".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing your Kucoin accounts and balances.

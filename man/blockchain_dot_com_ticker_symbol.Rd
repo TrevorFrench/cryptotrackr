@@ -4,10 +4,12 @@
 \alias{blockchain_dot_com_ticker_symbol}
 \title{blockchain_dot_com_ticker_symbol}
 \usage{
-blockchain_dot_com_ticker_symbol(symbol)
+blockchain_dot_com_ticker_symbol(symbol, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol}{the symbol for which to retrieve data}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with price and volume data for specified symbol
@@ -17,5 +19,5 @@ blockchain_dot_com_ticker_symbol
 }
 \examples{
 symbol <- 'BTC-USD'
-blockchain_dot_com_ticker_symbol(symbol)
+blockchain_dot_com_ticker_symbol(symbol, 4.5)
 }

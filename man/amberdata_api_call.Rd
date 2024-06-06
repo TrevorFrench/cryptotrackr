@@ -4,7 +4,7 @@
 \alias{amberdata_api_call}
 \title{amberdata_api_call}
 \usage{
-amberdata_api_call(url, api_key, method, query = NULL)
+amberdata_api_call(url, api_key, method, timeout_seconds = 60, query = NULL)
 }
 \arguments{
 \item{url}{the url for your Amberdata API call}
@@ -12,6 +12,8 @@ amberdata_api_call(url, api_key, method, query = NULL)
 \item{api_key}{your Amberdata API key}
 
 \item{method}{"GET" or "POST"}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 
 \item{query}{your query parameters. The default value is NULL.}
 }

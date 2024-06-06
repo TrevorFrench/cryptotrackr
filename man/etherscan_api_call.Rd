@@ -4,12 +4,14 @@
 \alias{etherscan_api_call}
 \title{etherscan_api_call}
 \usage{
-etherscan_api_call(method, query)
+etherscan_api_call(method, query, timeout_seconds = 60)
 }
 \arguments{
 \item{method}{"GET" or "POST"}
 
 \item{query}{your query parameters}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns data from your Etherscan API call

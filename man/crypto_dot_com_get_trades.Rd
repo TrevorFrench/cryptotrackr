@@ -4,10 +4,12 @@
 \alias{crypto_dot_com_get_trades}
 \title{crypto_dot_com_get_trades}
 \usage{
-crypto_dot_com_get_trades(instrument)
+crypto_dot_com_get_trades(instrument, timeout_seconds = 60)
 }
 \arguments{
 \item{instrument}{the instrument name which you want to query}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns trade data for specified instrument. Refer to Crypto.com for
@@ -18,5 +20,5 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-trades
 crypto_dot_com_get_trades
 }
 \examples{
-crypto_dot_com_get_trades("BTC_USDT")
+crypto_dot_com_get_trades("BTC_USDT", 4.5)
 }

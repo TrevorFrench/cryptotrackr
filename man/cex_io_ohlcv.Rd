@@ -4,7 +4,7 @@
 \alias{cex_io_ohlcv}
 \title{cex_io_ohlcv}
 \usage{
-cex_io_ohlcv(date, symbol_1, symbol_2)
+cex_io_ohlcv(date, symbol_1, symbol_2, timeout_seconds = 60)
 }
 \arguments{
 \item{date}{the date for which to retrieve data}
@@ -12,6 +12,8 @@ cex_io_ohlcv(date, symbol_1, symbol_2)
 \item{symbol_1}{the first currency in your pair}
 
 \item{symbol_2}{the second currency in your pair}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing open, high, low, close, volume data for the
@@ -24,5 +26,5 @@ cex_io_ohlcv
 date <- '20220927'
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
-cex_io_ohlcv(date, symbol_1, symbol_2)
+cex_io_ohlcv(date, symbol_1, symbol_2, 4.5)
 }

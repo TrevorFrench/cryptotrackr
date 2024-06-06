@@ -4,13 +4,15 @@
 \alias{crypto_dot_com_get_book}
 \title{crypto_dot_com_get_book}
 \usage{
-crypto_dot_com_get_book(instrument, depth = 50)
+crypto_dot_com_get_book(instrument, depth = 50, timeout_seconds = 60)
 }
 \arguments{
 \item{instrument}{the instrument name which you want to query}
 
 \item{depth}{the depth of the order book to retrieve. The maximum and default
 value is 50.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing the order book for your specified
@@ -20,5 +22,5 @@ instrument.
 crypto_dot_com_get_book
 }
 \examples{
-crypto_dot_com_get_book("BTC_USDT")
+crypto_dot_com_get_book("BTC_USDT", timeout_seconds = 4.5)
 }

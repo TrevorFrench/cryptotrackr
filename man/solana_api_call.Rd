@@ -4,12 +4,14 @@
 \alias{solana_api_call}
 \title{solana_api_call}
 \usage{
-solana_api_call(url, request_body)
+solana_api_call(url, request_body, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
 
 \item{request_body}{the request body for your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns data from your Solana API call

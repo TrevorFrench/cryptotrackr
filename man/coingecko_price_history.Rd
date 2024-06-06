@@ -4,7 +4,7 @@
 \alias{coingecko_price_history}
 \title{coingecko_price_history}
 \usage{
-coingecko_price_history(id, date, localization = "false")
+coingecko_price_history(id, date, localization = "false", timeout_seconds = 60)
 }
 \arguments{
 \item{id}{The asset id you wish to query. IDs can be retrieved with the
@@ -14,6 +14,8 @@ coingecko_coins function.}
 
 \item{localization}{"true" or "false" to include/exclude localized languages
 in the response. The default value is "false".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing data about asset pricing.
@@ -22,6 +24,6 @@ returns a list containing data about asset pricing.
 coingecko_price_history
 }
 \examples{
-price <- coingecko_price_history("bitcoin", "30-12-2017")
+price <- coingecko_price_history("bitcoin", "30-12-2017", timeout_seconds = 4.5)
 price$market_data$current_price$usd
 }

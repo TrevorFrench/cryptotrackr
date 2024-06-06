@@ -4,12 +4,14 @@
 \alias{coinmarketcap_airdrop}
 \title{coinmarketcap_airdrop}
 \usage{
-coinmarketcap_airdrop(api_key, id)
+coinmarketcap_airdrop(api_key, id, timeout_seconds = 60)
 }
 \arguments{
 \item{api_key}{your CoinMarketCap API key}
 
 \item{id}{the unique airdrop id which can be found through the airdrops api.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns information about the airdrop for the id you provided.
@@ -21,5 +23,5 @@ coinmarketcap_airdrop
 \dontrun{
 api_key <- "..."
 id <- "10744"
-airdrop <- coinmarketcap_airdrop(api_key, url)}
+airdrop <- coinmarketcap_airdrop(api_key, id)}
 }

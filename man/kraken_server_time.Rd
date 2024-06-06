@@ -4,7 +4,10 @@
 \alias{kraken_server_time}
 \title{kraken_server_time}
 \usage{
-kraken_server_time()
+kraken_server_time(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with Kraken's server time in unix and rfc1123 formats
@@ -13,5 +16,5 @@ returns a list with Kraken's server time in unix and rfc1123 formats
 kraken_server_time
 }
 \examples{
-kraken_server_time()
+kraken_server_time(4.5)
 }

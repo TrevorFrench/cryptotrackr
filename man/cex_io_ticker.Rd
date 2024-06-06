@@ -4,12 +4,14 @@
 \alias{cex_io_ticker}
 \title{cex_io_ticker}
 \usage{
-cex_io_ticker(symbol_1, symbol_2)
+cex_io_ticker(symbol_1, symbol_2, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol_1}{the first currency in your pair}
 
 \item{symbol_2}{the second currency in your pair}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with basic trading information about your specified
@@ -21,5 +23,5 @@ cex_io_ticker
 \examples{
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
-cex_io_ticker(symbol_1, symbol_2)
+cex_io_ticker(symbol_1, symbol_2, 4.5)
 }

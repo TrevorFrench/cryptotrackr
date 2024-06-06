@@ -4,7 +4,7 @@
 \alias{covalent_api_call}
 \title{covalent_api_call}
 \usage{
-covalent_api_call(url, method, query = NULL, csv = FALSE)
+covalent_api_call(url, method, query = NULL, csv = FALSE, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the Covalent URL for use in your API call}
@@ -15,6 +15,8 @@ covalent_api_call(url, method, query = NULL, csv = FALSE)
 
 \item{csv}{'TRUE' will return csv data parsed as a dataframe while 'FALSE'
 will return json data. The default value is 'FALSE'.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns your Covalent API data

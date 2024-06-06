@@ -4,7 +4,14 @@
 \alias{okcoin_api_call}
 \title{okcoin_api_call}
 \usage{
-okcoin_api_call(url, key, signature, formatted_time, passphrase)
+okcoin_api_call(
+  url,
+  key,
+  signature,
+  formatted_time,
+  passphrase,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{url}{the full URL for the API call}
@@ -18,6 +25,8 @@ format}
 
 \item{passphrase}{the passphrase which you created when generating your
 Okcoin API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing the results of your API call

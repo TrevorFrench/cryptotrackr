@@ -4,7 +4,12 @@
 \alias{magic_eden_transactions}
 \title{magic_eden_transactions}
 \usage{
-magic_eden_transactions(wallet, offset = NULL, limit = NULL)
+magic_eden_transactions(
+  wallet,
+  offset = NULL,
+  limit = NULL,
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{wallet}{the address of the wallet you are trying to query}
@@ -14,6 +19,8 @@ transactions to skip.}
 
 \item{limit}{optionally provide a numeric limit to specify maximum number of
 results.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing all transactions for the specified
@@ -24,5 +31,5 @@ magic_eden_transactions
 }
 \examples{
 wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-magic_eden_transactions(wallet)
+magic_eden_transactions(wallet, timeout_seconds = 4.5)
 }

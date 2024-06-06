@@ -13,7 +13,8 @@ kucoin_api_call(
   passphrase,
   version,
   api_secret,
-  query = NULL
+  query = NULL,
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -38,6 +39,8 @@ API console.}
 \item{api_secret}{your Kucoin API secret.}
 
 \item{query}{a named list containing your query parameters.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the data from your Kucoin API call.

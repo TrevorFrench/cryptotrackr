@@ -4,12 +4,14 @@
 \alias{binance_us_system_status}
 \title{binance_us_system_status}
 \usage{
-binance_us_system_status(key, secret)
+binance_us_system_status(key, secret, timeout_seconds = 60)
 }
 \arguments{
 \item{key}{your Binance.US API key}
 
 \item{secret}{your Binance.US secret key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the status of the Binance.US API. The response will either be

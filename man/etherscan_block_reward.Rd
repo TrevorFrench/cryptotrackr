@@ -4,12 +4,14 @@
 \alias{etherscan_block_reward}
 \title{etherscan_block_reward}
 \usage{
-etherscan_block_reward(block, api_key)
+etherscan_block_reward(block, api_key, timeout_seconds = 60)
 }
 \arguments{
 \item{block}{the numeric block number}
 
 \item{api_key}{your Etherscan API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the block and uncle reward for the specified block number as

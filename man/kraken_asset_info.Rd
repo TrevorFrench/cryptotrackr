@@ -4,12 +4,14 @@
 \alias{kraken_asset_info}
 \title{kraken_asset_info}
 \usage{
-kraken_asset_info(asset = NULL, aclass = NULL)
+kraken_asset_info(asset = NULL, aclass = NULL, timeout_seconds = 60)
 }
 \arguments{
 \item{asset}{optionally provide one or more comma-separated ticker symbols.}
 
 \item{aclass}{optionally provide asset categories to filter by.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing asset information
@@ -18,7 +20,7 @@ returns a list containing asset information
 kraken_asset_info
 }
 \examples{
-all_asset_info <- kraken_asset_info()
-eth_btc_info <- kraken_asset_info("ETH,BTC")
-currency_info <- kraken_asset_info(aclass = "currency")
+all_asset_info <- kraken_asset_info(timeout_seconds = 4.5)
+eth_btc_info <- kraken_asset_info("ETH,BTC", timeout_seconds = 4.5)
+currency_info <- kraken_asset_info(aclass = "currency", timeout_seconds = 4.5)
 }

@@ -4,7 +4,10 @@
 \alias{okcoin_trading_pairs}
 \title{okcoin_trading_pairs}
 \usage{
-okcoin_trading_pairs()
+okcoin_trading_pairs(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing information about all trading pairs on
@@ -14,5 +17,5 @@ Okcoin
 okcoin_trading_pairs
 }
 \examples{
-okcoin_trading_pairs()
+okcoin_trading_pairs(4.5)
 }

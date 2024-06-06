@@ -4,10 +4,12 @@
 \alias{solana_get_version}
 \title{solana_get_version}
 \usage{
-solana_get_version(url)
+solana_get_version(url, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns the current Solana version running on the node

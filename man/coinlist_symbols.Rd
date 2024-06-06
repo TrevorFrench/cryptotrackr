@@ -4,7 +4,10 @@
 \alias{coinlist_symbols}
 \title{coinlist_symbols}
 \usage{
-coinlist_symbols()
+coinlist_symbols(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe with information about symbols available on
@@ -14,5 +17,5 @@ Coinlist Pro
 coinlist_symbols
 }
 \examples{
-coinlist_symbols()
+coinlist_symbols(4.5)
 }

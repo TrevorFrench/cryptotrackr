@@ -4,7 +4,7 @@
 \alias{okcoin_spot_account_info}
 \title{okcoin_spot_account_info}
 \usage{
-okcoin_spot_account_info(secret, key, passphrase)
+okcoin_spot_account_info(secret, key, passphrase, timeout_seconds = 60)
 }
 \arguments{
 \item{secret}{your secret key for Okcoin}
@@ -13,6 +13,8 @@ okcoin_spot_account_info(secret, key, passphrase)
 
 \item{passphrase}{the passphrase which you created when generating your
 Okcoin API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing your spot account balances

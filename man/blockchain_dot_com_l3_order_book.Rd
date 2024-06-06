@@ -4,10 +4,12 @@
 \alias{blockchain_dot_com_l3_order_book}
 \title{blockchain_dot_com_l3_order_book}
 \usage{
-blockchain_dot_com_l3_order_book(symbol)
+blockchain_dot_com_l3_order_book(symbol, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol}{the symbol for which to retrieve data}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing a 'bids' and an 'asks' dataframe along with
@@ -18,7 +20,7 @@ blockchain_dot_com_l3_order_book
 }
 \examples{
 symbol <- 'BTC-USD'
-l3_order_book <- blockchain_dot_com_l3_order_book(symbol)
+l3_order_book <- blockchain_dot_com_l3_order_book(symbol, 4.5)
 l3_order_book$bids
 l3_order_book$asks
 }

@@ -4,7 +4,7 @@
 \alias{cex_io_converter}
 \title{cex_io_converter}
 \usage{
-cex_io_converter(symbol_1, symbol_2, amount)
+cex_io_converter(symbol_1, symbol_2, amount, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol_1}{the first currency in your pair}
@@ -12,6 +12,8 @@ cex_io_converter(symbol_1, symbol_2, amount)
 \item{symbol_2}{the second currency in your pair}
 
 \item{amount}{the currency amount to convert denominated in symbol_1}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the converted amount denominated in symbol_2
@@ -23,5 +25,5 @@ cex_io_converter
 symbol_1 <- 'btc'
 symbol_2 <- 'usd'
 amount <- '2.5'
-cex_io_converter(symbol_1, symbol_2, amount)
+cex_io_converter(symbol_1, symbol_2, amount, 4.5)
 }

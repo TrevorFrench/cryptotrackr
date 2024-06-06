@@ -1,16 +1,36 @@
 #' coinlist_symbols
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns a dataframe with information about symbols available on
 #' Coinlist Pro
 #' @export
 #'
 #' @examples
-#' coinlist_symbols()
+#' coinlist_symbols(4.5)
 
-coinlist_symbols <- function() {
-  res <- httr::GET('https://trade-api.coinlist.co/v1/symbols')
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$symbols)
+coinlist_symbols <- function(timeout_seconds = 60) {
+  tryCatch({
+    res <- httr::GET('https://trade-api.coinlist.co/v1/symbols'
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      if (!is.null(data$symbols)) {
+        return(data$symbols)
+      } else {
+        warning("The response does not contain 'payload'.")
+        return(NULL)
+      }
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinlist_time
@@ -70,6 +90,7 @@ coinlist_signature <- function(api_secret, coinlist_time, method, path, body) {
 #' @param method "GET" or "POST"
 #' @param path the path of your API call
 #' @param body the body of your API call
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns the response from your Coinlist API call
 #' @export
@@ -83,25 +104,40 @@ coinlist_signature <- function(api_secret, coinlist_time, method, path, body) {
 #' body <- ""
 #' data <- coinlist_api_call(api_key, api_secret, method, path, body)}
 
-coinlist_api_call <- function(api_key, api_secret, method, path, body) {
+coinlist_api_call <- function(api_key, api_secret, method, path, body, timeout_seconds = 60) {
   coinlist_time <- coinlist_time()
   sig <- coinlist_signature(api_secret, coinlist_time, method, path, body)
   url <- paste('https://trade-api.coinlist.co', path, sep = '')
-  res <- httr::GET(url
-                  , httr::accept("application/json")
-                  , body = body
-                  , httr::add_headers('CL-ACCESS-KEY' = api_key
-                                      , 'CL-ACCESS-SIG' = sig
-                                      , 'CL-ACCESS-TIMESTAMP' = coinlist_time
-                  ))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url
+                     , httr::accept("application/json")
+                     , body = body
+                     , httr::add_headers('CL-ACCESS-KEY' = api_key
+                                         , 'CL-ACCESS-SIG' = sig
+                                         , 'CL-ACCESS-TIMESTAMP' = coinlist_time
+                     )
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinlist_fees
 #'
 #' @param api_key your Coinlist API key
 #' @param api_secret your Coinlist API secret
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list containing Coinlist fees by symbols.
 #' @export
@@ -112,7 +148,18 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body) {
 #' api_secret <- "..."
 #' fees <- coinlist_fees(api_key, api_secret)}
 
-coinlist_fees <- function(api_key, api_secret) {
-  data <- coinlist_api_call(api_key, api_secret, 'GET', '/v1/fees', '')
-  return(data$fees_by_symbols)
+coinlist_fees <- function(api_key, api_secret, timeout_seconds = 60) {
+  data <- coinlist_api_call(api_key, api_secret, 'GET', '/v1/fees', '', timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinlist API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$fees_by_symbols)) {
+    return(data$fees_by_symbols)
+  } else {
+    warning("The response does not contain 'fees_by_symbols'.")
+    return(NULL)
+  }
 }

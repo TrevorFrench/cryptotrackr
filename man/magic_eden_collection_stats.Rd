@@ -4,10 +4,12 @@
 \alias{magic_eden_collection_stats}
 \title{magic_eden_collection_stats}
 \usage{
-magic_eden_collection_stats(symbol)
+magic_eden_collection_stats(symbol, timeout_seconds = 60)
 }
 \arguments{
 \item{symbol}{the collection symbol you are requesting data for}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing statistics about the specified collection.
@@ -17,5 +19,5 @@ magic_eden_collection_stats
 }
 \examples{
 symbol <- "gothic_degens"
-magic_eden_collection_stats(symbol)
+magic_eden_collection_stats(symbol, timeout_seconds = 4.5)
 }

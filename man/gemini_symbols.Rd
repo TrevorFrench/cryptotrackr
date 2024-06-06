@@ -4,7 +4,10 @@
 \alias{gemini_symbols}
 \title{gemini_symbols}
 \usage{
-gemini_symbols()
+gemini_symbols(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a vector containing all symbols available on Gemini
@@ -13,5 +16,5 @@ returns a vector containing all symbols available on Gemini
 gemini_symbols
 }
 \examples{
-gemini_symbols()
+gemini_symbols(4.5)
 }

@@ -4,7 +4,10 @@
 \alias{blockchain_dot_com_symbols}
 \title{blockchain_dot_com_symbols}
 \usage{
-blockchain_dot_com_symbols()
+blockchain_dot_com_symbols(timeout_seconds = 60)
+}
+\arguments{
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with various data for all symbols
@@ -13,5 +16,5 @@ returns a list with various data for all symbols
 blockchain_dot_com_symbols
 }
 \examples{
-blockchain_dot_com_symbols()
+blockchain_dot_com_symbols(4.5)
 }

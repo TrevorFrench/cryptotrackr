@@ -4,13 +4,19 @@
 \alias{amberdata_blockchain_metrics}
 \title{amberdata_blockchain_metrics}
 \usage{
-amberdata_blockchain_metrics(api_key, blockchain_id = "ethereum-mainnet")
+amberdata_blockchain_metrics(
+  api_key,
+  blockchain_id = "ethereum-mainnet",
+  timeout_seconds = 60
+)
 }
 \arguments{
 \item{api_key}{your Amberdata API key}
 
 \item{blockchain_id}{the id for the blockchain you wish to query. The default
 blockchain_id is "ethereum-mainnet".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list containing blockchain metrics for your specified

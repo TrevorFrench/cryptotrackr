@@ -4,10 +4,12 @@
 \alias{coinbase_single_currency}
 \title{coinbase_single_currency}
 \usage{
-coinbase_single_currency(currency)
+coinbase_single_currency(currency, timeout_seconds = 60)
 }
 \arguments{
 \item{currency}{the currency id for the relevant asset}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list with details related to the specified currency
@@ -17,5 +19,5 @@ coinbase_single_currency
 }
 \examples{
 currency <- 'btc'
-coinbase_single_currency(currency)
+coinbase_single_currency(currency, 4.5)
 }

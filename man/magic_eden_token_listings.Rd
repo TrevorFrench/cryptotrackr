@@ -4,10 +4,12 @@
 \alias{magic_eden_token_listings}
 \title{magic_eden_token_listings}
 \usage{
-magic_eden_token_listings(mint_address)
+magic_eden_token_listings(mint_address, timeout_seconds = 60)
 }
 \arguments{
 \item{mint_address}{the mint address of the token you wish to query}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a dataframe containing the token listings for the specified
@@ -18,5 +20,5 @@ magic_eden_token_listings
 }
 \examples{
 mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
-magic_eden_token_listings(mint_address)
+magic_eden_token_listings(mint_address, timeout_seconds = 4.5)
 }

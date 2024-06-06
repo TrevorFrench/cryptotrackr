@@ -4,6 +4,7 @@
 #' @param api_key your CoinMarketCap API key
 #' @param method "GET" or "POST"
 #' @param query your query parameters. The default value is NULL.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns data from your CoinMarketCap API call
 #' @export
@@ -22,16 +23,29 @@
 #' )
 #' data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)}
 
-coinmarketcap_api_call <- function(url, api_key, method, query = NULL){
-  res <- httr::VERB(method
-                    , url
-                    , httr::add_headers('X-CMC_PRO_API_KEY' = api_key)
-                    , httr::content_type("application/octet-stream")
-                    , httr::accept("application/json")
-                    , query = query
-  )
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+coinmarketcap_api_call <- function(url, api_key, method, query = NULL, timeout_seconds = 60){
+  tryCatch({
+    res <- httr::VERB(method
+                      , url
+                      , httr::add_headers('X-CMC_PRO_API_KEY' = api_key)
+                      , httr::content_type("application/octet-stream")
+                      , httr::accept("application/json")
+                      , httr::timeout(timeout_seconds)
+                      , query = query
+    )
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinmarketcap_id_map
@@ -56,6 +70,7 @@ coinmarketcap_api_call <- function(url, api_key, method, query = NULL){
 #' fields to return. Pass "platform,first_historical_data,last_historical_data,
 #' is_active,status" to include all auxiliary fields. This function will include
 #' all auxiliary fields by default.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe which includes the id mapping for CoinMarketCap
 #' cryptocurrencies along with other metadata related to the currencies.
@@ -72,7 +87,8 @@ coinmarketcap_id_map <- function(api_key
                                  , limit = NULL
                                  , sort = 'id'
                                  , symbol = NULL
-                                 , aux = 'platform,first_historical_data,last_historical_data,is_active,status'){
+                                 , aux = 'platform,first_historical_data,last_historical_data,is_active,status'
+                                 , timeout_seconds = 60){
 
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/map'
 
@@ -85,8 +101,19 @@ coinmarketcap_id_map <- function(api_key
     , aux = aux
   )
 
-  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
-  return(data$data)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }
 
 #' coinmarketcap_metadata
@@ -105,6 +132,7 @@ coinmarketcap_id_map <- function(api_key
 #' fields to return. Pass "urls,logo,description,tags,platform,date_added,
 #' notice,status" to include all auxiliary fields. This function will include
 #' all auxiliary fields by default.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list which includes a dataframe for each asset you
 #' requested. The dataframe will contain CoinMarketCap metadata for the asset.
@@ -120,7 +148,8 @@ coinmarketcap_metadata <- function(api_key
                                    , slug = NULL
                                    , symbol = NULL
                                    , address = NULL
-                                   , aux = 'urls,logo,description,tags,platform,date_added,notice,status'){
+                                   , aux = 'urls,logo,description,tags,platform,date_added,notice,status'
+                                   , timeout_seconds = 60){
 
   url <- 'https://pro-api.coinmarketcap.com/v2/cryptocurrency/info'
 
@@ -132,14 +161,26 @@ coinmarketcap_metadata <- function(api_key
     , aux = aux
   )
 
-  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
-  return(data$data)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }
 
 #' coinmarketcap_airdrop
 #'
 #' @param api_key your CoinMarketCap API key
 #' @param id the unique airdrop id which can be found through the airdrops api.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns information about the airdrop for the id you provided.
 #' @export
@@ -148,13 +189,20 @@ coinmarketcap_metadata <- function(api_key
 #' \dontrun{
 #' api_key <- "..."
 #' id <- "10744"
-#' airdrop <- coinmarketcap_airdrop(api_key, url)}
+#' airdrop <- coinmarketcap_airdrop(api_key, id)}
 
-coinmarketcap_airdrop <- function(api_key, id){
+coinmarketcap_airdrop <- function(api_key, id, timeout_seconds = 60){
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/airdrop'
   query_string <- list(id = id)
-  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
-  return(data)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' coinmarketcap_categories
@@ -170,6 +218,7 @@ coinmarketcap_airdrop <- function(api_key, id){
 #' NULL. Multiple values must be comma-separated.
 #' @param symbol filter categories by one or more asset symbols. The default
 #' value is NULL. Multiple values must be comma-separated.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a datafrane with information about CoinMarketCap asset
 #' categories.
@@ -185,7 +234,8 @@ coinmarketcap_categories <- function(api_key
                                   , limit = NULL
                                   , id = NULL
                                   , slug = NULL
-                                  , symbol = NULL){
+                                  , symbol = NULL
+                                  , timeout_seconds = 60){
 
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/categories'
 
@@ -197,8 +247,19 @@ coinmarketcap_categories <- function(api_key
     , symbol = symbol
   )
 
-  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
-  return(data$data)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }
 
 #' coinmarketcap_category
@@ -214,6 +275,7 @@ coinmarketcap_categories <- function(api_key
 #' symbols.
 #' @param convert_id Optionally calculate market quotes by CoinMarketCap id
 #' instead of symbol.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list with information about the specified category.
 #' @export
@@ -229,7 +291,8 @@ coinmarketcap_category <- function(api_key
                                      , start = "1"
                                      , limit = NULL
                                      , convert = NULL
-                                     , convert_id = NULL){
+                                     , convert_id = NULL
+                                     , timeout_seconds = 60){
 
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/category'
 
@@ -241,6 +304,17 @@ coinmarketcap_category <- function(api_key
     , convert_id = convert_id
   )
 
-  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string)
-  return(data$data)
+  data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$data)) {
+    return(data$data)
+  } else {
+    warning("The response does not contain 'data'.")
+    return(NULL)
+  }
 }

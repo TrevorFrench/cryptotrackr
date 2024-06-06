@@ -1,39 +1,68 @@
 #' coinbase_all_currencies
 #'
+#' @param timeout_seconds seconds until the query times out. Default is 60.
+#'
 #' @return returns a dataframe with information about all currencies known to Coinbase
 #' @export
 #'
 #' @examples
-#' coinbase_all_currencies()
+#' coinbase_all_currencies(4.5)
 
-coinbase_all_currencies <- function() {
-  res <- httr::GET('https://api.exchange.coinbase.com/currencies',
-                  httr::add_headers('Content-Type' = 'application/octet-stream'
-                                    , 'accept' = 'application/json'
-                  ))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+coinbase_all_currencies <- function(timeout_seconds = 60) {
+  tryCatch({
+    res <- httr::GET('https://api.exchange.coinbase.com/currencies',
+                     httr::add_headers('Content-Type' = 'application/octet-stream'
+                                       , 'accept' = 'application/json'
+                     )
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinbase_single_currency
 #'
 #' @param currency the currency id for the relevant asset
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list with details related to the specified currency
 #' @export
 #'
 #' @examples
 #' currency <- 'btc'
-#' coinbase_single_currency(currency)
+#' coinbase_single_currency(currency, 4.5)
 
-coinbase_single_currency <- function(currency) {
-  res <- httr::GET(paste('https://api.exchange.coinbase.com/currencies/',
-                         toupper(currency), sep = ''),
-                  httr::add_headers('Content-Type' = 'application/octet-stream'
-                                    , 'accept' = 'application/json'
-                  ))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+coinbase_single_currency <- function(currency, timeout_seconds = 60) {
+  tryCatch({
+    res <- httr::GET(paste('https://api.exchange.coinbase.com/currencies/',
+                           toupper(currency), sep = ''),
+                     httr::add_headers('Content-Type' = 'application/octet-stream'
+                                       , 'accept' = 'application/json'
+                     )
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinbase_time
@@ -88,6 +117,7 @@ coinbase_signature <- function(api_secret, coinbase_time, method, path, body) {
 #' @param path the path of your API call
 #' @param body the body of your API call
 #' @param query the query for your coinbase API call as a list
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns the response from your Coinbase API call
 #' @export
@@ -101,20 +131,34 @@ coinbase_signature <- function(api_secret, coinbase_time, method, path, body) {
 #' body <- ""
 #' data <- coinbase_api_call(api_key, api_secret, method, path, body)}
 
-coinbase_api_call <- function(api_key, api_secret, method, path, body, query = NULL) {
+coinbase_api_call <- function(api_key, api_secret, method, path, body, query = NULL, timeout_seconds = 60) {
   coinbase_time <- coinbase_time()
   sig <- coinbase_signature(api_secret, coinbase_time, method, path, body)
   url <- paste('https://api.coinbase.com', path, sep = '')
-  res <- httr::VERB(method
-                  , url
-                  , body = body
-                  , httr::add_headers('CB-ACCESS-KEY' = api_key
-                                      , 'CB-ACCESS-SIGN' = sig
-                                      , 'CB-ACCESS-TIMESTAMP' = coinbase_time
-                  )
-                  , query = query)
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::VERB(method
+                      , url
+                      , body = body
+                      , httr::add_headers('CB-ACCESS-KEY' = api_key
+                                          , 'CB-ACCESS-SIGN' = sig
+                                          , 'CB-ACCESS-TIMESTAMP' = coinbase_time
+                      )
+                      , httr::timeout(timeout_seconds)
+                      , query = query)
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' coinbase_accounts
@@ -125,6 +169,7 @@ coinbase_api_call <- function(api_key, api_secret, method, path, body, query = N
 #' 250 while the default value is 49.
 #' @param cursor Cursor used for pagination. When provided, the response returns
 #' responses after this cursor.
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a list with a dataframe with information about your Coinbase
 #' accounts along with your cursor for use in pagination.
@@ -136,7 +181,7 @@ coinbase_api_call <- function(api_key, api_secret, method, path, body, query = N
 #' api_secret <- "..."
 #' accounts <- coinbase_accounts(api_key, api_secret)}
 
-coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) {
+coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL, timeout_seconds = 60) {
   path <- '/api/v3/brokerage/accounts'
   method <- 'GET'
   body <- ''
@@ -144,8 +189,15 @@ coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) 
     limit = limit,
     cursor = cursor
   )
-  data <- coinbase_api_call(api_key, api_secret, method, path, body, query)
-  return(data)
+  data <- coinbase_api_call(api_key, api_secret, method, path, body, query, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinbase API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' coinbase_candles
@@ -158,6 +210,7 @@ coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) 
 #' @param granularity time slice value for each candle. Options: "ONE_MINUTE",
 #' "FIVE_MINUTE", "FIFTEEN_MINUTE", "THIRTY_MINUTE", "ONE_HOUR", "TWO_HOUR",
 #' "SIX_HOUR", or "ONE_DAY"
+#' @param timeout_seconds seconds until the query times out. Default is 60.
 #'
 #' @return returns a dataframe with your Coinbase candle data.
 #' @export
@@ -172,7 +225,7 @@ coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL) 
 #' start <- as.numeric(start_timestamp)
 #' coinbase_candles(api_key, api_secret, 'BTC-USD', start, end, 'ONE_MINUTE')}
 
-coinbase_candles <- function(api_key, api_secret, product_id, start, end, granularity) {
+coinbase_candles <- function(api_key, api_secret, product_id, start, end, granularity, timeout_seconds = 60) {
   path <- '/api/v3/brokerage/products/BTC-USD/candles'
   method <- 'GET'
   body <- ''
@@ -181,6 +234,17 @@ coinbase_candles <- function(api_key, api_secret, product_id, start, end, granul
     end = end,
     granularity = granularity
   )
-  data <- coinbase_api_call(api_key, api_secret, method, path, body, query)
-  return(data$candles)
+  data <- coinbase_api_call(api_key, api_secret, method, path, body, query, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinbase API.")
+    return(NULL)
+  }
+
+  if (!is.null(data$candles)) {
+    return(data$candles)
+  } else {
+    warning("The response does not contain 'candles'.")
+    return(NULL)
+  }
 }

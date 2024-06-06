@@ -4,12 +4,14 @@
 \alias{etherscan_contract_abi}
 \title{etherscan_contract_abi}
 \usage{
-etherscan_contract_abi(address, api_key)
+etherscan_contract_abi(address, api_key, timeout_seconds = 60)
 }
 \arguments{
 \item{address}{the contract address for which you wish to retrieve the ABI.}
 
 \item{api_key}{your Etherscan API key}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns the contract ABI for the specified address

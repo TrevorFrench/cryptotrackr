@@ -4,10 +4,12 @@
 \alias{crypto_dot_com_get_ticker}
 \title{crypto_dot_com_get_ticker}
 \usage{
-crypto_dot_com_get_ticker(instrument)
+crypto_dot_com_get_ticker(instrument, timeout_seconds = 60)
 }
 \arguments{
 \item{instrument}{the instrument name which you want to query}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns ticker data for specified instrument. Refer to Crypto.com for
@@ -18,5 +20,5 @@ https://exchange-docs.crypto.com/spot/index.html#public-get-ticker
 crypto_dot_com_get_ticker
 }
 \examples{
-crypto_dot_com_get_ticker("BTC_USDT")
+crypto_dot_com_get_ticker("BTC_USDT", 4.5)
 }

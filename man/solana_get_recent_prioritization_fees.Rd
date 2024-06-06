@@ -4,10 +4,12 @@
 \alias{solana_get_recent_prioritization_fees}
 \title{solana_get_recent_prioritization_fees}
 \usage{
-solana_get_recent_prioritization_fees(url)
+solana_get_recent_prioritization_fees(url, timeout_seconds = 60)
 }
 \arguments{
 \item{url}{the RPC url for your API call}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 Returns a list of prioritization fees from recent blocks.

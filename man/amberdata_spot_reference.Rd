@@ -9,7 +9,8 @@ amberdata_spot_reference(
   exchange = NULL,
   pair = NULL,
   include_inactive = "False",
-  include_original_reference = "False"
+  include_original_reference = "False",
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ delisted ones. Default is 'False'.}
 
 \item{include_original_reference}{If 'True', endpoint returns
 originalReference. Default is 'False'.}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list of reference information for each of the pairs on

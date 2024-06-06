@@ -9,7 +9,8 @@ amberdata_spot_exchanges(
   exchange = NULL,
   pair = NULL,
   include_dates = "false",
-  time_format = "ms"
+  time_format = "ms",
+  timeout_seconds = 60
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ data. Default is "false"}
 \item{time_format}{the format to return your times in. Choose from:
 "milliseconds", "ms", "iso", "iso8601", "hr", and "human_readable". Default
 is "ms".}
+
+\item{timeout_seconds}{seconds until the query times out. Default is 60.}
 }
 \value{
 returns a list of spot exchanges and pairs supported on Amberdata
