@@ -30,11 +30,31 @@ nifty_gateway_user_nifties <- function(username
                 , limit = limit
                 , offset = offset
                 )
-  res <- httr::GET(url
-                  , query = query
-                  , httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$results)
+
+  tryCatch({
+    res <- httr::GET(url
+                     , query = query
+                     , httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+
+      if (!is.null(data$results)) {
+        return(data$results)
+      } else {
+        warning("The response does not contain 'results'.")
+        return(NULL)
+      }
+
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' nifty_gateway_creators
@@ -60,8 +80,28 @@ nifty_gateway_creators <- function(username, limit = NULL, offset = NULL, timeou
                , '/collectors/'
                , sep = '')
   query <- list(limit = limit, offset = offset)
-  res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
   #res <- httr::VERB('GET', url, httr::accept("application/json"), query = query)
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data$results)
+
+  tryCatch({
+    res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+
+      if (!is.null(data$results)) {
+        return(data$results)
+      } else {
+        warning("The response does not contain 'results'.")
+        return(NULL)
+      }
+
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
