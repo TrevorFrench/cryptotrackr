@@ -21,9 +21,22 @@ magic_eden_transactions <- function(wallet, offset = NULL, limit = NULL, timeout
                , '/activities'
                , sep = '')
   query <- list(offset = offset, limit = limit)
-  res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' magic_eden_tokens_owned
@@ -54,9 +67,22 @@ magic_eden_tokens_owned <- function(wallet
                , '/tokens'
                , sep = '')
   query <- list(offset = offset, limit = limit, listStatus = list_status)
-  res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url, query = query, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' magic_eden_token_metadata
@@ -76,9 +102,22 @@ magic_eden_token_metadata <- function(mint_address, timeout_seconds = 60) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/tokens/'
                , mint_address
                , sep = '')
-  res <- httr::GET(url, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' magic_eden_token_listings
@@ -99,9 +138,22 @@ magic_eden_token_listings <- function(mint_address, timeout_seconds = 60) {
                , mint_address
                , '/listings'
                , sep = '')
-  res <- httr::GET(url, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
 
 #' magic_eden_collection_stats
@@ -121,7 +173,20 @@ magic_eden_collection_stats <- function(symbol, timeout_seconds = 60) {
                , symbol
                , '/stats'
                , sep = '')
-  res <- httr::GET(url, httr::timeout(timeout_seconds))
-  data <- jsonlite::fromJSON(rawToChar(res$content))
-  return(data)
+
+  tryCatch({
+    res <- httr::GET(url, httr::timeout(timeout_seconds))
+
+    if (res$status_code == 200) {
+      data <- jsonlite::fromJSON(rawToChar(res$content))
+      return(data)
+    } else {
+      stop(paste("API call failed with status code", res$status_code))
+    }
+
+  }, error = function(e) {
+    message <- paste("Error during API call:", e$message)
+    warning(message)
+    return(NULL)
+  })
 }
