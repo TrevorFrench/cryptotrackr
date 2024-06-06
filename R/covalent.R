@@ -75,7 +75,14 @@ covalent_balances <- function(api_key, chain_id, address, csv = FALSE, timeout_s
   }
   query <- list(key = api_key, format = format)
   data <- covalent_api_call(url, 'GET', query, csv, timeout_seconds)
-  return(data)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Covalent API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' covalent_portfolio
@@ -107,5 +114,12 @@ covalent_portfolio <- function(api_key, chain_id, address, csv = FALSE, timeout_
   }
   query <- list(key = api_key, format = format)
   data <- covalent_api_call(url, 'GET', query, csv, timeout_seconds)
-  return(data)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Covalent API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }

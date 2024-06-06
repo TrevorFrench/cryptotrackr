@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' kraken_server_time()
+#' kraken_server_time(4.5)
 
 kraken_server_time <- function(timeout_seconds = 60) {
   tryCatch({
@@ -39,7 +39,7 @@ kraken_server_time <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' kraken_server_status()
+#' kraken_server_status(4.5)
 
 kraken_server_status <- function(timeout_seconds = 60) {
   tryCatch({
@@ -74,9 +74,9 @@ kraken_server_status <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' all_asset_info <- kraken_asset_info()
-#' eth_btc_info <- kraken_asset_info("ETH,BTC")
-#' currency_info <- kraken_asset_info(aclass = "currency")
+#' all_asset_info <- kraken_asset_info(timeout_seconds = 4.5)
+#' eth_btc_info <- kraken_asset_info("ETH,BTC", timeout_seconds = 4.5)
+#' currency_info <- kraken_asset_info(aclass = "currency", timeout_seconds = 4.5)
 
 kraken_asset_info <- function(asset = NULL, aclass = NULL, timeout_seconds = 60) {
   query <- list(asset = asset, aclass = aclass)
@@ -114,7 +114,7 @@ kraken_asset_info <- function(asset = NULL, aclass = NULL, timeout_seconds = 60)
 #' @export
 #'
 #' @examples
-#' kraken_asset_pairs()
+#' kraken_asset_pairs(timeout_seconds = 4.5)
 
 kraken_asset_pairs <- function(pair = NULL, info = NULL, timeout_seconds = 60) {
   query <- list(pair = pair, info = info)
@@ -151,7 +151,7 @@ kraken_asset_pairs <- function(pair = NULL, info = NULL, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' kraken_ticker_info("ETHUSD")
+#' kraken_ticker_info("ETHUSD", 4.5)
 
 kraken_ticker_info <- function(pair = NULL, timeout_seconds = 60) {
   query <- list(pair = pair)

@@ -15,7 +15,7 @@
 #' period <- '1day'
 #' size <- '200'
 #' symbol <- 'btcusdt'
-#' huobi_candles(period, size, symbol)
+#' huobi_candles(period, size, symbol, 4.5)
 
 huobi_candles <- function(period, size, symbol, timeout_seconds = 60) {
   base <- 'https://api.huobi.pro'

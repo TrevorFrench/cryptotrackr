@@ -72,6 +72,11 @@ etherscan_account_balance <- function(address, api_key, tag = 'latest', timeout_
 
   data <- etherscan_api_call('GET', query_string, timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Etherscan API.")
+    return(NULL)
+  }
+
   if (!is.null(data$result)) {
     return(data$result)
   } else {
@@ -105,6 +110,11 @@ etherscan_contract_abi <- function(address, api_key, timeout_seconds = 60){
   )
 
   data <- etherscan_api_call('GET', query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Etherscan API.")
+    return(NULL)
+  }
 
   if (!is.null(data$result)) {
     return(data$result)
@@ -141,6 +151,11 @@ etherscan_block_reward <- function(block, api_key, timeout_seconds = 60){
 
   data <- etherscan_api_call('GET', query_string, timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Etherscan API.")
+    return(NULL)
+  }
+
   if (!is.null(data$result)) {
     return(data$result)
   } else {
@@ -172,6 +187,11 @@ etherscan_gas_oracle <- function(api_key, timeout_seconds = 60){
   )
 
   data <- etherscan_api_call('GET', query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Etherscan API.")
+    return(NULL)
+  }
 
   if (!is.null(data$result)) {
     return(data$result)

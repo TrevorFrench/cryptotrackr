@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' coinlist_symbols()
+#' coinlist_symbols(4.5)
 
 coinlist_symbols <- function(timeout_seconds = 60) {
   tryCatch({
@@ -150,6 +150,12 @@ coinlist_api_call <- function(api_key, api_secret, method, path, body, timeout_s
 
 coinlist_fees <- function(api_key, api_secret, timeout_seconds = 60) {
   data <- coinlist_api_call(api_key, api_secret, 'GET', '/v1/fees', '', timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinlist API.")
+    return(NULL)
+  }
+
   if (!is.null(data$fees_by_symbols)) {
     return(data$fees_by_symbols)
   } else {

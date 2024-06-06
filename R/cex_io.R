@@ -11,7 +11,7 @@
 #' @examples
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' cex_io_ticker(symbol_1, symbol_2)
+#' cex_io_ticker(symbol_1, symbol_2, 4.5)
 
 cex_io_ticker <- function(symbol_1, symbol_2, timeout_seconds = 60) {
   tryCatch({
@@ -41,7 +41,7 @@ cex_io_ticker <- function(symbol_1, symbol_2, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' cex_io_currency_limits()
+#' cex_io_currency_limits(4.5)
 
 cex_io_currency_limits <- function(timeout_seconds = 60) {
   tryCatch({
@@ -74,7 +74,7 @@ cex_io_currency_limits <- function(timeout_seconds = 60) {
 #' @examples
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' cex_io_last_price(symbol_1, symbol_2)
+#' cex_io_last_price(symbol_1, symbol_2, 4.5)
 
 cex_io_last_price <- function(symbol_1, symbol_2, timeout_seconds = 60) {
   tryCatch({
@@ -109,7 +109,7 @@ cex_io_last_price <- function(symbol_1, symbol_2, timeout_seconds = 60) {
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
 #' amount <- '2.5'
-#' cex_io_converter(symbol_1, symbol_2, amount)
+#' cex_io_converter(symbol_1, symbol_2, amount, 4.5)
 
 cex_io_converter <- function(symbol_1, symbol_2, amount, timeout_seconds = 60) {
   tryCatch({
@@ -156,7 +156,7 @@ cex_io_converter <- function(symbol_1, symbol_2, amount, timeout_seconds = 60) {
 #' date <- '20220927'
 #' symbol_1 <- 'btc'
 #' symbol_2 <- 'usd'
-#' cex_io_ohlcv(date, symbol_1, symbol_2)
+#' cex_io_ohlcv(date, symbol_1, symbol_2, 4.5)
 
 cex_io_ohlcv <- function(date, symbol_1, symbol_2, timeout_seconds = 60) {
   tryCatch({
@@ -236,7 +236,7 @@ cex_io_signature <- function(username, api_key, api_secret, nonce) {
 #' username <- "..."
 #' api_key <- "..."
 #' api_secret <- "..."
-#' balances <- cex_io_balance(username, api_key, api_secret)}
+#' balances <- cex_io_balance(username, api_key, api_secret, 4.5)}
 
 cex_io_balance <- function(username, api_key, api_secret, timeout_seconds = 60) {
   nonce <- cex_io_nonce()

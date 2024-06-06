@@ -138,7 +138,7 @@ solana_get_signature_for_address <-
     data <- solana_api_call(url, request_body, timeout_seconds)
 
     if (is.null(data)) {
-      warning("Failed to retrieve data from Amberdata API.")
+      warning("Failed to retrieve data from Solana API.")
       return(NULL)
     }
 
@@ -173,7 +173,7 @@ solana_get_account_info <- function(url, pubkey, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -205,7 +205,7 @@ solana_get_block_height <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -237,7 +237,7 @@ solana_get_health <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -268,7 +268,7 @@ solana_get_version <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -300,7 +300,7 @@ solana_get_supply <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -332,7 +332,7 @@ solana_get_identity <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -364,7 +364,7 @@ solana_get_inflation_rate <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -396,7 +396,7 @@ solana_get_genesis_hash <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -428,7 +428,7 @@ solana_get_recent_prioritization_fees <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -461,7 +461,7 @@ solana_get_slot <- function(url, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 
@@ -503,7 +503,7 @@ solana_get_block <- function(url, slot, timeout_seconds = 60) {
   data <- solana_api_call(url, request_body, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Solana API.")
     return(NULL)
   }
 

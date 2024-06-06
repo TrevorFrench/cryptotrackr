@@ -76,7 +76,14 @@ gemini_trades <- function(key, secret, timeout_seconds = 60) {
   path <- "/v1/mytrades"
   method <- "POST"
   data <- gemini_api_call(key, secret, path, method, timeout_seconds)
-  return(data)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Binance US API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' gemini_symbols
@@ -87,7 +94,7 @@ gemini_trades <- function(key, secret, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' gemini_symbols()
+#' gemini_symbols(4.5)
 
 gemini_symbols <- function(timeout_seconds = 60) {
   tryCatch({
@@ -116,7 +123,7 @@ gemini_symbols <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' gemini_price_feed()
+#' gemini_price_feed(4.5)
 
 gemini_price_feed <- function(timeout_seconds = 60) {
   tryCatch({

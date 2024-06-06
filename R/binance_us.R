@@ -11,7 +11,7 @@
 #' @examples
 #' symbol <- 'LTCBTC'
 #' limit <- '1000'
-#' binance_us_recent_trades(symbol, limit)
+#' binance_us_recent_trades(symbol, limit, 4.5)
 
 binance_us_recent_trades <- function(symbol, limit, timeout_seconds = 60) {
   url <- paste('https://api.binance.us/api/v3/trades'
@@ -48,7 +48,7 @@ binance_us_recent_trades <- function(symbol, limit, timeout_seconds = 60) {
 #' \dontrun{
 #' key <- "..."
 #' secret <- "..."
-#' account_info <- binance_us_account_info(key, secret)}
+#' account_info <- binance_us_account_info(key, secret, 4.5)}
 
 binance_us_account_info <- function(key, secret, timeout_seconds = 60) {
   time <- binance_us_time()
@@ -57,7 +57,7 @@ binance_us_account_info <- function(key, secret, timeout_seconds = 60) {
   data <- binance_us_api_call(url, key, data, secret, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Binance US API.")
     return(NULL)
   } else {
     return(data)
@@ -153,7 +153,7 @@ binance_us_time <- function() {
 #' @export
 #'
 #' @examples
-#' binance_us_ping()
+#' binance_us_ping(4.5)
 
 binance_us_ping <- function(timeout_seconds = 60) {
   url <- 'https://api.binance.us/api/v3/ping'
@@ -182,7 +182,7 @@ binance_us_ping <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' binance_us_server_time()
+#' binance_us_server_time(4.5)
 
 binance_us_server_time <- function(timeout_seconds = 60) {
   url <- 'https://api.binance.us/api/v3/time'
@@ -233,7 +233,7 @@ binance_us_system_status <- function(key, secret, timeout_seconds = 60) {
   data <- binance_us_api_call(url, key, data, secret, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from Binance US API.")
     return(NULL)
   }
 

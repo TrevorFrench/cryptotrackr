@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-#' magic_eden_transactions(wallet)
+#' magic_eden_transactions(wallet, timeout_seconds = 4.5)
 
 magic_eden_transactions <- function(wallet, offset = NULL, limit = NULL, timeout_seconds = 60) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/wallets/'
@@ -55,7 +55,7 @@ magic_eden_transactions <- function(wallet, offset = NULL, limit = NULL, timeout
 #'
 #' @examples
 #' wallet <- "72tXz6jhGVPFE8ZfAQocJPJU3HgxsdrRqKZoUdWUhs7o"
-#' magic_eden_tokens_owned(wallet)
+#' magic_eden_tokens_owned(wallet, timeout_seconds = 4.5)
 
 magic_eden_tokens_owned <- function(wallet
                                     , offset = NULL
@@ -96,7 +96,7 @@ magic_eden_tokens_owned <- function(wallet
 #'
 #' @examples
 #' mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
-#' magic_eden_token_metadata(mint_address)
+#' magic_eden_token_metadata(mint_address, timeout_seconds = 4.5)
 
 magic_eden_token_metadata <- function(mint_address, timeout_seconds = 60) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/tokens/'
@@ -131,7 +131,7 @@ magic_eden_token_metadata <- function(mint_address, timeout_seconds = 60) {
 #'
 #' @examples
 #' mint_address <- "Hd6sxFEEQQA5aURaWaDesi23AkM19bBkKave1hyWvnfS"
-#' magic_eden_token_listings(mint_address)
+#' magic_eden_token_listings(mint_address, timeout_seconds = 4.5)
 
 magic_eden_token_listings <- function(mint_address, timeout_seconds = 60) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/tokens/'
@@ -166,7 +166,7 @@ magic_eden_token_listings <- function(mint_address, timeout_seconds = 60) {
 #'
 #' @examples
 #' symbol <- "gothic_degens"
-#' magic_eden_collection_stats(symbol)
+#' magic_eden_collection_stats(symbol, timeout_seconds = 4.5)
 
 magic_eden_collection_stats <- function(symbol, timeout_seconds = 60) {
   url <- paste('http://api-mainnet.magiceden.dev/v2/collections/'

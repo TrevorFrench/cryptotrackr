@@ -103,6 +103,11 @@ coinmarketcap_id_map <- function(api_key
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
   if (!is.null(data$data)) {
     return(data$data)
   } else {
@@ -158,6 +163,11 @@ coinmarketcap_metadata <- function(api_key
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
+
   if (!is.null(data$data)) {
     return(data$data)
   } else {
@@ -185,7 +195,14 @@ coinmarketcap_airdrop <- function(api_key, id, timeout_seconds = 60){
   url <- 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/airdrop'
   query_string <- list(id = id)
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
-  return(data)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' coinmarketcap_categories
@@ -231,6 +248,11 @@ coinmarketcap_categories <- function(api_key
   )
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
 
   if (!is.null(data$data)) {
     return(data$data)
@@ -283,6 +305,11 @@ coinmarketcap_category <- function(api_key
   )
 
   data <- coinmarketcap_api_call(url, api_key, 'GET', query = query_string, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from CoinMarketCap API.")
+    return(NULL)
+  }
 
   if (!is.null(data$data)) {
     return(data$data)

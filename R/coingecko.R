@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' coingecko_ping()
+#' coingecko_ping(4.5)
 
 coingecko_ping <- function(timeout_seconds = 60) {
   tryCatch({
@@ -39,7 +39,7 @@ coingecko_ping <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' coingecko_vs_currencies()
+#' coingecko_vs_currencies(4.5)
 
 coingecko_vs_currencies <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/simple/supported_vs_currencies'
@@ -75,7 +75,7 @@ coingecko_vs_currencies <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' coingecko_coins()
+#' coingecko_coins(timeout_seconds = 4.5)
 
 coingecko_coins <- function(include_platform = NULL, timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/coins/list'
@@ -122,7 +122,7 @@ coingecko_coins <- function(include_platform = NULL, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' coingecko_price(id = 'bitcoin', vs_currency = 'usd')
+#' coingecko_price(id = 'bitcoin', vs_currency = 'usd', timeout_seconds = 4.5)
 
 coingecko_price <- function(id
                             , vs_currency
@@ -170,7 +170,7 @@ coingecko_price <- function(id
 #' @export
 #'
 #' @examples
-#' coingecko_categories()
+#' coingecko_categories(4.5)
 
 coingecko_categories <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/coins/categories/list'
@@ -207,7 +207,7 @@ coingecko_categories <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' price <- coingecko_price_history("bitcoin", "30-12-2017")
+#' price <- coingecko_price_history("bitcoin", "30-12-2017", timeout_seconds = 4.5)
 #' price$market_data$current_price$usd
 
 coingecko_price_history <- function(id
@@ -250,7 +250,7 @@ coingecko_price_history <- function(id
 #' @export
 #'
 #' @examples
-#' coingecko_global_data()
+#' coingecko_global_data(4.5)
 
 coingecko_global_data <- function(timeout_seconds = 60) {
   url <- 'https://api.coingecko.com/api/v3/global'

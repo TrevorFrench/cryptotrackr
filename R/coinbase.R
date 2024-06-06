@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' coinbase_all_currencies()
+#' coinbase_all_currencies(4.5)
 
 coinbase_all_currencies <- function(timeout_seconds = 60) {
   tryCatch({
@@ -40,7 +40,7 @@ coinbase_all_currencies <- function(timeout_seconds = 60) {
 #'
 #' @examples
 #' currency <- 'btc'
-#' coinbase_single_currency(currency)
+#' coinbase_single_currency(currency, 4.5)
 
 coinbase_single_currency <- function(currency, timeout_seconds = 60) {
   tryCatch({
@@ -190,7 +190,14 @@ coinbase_accounts <- function(api_key, api_secret, limit = NULL, cursor = NULL, 
     cursor = cursor
   )
   data <- coinbase_api_call(api_key, api_secret, method, path, body, query, timeout_seconds)
-  return(data)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinbase API.")
+    return(NULL)
+  } else {
+    return(data)
+  }
+
 }
 
 #' coinbase_candles
@@ -228,6 +235,11 @@ coinbase_candles <- function(api_key, api_secret, product_id, start, end, granul
     granularity = granularity
   )
   data <- coinbase_api_call(api_key, api_secret, method, path, body, query, timeout_seconds)
+
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Coinbase API.")
+    return(NULL)
+  }
 
   if (!is.null(data$candles)) {
     return(data$candles)

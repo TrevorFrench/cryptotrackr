@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' okcoin_trading_pairs()
+#' okcoin_trading_pairs(4.5)
 
 okcoin_trading_pairs <- function(timeout_seconds = 60) {
   tryCatch({
@@ -66,11 +66,12 @@ okcoin_orders <- function(secret, key, passphrase, instrument_id, state, timeout
   data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from OkCoin API.")
     return(NULL)
+  } else {
+    return(data)
   }
 
-  return(data)
 }
 
 #' okcoin_spot_account_info
@@ -99,11 +100,12 @@ okcoin_spot_account_info <- function(secret, key, passphrase, timeout_seconds = 
   data <- okcoin_api_call(url, key, signature, formatted_time, passphrase, timeout_seconds)
 
   if (is.null(data)) {
-    warning("Failed to retrieve data from Amberdata API.")
+    warning("Failed to retrieve data from OkCoin API.")
     return(NULL)
+  } else {
+    return(data)
   }
 
-  return(data)
 }
 
 #' okcoin_time

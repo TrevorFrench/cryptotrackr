@@ -9,7 +9,7 @@
 #'
 #' @examples
 #' symbol <- 'BTC-USD'
-#' l2_order_book <- blockchain_dot_com_l2_order_book(symbol)
+#' l2_order_book <- blockchain_dot_com_l2_order_book(symbol, 4.5)
 #' l2_order_book$bids
 #' l2_order_book$asks
 
@@ -44,7 +44,7 @@ blockchain_dot_com_l2_order_book <- function(symbol, timeout_seconds = 60) {
 #'
 #' @examples
 #' symbol <- 'BTC-USD'
-#' l3_order_book <- blockchain_dot_com_l3_order_book(symbol)
+#' l3_order_book <- blockchain_dot_com_l3_order_book(symbol, 4.5)
 #' l3_order_book$bids
 #' l3_order_book$asks
 
@@ -76,7 +76,7 @@ blockchain_dot_com_l3_order_book <- function(symbol, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' blockchain_dot_com_tickers()
+#' blockchain_dot_com_tickers(4.5)
 
 blockchain_dot_com_tickers <- function(timeout_seconds = 60) {
   tryCatch({
@@ -107,7 +107,7 @@ blockchain_dot_com_tickers <- function(timeout_seconds = 60) {
 #'
 #' @examples
 #' symbol <- 'BTC-USD'
-#' blockchain_dot_com_ticker_symbol(symbol)
+#' blockchain_dot_com_ticker_symbol(symbol, 4.5)
 
 blockchain_dot_com_ticker_symbol <- function(symbol, timeout_seconds = 60) {
   tryCatch({
@@ -137,7 +137,7 @@ blockchain_dot_com_ticker_symbol <- function(symbol, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' blockchain_dot_com_symbols()
+#' blockchain_dot_com_symbols(4.5)
 
 blockchain_dot_com_symbols <- function(timeout_seconds = 60) {
   tryCatch({
@@ -168,7 +168,7 @@ blockchain_dot_com_symbols <- function(timeout_seconds = 60) {
 #'
 #' @examples
 #' symbol <- 'BTC-USD'
-#' blockchain_dot_com_symbol(symbol)
+#' blockchain_dot_com_symbol(symbol, 4.5)
 
 blockchain_dot_com_symbol <- function(symbol, timeout_seconds = 60) {
   tryCatch({

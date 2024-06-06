@@ -175,6 +175,11 @@ kucoin_subaccounts <- function(api_key, api_secret, passphrase, version = "2", t
                           , api_secret
                           , timeout_seconds = timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Kucoin API.")
+    return(NULL)
+  }
+
   if (!is.null(data$data)) {
     return(data$data)
   } else {
@@ -225,6 +230,11 @@ kucoin_accounts <- function(api_key
                           , api_secret
                           , timeout_seconds = timeout_seconds)
 
+  if (is.null(data)) {
+    warning("Failed to retrieve data from Kucoin API.")
+    return(NULL)
+  }
+
   if (!is.null(data$data)) {
     return(data$data)
   } else {
@@ -243,7 +253,7 @@ kucoin_accounts <- function(api_key
 #' @export
 #'
 #' @examples
-#' kucoin_symbols_list('btc')
+#' kucoin_symbols_list('btc', 4.5)
 
 kucoin_symbols_list <- function(market = NULL, timeout_seconds = 60){
   query <- list(market = toupper(market))

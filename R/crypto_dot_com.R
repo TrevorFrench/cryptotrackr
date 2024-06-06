@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' crypto_dot_com_instruments()
+#' crypto_dot_com_instruments(4.5)
 
 crypto_dot_com_instruments <- function(timeout_seconds = 60) {
   tryCatch({
@@ -47,7 +47,7 @@ crypto_dot_com_instruments <- function(timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' crypto_dot_com_get_book("BTC_USDT")
+#' crypto_dot_com_get_book("BTC_USDT", timeout_seconds = 4.5)
 
 crypto_dot_com_get_book <- function(instrument, depth = 50, timeout_seconds = 60) {
   query <- list(instrument_name = instrument, depth = depth)
@@ -91,7 +91,7 @@ crypto_dot_com_get_book <- function(instrument, depth = 50, timeout_seconds = 60
 #' @export
 #'
 #' @examples
-#' crypto_dot_com_get_candlestick("BTC_USDT")
+#' crypto_dot_com_get_candlestick("BTC_USDT", timeout_seconds = 4.5)
 
 crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m', timeout_seconds = 60) {
   query <- list(instrument_name = instrument, timeframe = timeframe)
@@ -133,7 +133,7 @@ crypto_dot_com_get_candlestick <- function(instrument, timeframe = '5m', timeout
 #' @export
 #'
 #' @examples
-#' crypto_dot_com_get_ticker("BTC_USDT")
+#' crypto_dot_com_get_ticker("BTC_USDT", 4.5)
 
 crypto_dot_com_get_ticker <- function(instrument, timeout_seconds = 60) {
   query <- list(instrument_name = instrument)
@@ -175,7 +175,7 @@ crypto_dot_com_get_ticker <- function(instrument, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' crypto_dot_com_get_trades("BTC_USDT")
+#' crypto_dot_com_get_trades("BTC_USDT", 4.5)
 
 crypto_dot_com_get_trades <- function(instrument, timeout_seconds = 60) {
   query <- list(instrument_name = instrument)
