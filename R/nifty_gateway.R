@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' nifties <- nifty_gateway_user_nifties('tommy')}
 
 nifty_gateway_user_nifties <- function(username
@@ -71,7 +71,7 @@ nifty_gateway_user_nifties <- function(username
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' creators <- nifty_gateway_creators('beeple')}
 
 nifty_gateway_creators <- function(username, limit = NULL, offset = NULL, timeout_seconds = 60) {
