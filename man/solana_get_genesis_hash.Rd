@@ -18,7 +18,7 @@ Returns the genesis hash
 solana_get_genesis_hash
 }
 \examples{
-\dontrun{
+\donttest{
 url <- "https://api.devnet.solana.com"
 data <- solana_get_genesis_hash(url)}
 }

@@ -20,7 +20,7 @@ Returns all information associated with the account of provided Pubkey
 solana_get_account_info
 }
 \examples{
-\dontrun{
+\donttest{
 url <- "https://api.devnet.solana.com"
 pubkey <- "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"
 data <- solana_get_account_info(url, pubkey)}

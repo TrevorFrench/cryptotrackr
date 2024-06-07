@@ -30,6 +30,6 @@ created by the given creator and currently stored on Nifty Gateway
 nifty_gateway_creators
 }
 \examples{
-\dontrun{
+\donttest{
 creators <- nifty_gateway_creators('beeple')}
 }
