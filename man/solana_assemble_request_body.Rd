@@ -22,7 +22,7 @@ Returns the request body for your solana API call
 solana_assemble_request_body
 }
 \examples{
-\dontrun{
+\donttest{
 limit <- solana_assemble_key_pair('limit', NULL)
 character_vector <- c(limit)
 config_object <- solana_assemble_list(character_vector)

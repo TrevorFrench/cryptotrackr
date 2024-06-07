@@ -33,6 +33,6 @@ the specified user
 nifty_gateway_user_nifties
 }
 \examples{
-\dontrun{
+\donttest{
 nifties <- nifty_gateway_user_nifties('tommy')}
 }

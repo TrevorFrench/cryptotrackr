@@ -18,7 +18,7 @@ Returns information about the current supply.
 solana_get_supply
 }
 \examples{
-\dontrun{
+\donttest{
 url <- "https://api.devnet.solana.com"
 data <- solana_get_supply(url)}
 }

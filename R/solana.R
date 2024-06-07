@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' request_body <-
 #'   solana_assemble_request_body('"2.0"', 'null', '"getBlockHeight"', NULL)
@@ -88,7 +88,7 @@ solana_assemble_list <- function(character_vector) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' limit <- solana_assemble_key_pair('limit', NULL)
 #' character_vector <- c(limit)
 #' config_object <- solana_assemble_list(character_vector)
@@ -122,7 +122,7 @@ solana_assemble_request_body <-
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' address <- "Vote111111111111111111111111111111111111111"
 #' data <- solana_get_signature_for_address(url,address)}
@@ -161,7 +161,7 @@ solana_get_signature_for_address <-
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' pubkey <- "vines1vzrYbzLMRdu58ou5XTby4qAqVRLmqo36NKPTg"
 #' data <- solana_get_account_info(url, pubkey)}
@@ -195,7 +195,7 @@ solana_get_account_info <- function(url, pubkey, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_block_height(url)}
 
@@ -227,7 +227,7 @@ solana_get_block_height <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_health(url)}
 
@@ -258,7 +258,7 @@ solana_get_health <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_version(url)}
 
@@ -290,7 +290,7 @@ solana_get_version <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_supply(url)}
 
@@ -322,7 +322,7 @@ solana_get_supply <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_identity(url)}
 
@@ -354,7 +354,7 @@ solana_get_identity <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_inflation_rate(url)}
 
@@ -386,7 +386,7 @@ solana_get_inflation_rate <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_genesis_hash(url)}
 
@@ -418,7 +418,7 @@ solana_get_genesis_hash <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_recent_prioritization_fees(url)}
 
@@ -451,7 +451,7 @@ solana_get_recent_prioritization_fees <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' data <- solana_get_slot(url)}
 
@@ -485,7 +485,7 @@ solana_get_slot <- function(url, timeout_seconds = 60) {
 #' @export
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' url <- "https://api.devnet.solana.com"
 #' slot <- solana_get_slot(url)
 #' data <- solana_get_block(url, slot)}
