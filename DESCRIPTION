@@ -1,7 +1,7 @@
 Package: cryptotrackr
 Type: Package
 Title: An Interface to Crypto Data Sources
-Version: 1.3.2
+Version: 1.3.3
 Authors@R: c(
     person("Trevor", "French", ,"FrenchTrevor@outlook.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6246-2249"))
@@ -10,7 +10,7 @@ Maintainer: Trevor French <FrenchTrevor@outlook.com>
 Description: Allows you to connect to data sources across the 
         crypto ecosystem. This data can enable a range of activity such as 
         portfolio tracking, programmatic trading, or industry analysis. The 
-        package is described in French (2024) <[https://github.com/TrevorFrench/cryptotrackr/wiki]https://github.com/TrevorFrench/cryptotrackr/wiki>.
+        package is described in French (2024) <https://github.com/TrevorFrench/cryptotrackr/wiki>.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
